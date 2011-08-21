@@ -155,8 +155,15 @@ none is set.
           XML.fromString("""<foo bar="baz"></foo>""")
         }
 
+URL Support and Reverse Routes
+------------------------------
+
+TODO: Add examples and docs
+
 WebSocket and Comet support through Socket.IO
 ---------------------------------------------
+
+**WebSocket support is Deprecated**
 
 Scalatra provides optional support for websockets and comet through [socket.io](http://socket.io). We depend on [the socketio-java project](http://code.google.com/p/socketio-java) to provide this support.
 
