@@ -15,6 +15,7 @@ ScalaTest
 
 Extend ScalatraSuite with your preferred Suite implementation.  You get ShouldMatchers and MustMatchers for free.
 
+{pygmentize:: scala}
     class MyScalatraServletTests extends ScalatraSuite with FunSuite {
       // `MyScalatraServlet` is your app which extends ScalatraServlet
       addServlet(classOf[MyScalatraServlet], "/*")
@@ -26,6 +27,7 @@ Extend ScalatraSuite with your preferred Suite implementation.  You get ShouldMa
         }
       }
     }
+{pygmentize}
 
 Convenience traits are provided for many Suite implementations:
 
@@ -48,6 +50,7 @@ Specs
 
 ### Example
 
+{pygmentize:: scala}
     object MyScalatraServletTests extends ScalatraSpecification {
       addServlet(classOf[MyScalatraServlet], "/*")
 
@@ -59,7 +62,8 @@ Specs
           }
         }
       }
-    }                      
+    }
+{pygmentize}
 
 Other test frameworks
 ---------------------

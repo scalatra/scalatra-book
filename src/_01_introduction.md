@@ -29,12 +29,14 @@ You can use the 2.0 version to try new functionality or to contribute to the
 framework. You need to have [Git version control
 software](http://www.git-scm.com) and [giter8](https://github.com/n8han/giter8#readme).
 
+{pygmentize::}
      $ g8 scalatra/scalatra-sbt
      > organization [com.example]: 
      > name ["scalatra-sbt-prototype"]: scalatra-example
      > servlet_name [MyScalatraFilter]:
      > scala_version [2.9.0-1]:
      > version [1.0]:
+{pygmentize}
 
 To use Scalatra 2.0 with SBT, you'll have to modify your Project file to include.
 
@@ -49,12 +51,14 @@ The 2.0 project template can also be cloned into a new project using the command
 
 Clone this repository:
 
+{pygmentize::}
           $ git clone git://github.com/scalatra/scalatra-sbt-prototype.git my-app
           $ cd my-app
           $ ./sbt
           > update
           > jetty-run
           > ~prepare-webapp
+{pygmentize}
 
    Go to http://localhost:8080/.
 
@@ -62,7 +66,8 @@ Hello World Application
 -----------------------
 
 Scalatra is installed, how about making your first application?
-     
+
+{pygmentize:: scala}
      import org.scalatra._
      import java.net.URL
      import scalate.ScalateSupport
@@ -78,6 +83,7 @@ Scalatra is installed, how about making your first application?
          </html>
        }
      }
+{pygmentize}
      
 Run this application by `$ ./sbt jetty-run` and load
 `http://localhost:8080` in your browser.

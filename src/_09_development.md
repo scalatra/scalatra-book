@@ -16,7 +16,9 @@ want to be ran again.
 
 Usage is rather simple:
 
-    sbt
-    jetty-run
-    ~prepare-webapp
+{pygmentize::}
+    $ sbt
+    > jetty-run
+    > ~prepare-webapp
+{pygmentize}
 

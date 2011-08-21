@@ -17,13 +17,13 @@ h2. Extend sbt project definition:
 
 Copy "this piece of code":http://bit.ly/92NWdu into your sbt project definition (/project/build/src/your project.scala) and extend your project with the AssemblyPorject, so you should have something like this:
 
-<pre><code>
+{pygmentize:: scala}
 class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {
   override def mainClass = Some("com.example.JettyLauncher")   # point this to your entry object
   val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
   val scalatest = "org.scalatest" % "scalatest" % "1.0" % "provided->default"
 }
-</code></pre>
+{pygmentize}
 
 Then launch sbt or reload it if it is already running. This should give you a new sbt command called "assembly". Try that in the sbt interactive prompt and it should produce a ****-assembly-**.jar file in your sbt /target/scala-2.7.7 folder. All dependencies (like scala-library.jar) are included in this jar file and you can run it directly, e.g.
 
@@ -35,7 +35,7 @@ h2. Launch Scalatra as a servlet
 
 ScalatraServlet is an HttpServlet, we just need some glue code to launch an embedded Jetty server with this Servlet. 
 
-<pre><code>
+{pygmentize:: scala}
 package com.example  // remember this package in the sbt project definition
 import org.mortbay.jetty.Server
 import org.mortbay.jetty.servlet.{Context, ServletHolder}
@@ -50,7 +50,7 @@ object JettyLauncher { // this is my entry object as specified in sbt project de
     server.join()
   }
 }
-</code></pre>
+{pygmentize}
 
 Now save this alongside your Scalatra project as JettyLauncher.scala and run <code>sbt clean assembly</code>. You'll have the ultimate executable jar file in the target soon. Try
 
@@ -62,6 +62,6 @@ and see it will launch the embedded Jetty at port 8080 with the example Scalatra
 
 If you need the Scala compiler included within a WAR file add the declaration below to your SBT build file.
 
-<pre>
+{pygmentize:: scala}
 override def webappClasspath = super.webappClasspath +++ buildCompilerJar
-</pre>
+{pygmentize}

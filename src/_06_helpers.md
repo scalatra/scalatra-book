@@ -11,6 +11,7 @@ as a helper trait.
 Once you have the `ScalateSupport` trait applied you can call 
 `templateEngine.layout('index.page')` within your action handlers.
 
+{pygmentize:: scala}
 	    class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
 		  notFound {
 		    // If no route matches, then try to render a Scaml template
@@ -28,6 +29,7 @@ Once you have the `ScalateSupport` trait applied you can call
 		    } 
 		  }
 	    }
+{pygmentize}
 
 ### Scalate error page
 
@@ -49,7 +51,9 @@ Another [example](https://gist.github.com/732347) for basic authentication can b
 
 To use it from an SBT project, add the following to your project:
 
+{pygmentize:: scala}
     val auth = "org.scalatra" %% "scalatra-auth" % scalatraVersion
+{pygmentize}
 
 ### User Password
 
@@ -89,8 +93,10 @@ new flash entries into `flash.now`.
 
 TODO: Add better supporting examples
 
+{pygmentize:: scala}
 	flash += ("error" -> "An error occurred")
 	flash.now += ("info" -> "redirect to see the error")
+{pygmentize}
 
 
 File Upload
@@ -100,16 +106,20 @@ Scalatra provides optional support for file uploads with <a href="http://commons
 
 1. Depend on scalatra-fileupload.jar.  In your SBT build:
 
+{pygmentize:: scala}
         val scalatraFileUpload = "org.scalatra" %% "scalatra-fileupload" % scalatraVersion
+{pygmentize}
 
 2. Extend your application with `FileUploadSupport`
 
+{pygmentize:: scala}
         import org.scalatra.ScalatraServlet
         import org.scalatra.fileupload.FileUploadSupport
 
         class MyApp extends ScalatraServlet with FileUploadSupport {
           // ...
         }
+{pygmentize}
 
 3. Be sure that your form is of type `multipart/form-data`:
 {pygmentize:: scala}
@@ -139,6 +149,7 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
 2. Extend your application with `AntiXmlSupport`
 
+{pygmentize:: scala}
         import org.scalatra.ScalatraServlet
         import org.scalatra.antixml.AntiXmlSupport
         import com.codecommit.antixml._
@@ -146,14 +157,17 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
         class MyApp extends ScalatraServlet with AntiXmlSupport {
           // ...
         }
+{pygmentize}
 
 3. Actions results of type `com.codecommit.antixml.Elem` will be serialized
 to the response body, and a content type of `text/html` will be inferred if
 none is set.
 
+{pygmentize:: scala}
         get("/") {
           XML.fromString("""<foo bar="baz"></foo>""")
         }
+{pygmentize}
 
 URL Support and Reverse Routes
 ------------------------------

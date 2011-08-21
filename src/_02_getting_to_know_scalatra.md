@@ -25,6 +25,7 @@ users will navigate the actions you define for your application.
 They also enable to you create [RESTful web services][restful-web-services], in
 a very obvious manner. Here's an example of how one-such service might look:
 
+{pygmentize:: scala}
     get("/dogs") {
       # get a listing of all the dogs
     }
@@ -46,6 +47,7 @@ a very obvious manner. Here's an example of how one-such service might look:
     delete("/dog/:id") {
       # HTTP DELETE request method to remove a dog who's been sold!
     }
+{pygmentize}
 
 As you can see from this contrived example, Scalatra's routing is very easy to get
 along with. Don't be fooled, though, Scalatra can do some pretty amazing things
@@ -70,6 +72,7 @@ match to the request.
 The `before` method will let you pass a block to be evaluated **before** _each_
 and_every_ route gets processed.
 
+{pygmentize:: scala}
     before() {
       MyDb.connect
     }
@@ -78,6 +81,7 @@ and_every_ route gets processed.
       val list = MyDb.findAll()
       templateEngine.layout("index.ssp", list)
     }
+{pygmentize}
 
 In this example, we've set up a `before` filter to connect using a contrived
 `MyDB` module.
@@ -87,9 +91,11 @@ In this example, we've set up a `before` filter to connect using a contrived
 The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
 
+{pygmentize:: scala}
     after() {
       MyDB.disconnect
     }
+{pygmentize}
 
 As you can see from this example, we're asking the `MyStore` module to
 disconnect after the request has been processed.
@@ -100,6 +106,7 @@ Filters optionally take a pattern to be matched against the requested URI
 during processing. Here's a quick example you could use to run a contrived
 `authenticate!` method before accessing any "admin" type requests.
 
+{pygmentize:: scala}
     before("/admin/*") {
       basicAuth
     }
@@ -107,7 +114,7 @@ during processing. Here's a quick example you could use to run a contrived
     after("/admin/*") {
       user.logout
     }
-
+{pygmentize}
 
 [filters]: http://www.scalatra.org/book#Filters
 
@@ -119,9 +126,11 @@ routines. For instance there are handlers for [halting][halting] and
 
 There are also handlers for redirection:
 
+{pygmentize:: scala}
     get("/"){
       redirect("/someplace/else")
     }
+{pygmentize}
 
 This will return a 302 HTTP Response to `/someplace/else`.
 
@@ -132,11 +141,13 @@ traits that you need to include.
 Then you will be able to use the default cookie based session handler in your
 application:
 
+{pygmentize:: scala}
     get("/") {
       if(!session('counter')) session('counter') = 0
       session('counter') += 1
       "You've hit this page {session('counter')} times!" 
     }
+{pygmentize}
 
 Handlers can be extremely useful when used properly, probably the most common
 use is the `params` convention, which gives you access to any parameters passed
@@ -149,24 +160,32 @@ in via the request object, or generated in your route pattern.
 
 To immediately stop a request within a filter or route:
 
+{pygmentize:: scala}
     halt()
+{pygmentize}
 
 You can also specify the status:
 
+{pygmentize:: scala}
     halt(403)
+{pygmentize}
 
 Or the status and the body:
 
+{pygmentize:: scala}
     halt(403, <h1>Go away!</h1>)
+{pygmentize}
 
 Or even the HTTP status reason and headers.  For more complex invocations, it 
 is recommended to use named arguments:
 
+{pygmentize:: scala}
     halt(status = 403,
          reason = "Forbidden",
          headers = Map("X-Your-Mother-Was-A" -> "hamster",
                        "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
          body = <h1>Go away or I shall taunt you a second time!</h1>)
+{pygmentize}
 
 The `reason` argument is ignored unless `status` is not null.  The default 
 arguments leave that part of the request unchanged.
@@ -175,6 +194,7 @@ arguments leave that part of the request unchanged.
 
 A route can punt processing to the next matching route using pass.  Remember, unlike Sinatra, routes are matched from the bottom up.
 
+{pygmentize:: scala}
     get("/guess/*") {
       "You missed!"
     }
@@ -185,6 +205,7 @@ A route can punt processing to the next matching route using pass.  Remember, un
         case _ => "You got me!"
       }
     }
+{pygmentize}
 
 The route block is immediately exited and control continues with the next matching route.  If no matching route is found, a 404 is returned.
 
@@ -211,6 +232,7 @@ default look in the `views` directory in your application root.
 
 So in your route you would have:
 
+{pygmentize:: scala}
     get("/") {
       templateEngine.layout("index.ssp")
       # renders webapp/index.ssp
@@ -219,18 +241,21 @@ So in your route you would have:
       templateEngine.layout("/dogs/index.ssp")
       # would instead render webapp/dogs/index.ssp
     }
+{pygmentize}
 
 Another default convention of Scalatra, is the layout, which automatically looks
 for a `webapp/layout` template file to render before loading any other views. In
 the case of using `SSP`, your `webapp/layout.ssp` would look something like
 this:
 
+{pygmentize:: html}
     <html>
       <head>..</head>
       <body>
         <%= yield %>
       </body>
     </html>
+{pygmentize}
 
 The possibilities are pretty much endless, here's a quick list of some of the most common use-cases covered in the README:
 
@@ -289,9 +314,11 @@ Error handlers run within the same context as routes and before filters.
 
 Whenever no route matches, the `notFound` handler is invoked.  The default behavior is:
 
+{pygmentize:: scala}
     notFound {
-      <h1>Not found.  Bummer.</h1>
+      <h1>Not found. Bummer.</h1>
     }
+{pygmentize}
 
 * _ScalatraServlet_: send a 404 response
 * _ScalatraFilter_: pass the request to the servlet filter chain
