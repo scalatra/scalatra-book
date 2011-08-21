@@ -216,6 +216,7 @@ class MySocketIOServlet extends ScalatraServlet with SocketIOSupport {
           }
         }
 {pygmentize}
+
 4. Add the necessary entries to web.xml
 {pygmentize:: xml}
         <servlet>

@@ -19,7 +19,7 @@ Copy "this piece of code":http://bit.ly/92NWdu into your sbt project definition 
 
 {pygmentize:: scala}
 class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {
-  override def mainClass = Some("com.example.JettyLauncher")   # point this to your entry object
+    override def mainClass = Some("com.example.JettyLauncher") #point this to your entry object
   val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
   val scalatest = "org.scalatest" % "scalatest" % "1.0" % "provided->default"
 }
@@ -27,9 +27,9 @@ class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with 
 
 Then launch sbt or reload it if it is already running. This should give you a new sbt command called "assembly". Try that in the sbt interactive prompt and it should produce a ****-assembly-**.jar file in your sbt /target/scala-2.7.7 folder. All dependencies (like scala-library.jar) are included in this jar file and you can run it directly, e.g.
 
-<pre><code>
+{pygmentize::}
 java -jar ***-assembly-**.jar
-</code></pre>
+{pygmentize}
 
 h2. Launch Scalatra as a servlet
 
@@ -44,7 +44,7 @@ import org.scalatra.TemplateExample // this is the example Scalatra servlet
 object JettyLauncher { // this is my entry object as specified in sbt project definition
   def main(args: Array[String]) {
     val server = new Server(8080)
-    val root   = new Context(server, "/", Context.SESSIONS)
+    val root = new Context(server, "/", Context.SESSIONS)
     root.addServlet(new ServletHolder(new TemplateExample), "/*")
     server.start()
     server.join()
@@ -54,7 +54,9 @@ object JettyLauncher { // this is my entry object as specified in sbt project de
 
 Now save this alongside your Scalatra project as JettyLauncher.scala and run <code>sbt clean assembly</code>. You'll have the ultimate executable jar file in the target soon. Try
 
-<pre><code>java -jar **-assembly-**.jar</code></pre>
+{pygmentize::}
+java -jar **-assembly-**.jar
+{pygmentize}
 
 and see it will launch the embedded Jetty at port 8080 with the example Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup costs 38MB memory.
 
