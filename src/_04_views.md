@@ -21,6 +21,7 @@ Inline HTML
 ScalateSupport
 --------------
 
+Including a basic template to be returned to the browser.
 {pygmentize:: scala}
   def get("/") {
     contentType="text/html"
