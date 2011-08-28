@@ -55,7 +55,7 @@ with Routes.
 
 Take a more indepth look at [Scalatra's routes][routes], and see for yourself. 
 
-[routes]: http://www.scalatra.org/book/#Routes
+[routes]: http://www.scalatra.org/stable/book/#Routes
 [restful-web-services]: http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_web_services
 
 ## Filters
@@ -116,7 +116,7 @@ during processing. Here's a quick example you could use to run a contrived
     }
 {pygmentize}
 
-[filters]: http://www.scalatra.org/book#Filters
+[filters]: http://www.scalatra.org/stable/book#Filters
 
 ## Handlers
 
@@ -153,8 +153,8 @@ Handlers can be extremely useful when used properly, probably the most common
 use is the `params` convention, which gives you access to any parameters passed
 in via the request object, or generated in your route pattern.
 
-[halting]: http://www.scalatra.org/book/#Halting
-[passing]: http://www.scalatra.org/book/#Passing
+[halting]: http://www.scalatra.org/stable/book/#Halting
+[passing]: http://www.scalatra.org/stable/book/#Passing
 
 ## Halting
 
@@ -265,10 +265,10 @@ The possibilities are pretty much endless, here's a quick list of some of the mo
 
 For more specific details on how Scalatra handles templates, check the [README][templates].
 
-[inline]: http://www.scalatra.com/book/#Inline%20Templates
-[embedded]: http://www.scalatra.com/book/#Embedded%20Templates
-[named]: http://www.scalatra.org/book/#Named%20Templates
-[templates]: http://www.scalatra.org/book/#Views%20/%20Templates
+[inline]: http://www.scalatra.org/stable/book/#Inline%20Templates
+[embedded]: http://www.scalatra.org/stable/book/#Embedded%20Templates
+[named]: http://www.scalatra.org/stable/book/#Named%20Templates
+[templates]: http://www.scalatra.org/stable/book/#Views%20/%20Templates
 
 ## Helpers
 

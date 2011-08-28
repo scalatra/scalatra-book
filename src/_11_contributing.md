@@ -5,7 +5,7 @@ Contributing
 
 Join us on IRC (#scalatra at irc.freenode.org) if you need help with anything.
 
-[contributing]: http://www.scalatra.com
+[contributing]: http://www.scalatra.org
 [issues]: http://github.com/scalatra/scalatra/issues
 [forking]: http://help.github.com/forking/
 [pull-requests]: http://help.github.com/pull-requests/
