@@ -89,7 +89,7 @@ Run this application by `$ ./sbt jetty-run` and load
 `http://localhost:8080` in your browser.
 
 As you can see, Scalatra doesn't force you to setup much infrastructure: a
-request to a URL evaluates some Ruby code and returns some text in response.
+request to a URL evaluates some Scala code and returns some text in response.
 Whatever the block returns is sent back to the browser.
 
 
