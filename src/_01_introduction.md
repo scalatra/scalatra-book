@@ -102,9 +102,13 @@ Scalatra is used for their backend REST services.
 
 ChaCha is using it in multiple internal applications.
 
+### The Guardian
+
+Scalatra is used in a number of systems that help power [The Guardian](http:///www.guardian.co.uk/), for instance the [music artist pages](http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet).
+
 Check out a full list of Scalatra apps [in the wild][in-the-wild].
 
-[in-the-wild]: http://www.scalatra.org/wild
+[in-the-wild]: http://www.scalatra.org/built-with.html
 
 About this book
 ---------------
