@@ -4,7 +4,7 @@ This is the home of The [Scalatra](http://github.com/scalatra/scalatra/) Book.
 
 ## Current snapshot
 
-The latest version of the book is published to http://test.scalatra.org/2.0.0/book.
+The latest version of the book is published to http://www.scalatra.org/2.0/book.
 
 ## Running the book yourself
 
