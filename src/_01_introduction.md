@@ -6,61 +6,59 @@ What is Scalatra?
 
 Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
 
-Installation
-------------
-The simplest way to install Scalatra is through g8:
+Getting Started
+---------------
+The simplest way to get started with Scalatra is to generate a project with [giter8](http://github.com/n8han/gitter8):
 
-     scalatra/scalatra-sbt
+{pygmentize::}
+$ g8 scalatra/scalatra-sbt
+> organization [com.example]: 
+> name ["scalatra-sbt-prototype"]: scalatra-example
+> servlet_name [MyScalatraFilter]:
+> scala_version [2.9.0-1]:
+> version [1.0]:
+{pygmentize}
+
+This creates a new Scalatra project in `scalatra-example`.
+
+### Git clone alternative
+
+For those who prefer not to instal giter8, an equivalent prototype project is
+maintained on GitHub:
+
+{pygmentize::}
+$ git clone http://github.com/scalatra/scalatra-sbt-prototype.git
+{pygmentize}
+
+You will need to manually update organization, name, and version in `build.sbt`.
 
 ### Dependencies
 
-Scalatra 
+Your `build.sbt` file declares a few dependencies:
 
-Scalatra supports many different template engines (it uses the Scalate library
-internally to support practically every template engine)
+* `"org.scalatra" %% "scalatra" % "2.0.0.RC1"`: This is the core Scalatra module,
+  and is required to run the framework.
 
+* `"org.scalatra" %% "scalatra-scalate" % "2.0.0.RC1"`: This integrates with 
+  [Scalate](http://scalate.fusesource.org), a template engine supporting multiple
+  template formats.  This is optional, but highly recommended for any app requiring
+  templating.
 
-### Scalatra+Giter8 Living on the Edge
+* `"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "jetty"`: This is the
+  embedded servlet container used by the web plugin.  Your application should be
+  portable to any servlet container supporting at least the 2.5 specification.
 
-The 2.0 version of Scalatra lives in its Git repository, available at 
-**<http://github.com/scalatra/scalatra/tree/master>**.
+* `"javax.servlet" % "servlet-api" % "2.5" % "provided"`: Required for building your
+  app.  It is placed in the provided configuration so that it is not bundled with
+  your application.  Your servlet container will provide this at deployment time.
 
-You can use the 2.0 version to try new functionality or to contribute to the
-framework. You need to have [Git version control
-software](http://www.git-scm.com) and [giter8](https://github.com/n8han/giter8#readme).
+You may add any other dependencies you wish in this section.
 
-{pygmentize::}
-     $ g8 scalatra/scalatra-sbt
-     > organization [com.example]: 
-     > name ["scalatra-sbt-prototype"]: scalatra-example
-     > servlet_name [MyScalatraFilter]:
-     > scala_version [2.9.0-1]:
-     > version [1.0]:
-{pygmentize}
+### Building
 
-To use Scalatra 2.0 with SBT, you'll have to modify your Project file to include.
+The prototype application uses [sbt >= 0.10](http://github.com/harrah/xsbt) for
+its build system.
 
-{pygmentize:: scala}
-val scalatraVersion = "2.0.0-SNAPSHOT"
-val scalatra = "org.scalatra" %% "scalatra" % scalatraVersion
-{pygmentize}
-
-### Scalatra Git Clone
-
-The 2.0 project template can also be cloned into a new project using the commands listed below.
-
-Clone this repository:
-
-{pygmentize::}
-          $ git clone git://github.com/scalatra/scalatra-sbt-prototype.git my-app
-          $ cd my-app
-          $ ./sbt
-          > update
-          > jetty-run
-          > ~prepare-webapp
-{pygmentize}
-
-   Go to http://localhost:8080/.
 
 Hello World Application
 -----------------------
