@@ -97,7 +97,7 @@ _every_ route gets processed.
     }
 {pygmentize}
 
-As you can see from this example, we're asking the `MyStore` module to
+As you can see from this example, we're asking the `MyDB` module to
 disconnect after the request has been processed.
 
 ### Pattern Matching
