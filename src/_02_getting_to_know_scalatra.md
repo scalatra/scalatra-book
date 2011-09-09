@@ -143,9 +143,9 @@ application:
 
 {pygmentize:: scala}
     get("/") {
-      if(!session('counter')) session('counter') = 0
-      session('counter') += 1
-      "You've hit this page {session('counter')} times!" 
+      if(!session.get("counter")) session.get("counter") = 0
+      session.get("counter") += 1
+      "You've hit this page {session.get("counter")} times!" 
     }
 {pygmentize}
 
@@ -201,8 +201,8 @@ A route can punt processing to the next matching route using pass.  Remember, un
 
     get("/guess/:who") {
       params("who") match {
-        case "Frank" => pass()
-        case _ => "You got me!"
+        case "Frank" => "You got me!"
+        case _ => pass()
       }
     }
 {pygmentize}
