@@ -97,7 +97,7 @@ _every_ route gets processed.
     }
 {pygmentize}
 
-As you can see from this example, we're asking the `MyStore` module to
+As you can see from this example, we're asking the `MyDB` module to
 disconnect after the request has been processed.
 
 ### Pattern Matching
@@ -143,9 +143,9 @@ application:
 
 {pygmentize:: scala}
     get("/") {
-      if(!session.get("counter")) session.get("counter") = 0
-      session.get("counter") += 1
-      "You've hit this page {session.get("counter")} times!" 
+      if(!session("counter")) session("counter") = 0
+      session("counter") = session("counter").toInt + 1
+      "You've hit this page %s times!" format session("counter").toInt
     }
 {pygmentize}
 
