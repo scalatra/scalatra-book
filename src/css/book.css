@@ -1,3 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
 .wrapper {
   color: #222;
     background: #fafafa;
