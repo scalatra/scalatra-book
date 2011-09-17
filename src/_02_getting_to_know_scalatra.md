@@ -245,10 +245,11 @@ So in your route you would have:
 
 Another default convention of Scalatra, is the layout, which automatically looks
 for a `webapp/layout` template file to render before loading any other views. In
-the case of using `SSP`, your `webapp/layout.ssp` would look something like
+the case of using `SSP`, your `webapp/layout/default.ssp` would look something like
 this:
 
 {pygmentize:: html}
+	<%@ var yield: String %> 
     <html>
       <head>..</head>
       <body>
@@ -269,6 +270,7 @@ For more specific details on how Scalatra handles templates, check the [README][
 [embedded]: http://www.scalatra.org/stable/book/#Embedded%20Templates
 [named]: http://www.scalatra.org/stable/book/#Named%20Templates
 [templates]: http://www.scalatra.org/stable/book/#Views%20/%20Templates
+[scalate]: http://scalate.fusesource.org/documentation/user-guide.html
 
 ## Helpers
 
@@ -322,3 +324,4 @@ Whenever no route matches, the `notFound` handler is invoked.  The default behav
 
 * _ScalatraServlet_: send a 404 response
 * _ScalatraFilter_: pass the request to the servlet filter chain
+
