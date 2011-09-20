@@ -6,8 +6,8 @@ What is Scalatra?
 
 Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
 
-Getting Started
----------------
+Introduction
+------------
 The simplest way to get started with Scalatra is to generate a project with [giter8](http://github.com/n8han/gitter8):
 
 {pygmentize::}
@@ -36,10 +36,10 @@ You will need to manually update organization, name, and version in `build.sbt`.
 
 Your `build.sbt` file declares a few dependencies:
 
-* `"org.scalatra" %% "scalatra" % "2.0.0.RC1"`: This is the core Scalatra module,
+* `"org.scalatra" %% "scalatra" % "2.0.0"`: This is the core Scalatra module,
   and is required to run the framework.
 
-* `"org.scalatra" %% "scalatra-scalate" % "2.0.0.RC1"`: This integrates with 
+* `"org.scalatra" %% "scalatra-scalate" % "2.0.0"`: This integrates with 
   [Scalate](http://scalate.fusesource.org), a template engine supporting multiple
   template formats.  This is optional, but highly recommended for any app requiring
   templating.
