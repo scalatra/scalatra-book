@@ -5,7 +5,7 @@ Deployment
 ## As a War to Jetty/Tomcat/Etc
 
 <pre><code>
-$ sbt package
+$ sbt package-war
 $ mv target/example-1.0.war target/example.war
 $ scp target/example.war user@example.com:/usr/share/jetty/webapp
 </code></pre>
