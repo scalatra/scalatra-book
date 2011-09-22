@@ -143,7 +143,7 @@ application:
 
 {pygmentize:: scala}
     get("/") {
-      if(!session("counter")) session("counter") = 0
+      if(session.contains("counter")) session("counter") = 0
       session("counter") = session("counter").toInt + 1
       "You've hit this page %s times!" format session("counter").toInt
     }
