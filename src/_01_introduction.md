@@ -44,7 +44,7 @@ Your `build.sbt` file declares a few dependencies:
   template formats.  This is optional, but highly recommended for any app requiring
   templating.
 
-* `"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "jetty"`: This is the
+* `"org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container"`: This is the
   embedded servlet container used by the web plugin.  Your application should be
   portable to any servlet container supporting at least the 2.5 specification.
 
@@ -83,13 +83,15 @@ Scalatra is installed, how about making your first application?
      }
 {pygmentize}
      
-Run this application by `$ ./sbt jetty-run` and load
-`http://localhost:8080` in your browser.
+Run this application by:
 
-As you can see, Scalatra doesn't force you to setup much infrastructure: a
-request to a URL evaluates some Scala code and returns some text in response.
-Whatever the block returns is sent back to the browser.
+    $ sbt
+    > container:start
 
+The application starts on http://localhost:8080.  As you can see, Scalatra
+doesn't force you to setup much infrastructure: a request to a URL evaluates
+some Scala code and returns some text in response.  Whatever the block returns
+is sent back to the browser.
 
 Real World Applications in Scalatra
 ----------------------------------

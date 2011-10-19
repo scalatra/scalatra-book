@@ -18,7 +18,7 @@ Usage is rather simple:
 
 {pygmentize::}
     $ sbt
-    > jetty-run
-    > ~prepare-webapp
+    > container:start
+    > ~ compile
 {pygmentize}
 
