@@ -136,6 +136,9 @@ This will return a 302 HTTP Response to `/someplace/else`.
 Scalatra has session handling built in by default. There are no modules or 
 traits that you need to include.
 
+_Caution:_ `redirect` is implemented as a HaltException.  You probably don't
+want to catch it in an action.
+
 Then you will be able to use the default cookie based session handler in your
 application:
 
@@ -188,6 +191,9 @@ halt(status = 403,
 The `reason` argument is ignored unless `status` is not null.  The default 
 arguments leave that part of the request unchanged.
 
+_Caution:_ `halt` is implemented as a HaltException.  You probably don't want
+to catch it in an action.
+
 ## Passing
 
 A route can punt processing to the next matching route using `pass()`.  Remember, unlike Sinatra, routes are matched from the bottom up.
@@ -206,6 +212,9 @@ get("/guess/:who") {
 {pygmentize}
 
 The route block is immediately exited and control continues with the next matching route.  If no matching route is found, a 404 is returned.
+
+_Caution:_ `halt` is implemented as a HaltException.  You probably don't want
+to catch it in an action.
 
 ## Templates
 
