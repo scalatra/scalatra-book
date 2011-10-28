@@ -12,6 +12,7 @@ In a shell, run the following:
 
     $ ./sbt
     > update
+    > generate-site
     > jetty-run
     > ~generate-site
 
