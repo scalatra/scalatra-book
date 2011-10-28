@@ -1,13 +1,14 @@
 Introduction
-=============
+============
 
 What is Scalatra?
-----------------
+-----------------
 
 Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
 
 Introduction
 ------------
+
 The simplest way to get started with Scalatra is to generate a project with [giter8](http://github.com/n8han/gitter8):
 
 {pygmentize::}
@@ -23,7 +24,7 @@ This creates a new Scalatra project in `scalatra-example`.
 
 ### Git clone alternative
 
-For those who prefer not to instal giter8, an equivalent prototype project is
+For those who prefer not to install giter8, an equivalent prototype project is
 maintained on GitHub:
 
 {pygmentize::}
@@ -59,42 +60,43 @@ You may add any other dependencies you wish in this section.
 The prototype application uses [sbt >= 0.10](http://github.com/harrah/xsbt) for
 its build system.
 
-
 Hello World Application
 -----------------------
 
 Scalatra is installed, how about making your first application?
 
 {pygmentize:: scala}
-     import org.scalatra._
-     import java.net.URL
-     import scalate.ScalateSupport
+import org.scalatra._
+import java.net.URL
+import scalate.ScalateSupport
 
-     class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
+class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
 
-       get("/") {
-         <html>
-           <body>
-             <h1>Hello, world!</h1>
-             Say <a href="hello-scalate">hello to Scalate</a>.
-           </body>
-         </html>
-       }
-     }
+  get("/") {
+    <html>
+      <body>
+        <h1>Hello, world!</h1>
+        Say <a href="hello-scalate">hello to Scalate</a>.
+      </body>
+    </html>
+  }
+}
 {pygmentize}
      
 Run this application by:
 
-    $ sbt
-    > container:start
+{pygmentize::}
+$ sbt
+> container:start
+{pygmentize}
 
-The application starts on http://localhost:8080.  As you can see, Scalatra
-doesn't force you to setup much infrastructure: a request to a URL evaluates
-some Scala code and returns some text in response.  Whatever the block returns
-is sent back to the browser.
+The application starts on [http://localhost:8080](http://localhost:8080).  As
+you can see, Scalatra doesn't force you to setup much infrastructure: a
+request to a URL evaluates some Scala code and returns some text in response.
+Whatever the block returns is sent back to the browser.
 
 Real World Applications in Scalatra
-----------------------------------
+-----------------------------------
 
 ### LinkedIn Signal
 
@@ -114,6 +116,7 @@ Check out a full list of Scalatra apps [in the wild][in-the-wild].
 
 About this book
 ---------------
+
 This book will assume you have a basic knowledge of the Scala scripting language.
 
 For more information about the Scala language visit the following links:

@@ -16,17 +16,17 @@ ScalaTest
 Extend ScalatraSuite with your preferred Suite implementation.  You get ShouldMatchers and MustMatchers for free.
 
 {pygmentize:: scala}
-    class MyScalatraServletTests extends ScalatraSuite with FunSuite {
-      // `MyScalatraServlet` is your app which extends ScalatraServlet
-      addServlet(classOf[MyScalatraServlet], "/*")
+class MyScalatraServletTests extends ScalatraSuite with FunSuite {
+  // `MyScalatraServlet` is your app which extends ScalatraServlet
+  addServlet(classOf[MyScalatraServlet], "/*")
 
-      test("simple get") {
-        get("/path/to/something") {
-          status should equal (200)
-          body should include ("hi!")
-        }
-      }
+  test("simple get") {
+    get("/path/to/something") {
+      status should equal (200)
+      body should include ("hi!")
     }
+  }
+}
 {pygmentize}
 
 Convenience traits are provided for many Suite implementations:
@@ -51,18 +51,18 @@ Specs
 ### Example
 
 {pygmentize:: scala}
-    object MyScalatraServletTests extends ScalatraSpecification {
-      addServlet(classOf[MyScalatraServlet], "/*")
+object MyScalatraServletTests extends ScalatraSpecification {
+  addServlet(classOf[MyScalatraServlet], "/*")
 
-      "MyScalatraServlet when using GET" should {
-        "/path/to/something should return 'hi!'" in {
-          get("/") {
-            status mustEqual(200)
-            body mustEqual("hi!")
-          }
-        }
+  "MyScalatraServlet when using GET" should {
+    "/path/to/something should return 'hi!'" in {
+      get("/") {
+        status mustEqual(200)
+        body mustEqual("hi!")
       }
     }
+  }
+}
 {pygmentize}
 
 Other test frameworks
