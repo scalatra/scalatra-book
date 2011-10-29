@@ -1,4 +1,5 @@
-## Routes
+Routes
+======
 
 In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 
@@ -18,15 +19,15 @@ In Scalatra, a route is an HTTP method paired with a URL matching pattern.
       // delete something 
     }
 
-### Route order
+## Route order
 
 The first matching route is invoked.  Routes are matched from the bottom up.  _This is the opposite of Sinatra._  Route definitions are executed as part of a Scala constructor; by matching from the bottom up, routes can be overridden in child classes.
 
-### Path patterns
+## Path patterns
 
 Path patterns add parameters to the `params` map.  Repeated values are accessible through the `multiParams` map.
 
-#### Named parameters
+### Named parameters
 
 Route patterns may include named parameters:
 
@@ -36,7 +37,7 @@ Route patterns may include named parameters:
       <p>Hello, {params("name")}</p>
     } 
 
-#### Wildcards
+### Wildcards
 
 Route patterns may also include wildcard parameters, accessible through the `splat` key.
 
@@ -50,7 +51,7 @@ Route patterns may also include wildcard parameters, accessible through the `spl
       multiParams("splat") // == Seq("path/to/file", "xml")
     }
 
-#### Regular expressions
+### Regular expressions
 
 The route matcher may also be a regular expression.  Capture groups are accessible through the `captures` key.
 
@@ -59,7 +60,7 @@ The route matcher may also be a regular expression.  Capture groups are accessib
       multiParams("captures") // == Seq("oo", "ar") 
     }
 
-#### Rails-like pattern matching
+### Rails-like pattern matching
 
 By default, route patterns parsing is based on Sinatra.  Rails has a similar, but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern parser is resolved implicitly, and may be overridden if you prefer an alternate syntax:
 
@@ -72,7 +73,7 @@ By default, route patterns parsing is based on Sinatra.  Rails has a similar, bu
       get("/:file(.:ext)") { // matched Rails-style }
     }
 
-#### Path patterns in the REPL
+### Path patterns in the REPL
 
 If you want to experiment with path patterns, it's very easy in the REPL.
 
@@ -91,7 +92,7 @@ If you want to experiment with path patterns, it's very easy in the REPL.
 Alternatively, you may use the `RailsPathPatternParser` in place of the
 `SinatraPathPatternParser`.
 
-### Conditions
+## Conditions
 
 Routes may include conditions.  A condition is any expression that returns Boolean.  Conditions are evaluated by-name each time the route matcher runs.
 
@@ -115,7 +116,7 @@ No path pattern is necessary.  A route may consist of solely a condition:
       <h1>Go away!</h1>
     }
 
-### Actions 
+## Actions 
 
 Each route is followed by an action.  An Action may return any value, which is then rendered to the response according to the following rules:
 

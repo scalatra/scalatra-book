@@ -1,4 +1,3 @@
-:markdown
 Getting to know Scalatra
 =======================
 
@@ -26,27 +25,27 @@ They also enable to you create [RESTful web services][restful-web-services], in
 a very obvious manner. Here's an example of how one-such service might look:
 
 {pygmentize:: scala}
-    get("/dogs") {
-      # get a listing of all the dogs
-    }
+get("/dogs") {
+  # get a listing of all the dogs
+}
 
-    get("/dog/:id") {
-      # just get one dog, you might find him like this:
-      val dog = Dog.find(params("id"))
-      # using the params convention, you specified in your route
-    }
+get("/dog/:id") {
+  # just get one dog, you might find him like this:
+  val dog = Dog.find(params("id"))
+  # using the params convention, you specified in your route
+}
 
-    post("/dog") {
-      # create a new dog listing
-    }
+post("/dog") {
+  # create a new dog listing
+}
 
-    put("/dog/:id") {
-      # HTTP PUT request method to update an existing dog
-    }
+put("/dog/:id") {
+  # HTTP PUT request method to update an existing dog
+}
 
-    delete("/dog/:id") {
-      # HTTP DELETE request method to remove a dog who's been sold!
-    }
+delete("/dog/:id") {
+  # HTTP DELETE request method to remove a dog who's been sold!
+}
 {pygmentize}
 
 As you can see from this contrived example, Scalatra's routing is very easy to get
@@ -70,17 +69,17 @@ match to the request.
 ### before
 
 The `before` method will let you pass a block to be evaluated **before** _each_
-and_every_ route gets processed.
+and _every_ route gets processed.
 
 {pygmentize:: scala}
-    before() {
-      MyDb.connect
-    }
+before() {
+  MyDb.connect
+}
 
-    get("/") {
-      val list = MyDb.findAll()
-      templateEngine.layout("index.ssp", list)
-    }
+get("/") {
+  val list = MyDb.findAll()
+  templateEngine.layout("index.ssp", list)
+}
 {pygmentize}
 
 In this example, we've set up a `before` filter to connect using a contrived
@@ -92,9 +91,9 @@ The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
 
 {pygmentize:: scala}
-    after() {
-      MyDB.disconnect
-    }
+after() {
+  MyDB.disconnect
+}
 {pygmentize}
 
 As you can see from this example, we're asking the `MyDB` module to
@@ -107,13 +106,13 @@ during processing. Here's a quick example you could use to run a contrived
 `authenticate!` method before accessing any "admin" type requests.
 
 {pygmentize:: scala}
-    before("/admin/*") {
-      basicAuth
-    }
+before("/admin/*") {
+  basicAuth
+}
 
-    after("/admin/*") {
-      user.logout
-    }
+after("/admin/*") {
+  user.logout
+}
 {pygmentize}
 
 [filters]: http://www.scalatra.org/stable/book#Filters
@@ -127,9 +126,9 @@ routines. For instance there are handlers for [halting][halting] and
 There are also handlers for redirection:
 
 {pygmentize:: scala}
-    get("/"){
-      redirect("/someplace/else")
-    }
+get("/"){
+  redirect("/someplace/else")
+}
 {pygmentize}
 
 This will return a 302 HTTP Response to `/someplace/else`.
@@ -137,16 +136,15 @@ This will return a 302 HTTP Response to `/someplace/else`.
 Scalatra has session handling built in by default. There are no modules or 
 traits that you need to include.
 
-
 Then you will be able to use the default cookie based session handler in your
 application:
 
 {pygmentize:: scala}
-    get("/") {
-      if(session.contains("counter")) session("counter") = 0
-      session("counter") = session("counter").toInt + 1
-      "You've hit this page %s times!" format session("counter").toInt
-    }
+get("/") {
+  if(session.contains("counter")) session("counter") = 0
+  session("counter") = session("counter").toInt + 1
+  "You've hit this page %s times!" format session("counter").toInt
+}
 {pygmentize}
 
 Handlers can be extremely useful when used properly, probably the most common
@@ -161,30 +159,30 @@ in via the request object, or generated in your route pattern.
 To immediately stop a request within a filter or route:
 
 {pygmentize:: scala}
-    halt()
+halt()
 {pygmentize}
 
 You can also specify the status:
 
 {pygmentize:: scala}
-    halt(403)
+halt(403)
 {pygmentize}
 
 Or the status and the body:
 
 {pygmentize:: scala}
-    halt(403, <h1>Go away!</h1>)
+halt(403, <h1>Go away!</h1>)
 {pygmentize}
 
 Or even the HTTP status reason and headers.  For more complex invocations, it 
 is recommended to use named arguments:
 
 {pygmentize:: scala}
-    halt(status = 403,
-         reason = "Forbidden",
-         headers = Map("X-Your-Mother-Was-A" -> "hamster",
-                       "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
-         body = <h1>Go away or I shall taunt you a second time!</h1>)
+halt(status = 403,
+     reason = "Forbidden",
+     headers = Map("X-Your-Mother-Was-A" -> "hamster",
+                   "X-And-Your-Father-Smelt-Of" -> "Elderberries"),
+     body = <h1>Go away or I shall taunt you a second time!</h1>)
 {pygmentize}
 
 The `reason` argument is ignored unless `status` is not null.  The default 
@@ -192,23 +190,22 @@ arguments leave that part of the request unchanged.
 
 ## Passing
 
-A route can punt processing to the next matching route using pass.  Remember, unlike Sinatra, routes are matched from the bottom up.
+A route can punt processing to the next matching route using `pass()`.  Remember, unlike Sinatra, routes are matched from the bottom up.
 
 {pygmentize:: scala}
-    get("/guess/*") {
-      "You missed!"
-    }
+get("/guess/*") {
+  "You missed!"
+}
 
-    get("/guess/:who") {
-      params("who") match {
-        case "Frank" => "You got me!"
-        case _ => pass()
-      }
-    }
+get("/guess/:who") {
+  params("who") match {
+    case "Frank" => "You got me!"
+    case _ => pass()
+  }
+}
 {pygmentize}
 
 The route block is immediately exited and control continues with the next matching route.  If no matching route is found, a 404 is returned.
-
 
 ## Templates
 
@@ -227,20 +224,24 @@ Some of Scalate's other all-star features include:
 And includes support for some of the best engines available, such as
 [SSP][ssp], [SCAML][scaml], and [Jade][jade].
 
+[ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
+[scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
+[jade]: http://scalate.fusesource.org/documentation/jade.html
+
 All you need to get started is `Scalate`, which is included in Scalatra. Views by
 default look in the `views` directory in your application root.
 
 So in your route you would have:
 
 {pygmentize:: scala}
-    get("/") {
-      templateEngine.layout("index.ssp")
-      # renders webapp/index.ssp
-      # OR look in a sub-directory
+get("/") {
+  templateEngine.layout("index.ssp")
+  // renders webapp/index.ssp
+  // OR look in a sub-directory
 
-      templateEngine.layout("/dogs/index.ssp")
-      # would instead render webapp/dogs/index.ssp
-    }
+  templateEngine.layout("/dogs/index.ssp")
+  // would instead render webapp/dogs/index.ssp
+}
 {pygmentize}
 
 Another default convention of Scalatra, is the layout, which automatically looks
@@ -249,13 +250,13 @@ the case of using `SSP`, your `webapp/layout/default.ssp` would look something l
 this:
 
 {pygmentize:: html}
-	<%@ var yield: String %> 
-    <html>
-      <head>..</head>
-      <body>
-        <%= yield %>
-      </body>
-    </html>
+<%@ var yield: String %> 
+<html>
+  <head>..</head>
+  <body>
+    <%= yield %>
+  </body>
+</html>
 {pygmentize}
 
 The possibilities are pretty much endless, here's a quick list of some of the most common use-cases covered in the README:
@@ -302,6 +303,7 @@ The servlet context is available through the `servletContext` variable.  The ser
 ## Configuration
 
 The environment is defined by:
+
 1. The `org.scalatra.environment` system property.
 2. The `org.scalatra.environment` init property.
 3. A default of `development`.
@@ -317,9 +319,9 @@ Error handlers run within the same context as routes and before filters.
 Whenever no route matches, the `notFound` handler is invoked.  The default behavior is:
 
 {pygmentize:: scala}
-    notFound {
-      <h1>Not found. Bummer.</h1>
-    }
+notFound {
+  <h1>Not found. Bummer.</h1>
+}
 {pygmentize}
 
 * _ScalatraServlet_: send a 404 response

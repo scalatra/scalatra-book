@@ -16,7 +16,7 @@ class ScalatraWebsite(info: ProjectInfo) extends DefaultWebProject(info)
   def projectUrl = "http://www.scalatra.org/"
 
     // jetty overrides
-  val p = path("target") / "scala_2.9.0-1" / "sitegen"
+  val p = path("target") / "scala_2.9.1" / "sitegen"
   override def jettyWebappPath = p  
   override def scanDirectories = Nil
   override val jettyPort = 8081

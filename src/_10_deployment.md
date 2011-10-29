@@ -2,20 +2,23 @@
 Deployment
 ==========
 
-## As a War to Jetty/Tomcat/Etc
+As a War to Jetty/Tomcat/Etc
+----------------------------
 
-<pre><code>
+{pygmentize:: shell}
 $ sbt package
 $ mv target/example-1.0.war target/example.war
 $ scp target/example.war user@example.com:/usr/share/jetty/webapp
-</code></pre>
+{pygmentize}
 
-## As a Single Jar
-Thanks to Riobard for this "post":http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f to the mailing list.
+As a Single Jar
+---------------
 
-h2. Extend sbt project definition:
+Thanks to Riobard for this [post](http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f) to the mailing list.
 
-Copy "this piece of code":http://bit.ly/92NWdu into your sbt project definition (/project/build/src/your project.scala) and extend your project with the AssemblyPorject, so you should have something like this:
+### Extend sbt project definition:
+
+Copy [this piece of code](http://bit.ly/92NWdu) (Note the link doesn't work anymore !) into your sbt project definition (/project/build/src/your project.scala) and extend your project with the AssemblyPorject, so you should have something like this:
 
 {pygmentize:: scala}
 class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {
@@ -31,7 +34,7 @@ Then launch sbt or reload it if it is already running. This should give you a ne
 java -jar ***-assembly-**.jar
 {pygmentize}
 
-h2. Launch Scalatra as a servlet
+### Launch Scalatra as a servlet
 
 ScalatraServlet is an HttpServlet, we just need some glue code to launch an embedded Jetty server with this Servlet. 
 
@@ -60,7 +63,8 @@ java -jar **-assembly-**.jar
 
 and see it will launch the embedded Jetty at port 8080 with the example Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup costs 38MB memory.
 
-## Including Scala Compiler
+Including Scala Compiler
+------------------------
 
 If you need the Scala compiler included within a WAR file add the declaration below to your SBT build file.
 
