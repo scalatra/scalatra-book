@@ -9,7 +9,7 @@ Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for 
 Introduction
 ------------
 
-The simplest way to get started with Scalatra is to generate a project with [giter8](http://github.com/n8han/gitter8):
+The simplest way to get started with Scalatra is to generate a project with [giter8](http://github.com/n8han/giter8):
 
 {pygmentize::}
 $ g8 scalatra/scalatra-sbt
