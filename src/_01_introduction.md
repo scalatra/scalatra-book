@@ -37,10 +37,10 @@ You will need to manually update organization, name, and version in `build.sbt`.
 
 Your `build.sbt` file declares a few dependencies:
 
-* `"org.scalatra" %% "scalatra" % "2.0.1"`: This is the core Scalatra module,
+* `"org.scalatra" %% "scalatra" % "2.0.2"`: This is the core Scalatra module,
   and is required to run the framework.
 
-* `"org.scalatra" %% "scalatra-scalate" % "2.0.1"`: This integrates with 
+* `"org.scalatra" %% "scalatra-scalate" % "2.0.2"`: This integrates with 
   [Scalate](http://scalate.fusesource.org), a template engine supporting multiple
   template formats.  This is optional, but highly recommended for any app requiring
   templating.
