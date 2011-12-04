@@ -65,6 +65,39 @@ object MyScalatraServletTests extends ScalatraSpecification {
 }
 {pygmentize}
 
+
+Specs2
+------
+
+### Example 
+{pygmentize:: scala }
+import org.scalatra.test.specs2._
+
+class HelloWorldServletSpec extends ScalatraSpec { def is =
+  "GET / on HelloWorldServlet"                     ^
+    "return status 200"                            ! getRoot200^
+                                                   end
+
+  addServlet(classOf[HelloWorldServlet], "/*")
+
+  def getRoot200 = get("/") { 
+    status must_== 200 
+  }
+}
+
+class HelloWorldMutableServletSpec extends MutableScalatraSpec {
+  addServlet(classOf[HelloWorldServlet], "/*") 
+
+  "GET / on HelloWorldServlet" should {
+    "return status 200" in {
+      get("/") { 
+        status must_== 200
+      }
+    }
+  }
+}
+{pygmentize}
+
 Other test frameworks
 ---------------------
 
