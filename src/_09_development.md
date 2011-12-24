@@ -13,13 +13,11 @@ painful. It can easily be avoided by using a tool for automatic code reloading.
 SBT will allow you to [signal a restart of the application when it detects
 code changes](https://github.com/harrah/xsbt/wiki/Triggered-Execution). The
 syntax for restarting includes adding `~` in front of the command you want to
-re-execute.
-
-Usage is rather simple:
+re-execute.  To recompile and reload your application automatically with
+xsbt-web-plugin 0.2.10, run the following:
 
 {pygmentize::}
 $ sbt
 > container:start
-> ~ compile
+> ~ ;copy-resources;aux-compile
 {pygmentize}
-
