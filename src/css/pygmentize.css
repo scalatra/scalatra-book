@@ -61,6 +61,7 @@
 .syntax .vi { color: #bb60d5 } /* Name.Variable.Instance */
 .syntax .il { color: #40a070 } /* Literal.Number.Integer.Long */
 
+
 /* don't highlight errors */
 .syntax .err {
   border: none;
@@ -69,7 +70,7 @@
 .syntax {
   font-size: 1.1em;
   font-family:Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
-  background: #F0F0F0;
+  background-color: #F8F8FF; 
   
   overflow:auto;
   -moz-background-clip:border;
@@ -94,11 +95,6 @@
 }
 .syntax pre {
   margin:0;
-}
-
-.syntax pre {
-  font-size: 13px;
-  font-family: Bitstream Vera Sans Mono,monospace;
 }
 
 pre.syntax {
