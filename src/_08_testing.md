@@ -55,7 +55,7 @@ Convenience traits are provided for many Suite implementations:
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-scalatest" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-specs2" % scalatraVersion % "test"
 
 #### Example 
 
