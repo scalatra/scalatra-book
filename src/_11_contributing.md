@@ -1,7 +1,7 @@
 Contributing
 ============
 
-## There are plenty of ways to [contribute to Scaltara][contributing].
+## There are plenty of ways to [contribute to Scalatra][contributing].
 
 Join us on IRC [(#scalatra at irc.freenode.net)][freenode] if you need help with anything.
 
