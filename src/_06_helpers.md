@@ -198,7 +198,7 @@ get("/"){
 3. Mapped params
 {pygmentize:: scala}
 get("/") {
-  // This will redirect to http://<host>/<context>/cen-to-es?one=uno&two=dos
+  // This will redirect to http://<host>/<context>/en-to-es?one=uno&two=dos
   redirect( url("/en-to-es", Map("one" -> "uno", "two" -> "dos")) )
 }
 {pygmentize}
