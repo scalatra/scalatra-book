@@ -177,7 +177,33 @@ get("/") {
 URL Support and Reverse Routes
 ------------------------------
 
-TODO: Add examples and docs
+UrlSupport provides two instances that provide you with relative url's. UrlSupport.url will return a string that can be used in your output or a redirect statement.
+
+1. Page relative url
+{pygmentize:: scala}
+get("/"){
+  // This will redirect to http://<host>/page-relative
+  redirect(url("page-relative")) 
+}
+{pygmentize}
+
+2. Context relative url
+{pygmentize:: scala}
+get("/"){
+  // This will redirect to http://<host>/<context>/context-relative
+  redirect(url("/context-relative")) 
+}
+{pygmentize}
+
+3. Mapped params
+{pygmentize:: scala}
+get("/") {
+  // This will redirect to http://<host>/<context>/cen-to-es?one=uno&two=dos
+  redirect( url("/en-to-es", Map("one" -> "uno", "two" -> "dos")) )
+}
+{pygmentize}
+
+TODO: add reverse routing
 
 WebSocket and Comet support through Socket.IO
 ---------------------------------------------
