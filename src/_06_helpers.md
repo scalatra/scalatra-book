@@ -205,6 +205,26 @@ get("/") {
 
 TODO: add reverse routing
 
+AkkaSupport
+---------------------------------------------
+
+Provides a mechanism for adding Akka futures to your routes.
+
+{pygmentize:: scala}
+import _root_.akka.dispatch._
+import org.scalatra.akka.AkkaSupport
+
+class MyAppServlet extends ScalatraServlet with AkkaSupport {
+  get("/"){
+    Future {
+      // Add other logic here
+      
+      <html><body>Hello Akka</body></html>
+    }		
+  }
+}
+{pygmentize}
+
 WebSocket and Comet support through Socket.IO
 ---------------------------------------------
 
