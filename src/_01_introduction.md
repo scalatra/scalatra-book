@@ -63,7 +63,8 @@ its build system.
 Hello World Application
 -----------------------
 
-Scalatra is installed, how about making your first application?
+Scalatra is installed, how about making your first application?  Source files
+go into `src/main/scala`.  Open `src/main/scala/MyScalatraFilter.scala`:
 
 {pygmentize:: scala}
 import org.scalatra._
@@ -83,7 +84,8 @@ class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
 }
 {pygmentize}
      
-Run this application by:
+Back at the shell prompt, from your project root, you can run the project
+with:
 
 {pygmentize::}
 $ sbt
