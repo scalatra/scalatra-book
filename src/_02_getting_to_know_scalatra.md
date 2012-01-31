@@ -299,7 +299,7 @@ The request is available through the `request` variable.  The request is implici
 
 ### HttpServletResponse
 
-The response is available through the `response` variable.
+The response is available through the `response` variable. If you override the Scalatra handling and write directly to the response object (Ex: response.getOutputStream), then your action should return Unit() to prevent a conflict with multiple writes.
 
 ### HttpSession
 
