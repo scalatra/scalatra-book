@@ -22,10 +22,38 @@ ScalateSupport
 
 Including a basic template to be returned to the browser.
 
+Basic usage
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
 
-  templateEngine.layout("/WEB-INF/views/index.ssp")
+  layoutTemplate("/WEB-INF/views/index.ssp")
+}
+{pygmentize}
+
+Choosing a different template
+{pygmentize:: scala}
+def get("/") {
+  contentType="text/html"
+
+  layoutTemplate("/WEB-INF/views/index.ssp",("layout" -> "/WEB-INF/layouts/app.ssp"))
+}
+{pygmentize}
+
+Passing parameters
+{pygmentize:: scala}
+def get("/") {
+  contentType="text/html"
+
+  layoutTemplate("/WEB-INF/views/index.ssp",Map("foo" -> "uno","bar"->"dos"))
+}
+{pygmentize}
+
+Putting it all together
+{pygmentize:: scala}
+def get("/") {
+  contentType="text/html"
+
+  layoutTemplate("/WEB-INF/views/index.ssp",("layout" -> "/WEB-INF/layouts/app.ssp"),Map("foo" -> "uno","bar"->"dos"))
 }
 {pygmentize}
