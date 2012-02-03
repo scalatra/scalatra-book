@@ -99,6 +99,65 @@ java -jar **-assembly-**.jar
 
 and see it will launch the embedded Jetty at port 8080 with the example Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup costs 38MB memory.
 
+### Scalatra on Heroku
+
+This is pretty easy to get up and running. Only thing you really need to do is start jetty directly, and add a script to execute this. You don't want to have to rely on SBT to start your application.
+
+Easiest way to do this is create a Main method to start jetty. See JettyLauncher.scala - save this in your src/main/scala dir, setting the filter to your applications filter. Then use Typesafe's start script plugin to generate a script to start the app.
+
+To enable the plugin, add the following to project/plugins/build.sbt
+
+    resolvers += {
+        val typesafeRepoUrl = new java.net.URL("http://repo.typesafe.com/typesafe/ivy-snapshots")
+        val pattern = Patterns(false, "[organisation]/[module]/[sbtversion]/[revision]/[type]s/[module](-[classifier])-[revision].[ext]")
+        Resolver.url("Typesafe Ivy Snapshot Repository", typesafeRepoUrl)(pattern)
+    }
+    
+    libraryDependencies <<= (libraryDependencies, sbtVersion) { (deps, version) =>
+        deps :+ ("com.typesafe.startscript" %% "xsbt-start-script-plugin" % "0.1-SNAPSHOT" extra("sbtversion" -> version))
+    }
+
+And the following to your build.sbt
+
+    import com.typesafe.startscript.StartScriptPlugin
+    
+    seq(StartScriptPlugin.startScriptForClassesSettings: _*)
+
+
+Once this is done, you are ready to deploy to Heroku. Create a Procfile in the root if your project containing
+
+    web: target/start
+
+Commit your changes to git and make sure you have the heroku gem installed. You can then create and push the app.
+
+    heroku create appname --stack cedar
+    git push heroku master
+
+{pygmentize:: scala}
+import org.eclipse.jetty.server.Server
+import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
+import org.eclipse.jetty.webapp.WebAppContext
+
+object JettyLauncher {
+  def main(args: Array[String]) {
+    val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
+
+    val server = new Server(port)
+    val context = new WebAppContext()
+    context setContextPath "/"
+    context.setResourceBase("src/main/webapp")
+    context.addServlet(classOf[MyCedarServlet], "/*")
+    context.addServlet(classOf[DefaultServlet], "/")
+
+    server.setHandler(context)
+
+    server.start
+    server.join
+  }
+
+}
+{pygmentize}
+
 Including Scala Compiler
 ------------------------
 
