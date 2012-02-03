@@ -20,7 +20,7 @@ Thanks to Riobard for this [post](http://groups.google.com/group/scalatra-user/m
 Copy [this piece of code](http://bit.ly/92NWdu) (Note the link doesn't work anymore !) into your sbt project definition (/project/build/src/your project.scala) and extend your project with the AssemblyPorject, so you should have something like this:
 
 ** SBT 0.7.X **
-{pygmentize:: scala}
+{pygmentize::scala}
 class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with AssemblyProject {
     override def mainClass = Some("com.example.JettyLauncher") #point this to your entry object
   val jettytester = "org.mortbay.jetty" % "jetty-servlet-tester" % "6.1.22" % "provided->default"
@@ -51,7 +51,7 @@ ServletContextHandler(ServletContextHandler.SESSIONS)
 {pygmentize}
 
 Include the "webapp" directory in the assembley Jar.
-{pygmentize:: scala}
+{pygmentize::scala}
 resourceGenerators in Compile <+= (resourceManaged, baseDirectory) map { (managedBase, base) => 
   val webappBase = base / "src" / "main" / "webapp" 
   for { 
@@ -73,7 +73,7 @@ java -jar ***-assembly-**.jar
 
 ScalatraServlet is an HttpServlet, we just need some glue code to launch an embedded Jetty server with this Servlet. 
 
-{pygmentize:: scala}
+{pygmentize::scala}
 package com.example  // remember this package in the sbt project definition
 import org.mortbay.jetty.Server
 import org.mortbay.jetty.servlet.{Context, ServletHolder}
@@ -106,7 +106,7 @@ Easiest way to do this is create a Main method to start jetty. See JettyLauncher
 
 To enable the plugin, add the following to project/plugins/build.sbt
 
-{pygmentize:: scala}
+{pygmentize::scala}
 resolvers += Classpaths.typesafeResolver
 
 addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
@@ -114,10 +114,11 @@ addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
 
 And the following to your build.sbt
 
-    import com.typesafe.startscript.StartScriptPlugin
+{pygmentize::scala}
+import com.typesafe.startscript.StartScriptPlugin
     
-    seq(StartScriptPlugin.startScriptForClassesSettings: _*)
-
+seq(StartScriptPlugin.startScriptForClassesSettings: _*)
+{pygmentize}
 
 Once this is done, you are ready to deploy to Heroku. Create a Procfile in the root if your project containing
 
@@ -128,7 +129,7 @@ Commit your changes to git and make sure you have the heroku gem installed. You 
     heroku create appname --stack cedar
     git push heroku master
 
-{pygmentize:: scala}
+{pygmentize::scala}
 import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
 import org.eclipse.jetty.webapp.WebAppContext
@@ -158,6 +159,6 @@ Including Scala Compiler
 
 If you need the Scala compiler included within a WAR file add the declaration below to your SBT build file.
 
-{pygmentize:: scala}
+{pygmentize::scala}
 override def webappClasspath = super.webappClasspath +++ buildCompilerJar
 {pygmentize}
