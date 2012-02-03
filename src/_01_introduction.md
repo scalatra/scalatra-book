@@ -9,18 +9,39 @@ Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for 
 Introduction
 ------------
 
-The simplest way to get started with Scalatra is to generate a project with [giter8](http://github.com/n8han/giter8):
+The simplest way to get started with Scalatra is to generate a project with
+[giter8](http://github.com/n8han/giter8).  
 
 {pygmentize::}
 $ g8 scalatra/scalatra-sbt
 > organization [com.example]: 
-> name ["scalatra-sbt-prototype"]: scalatra-example
-> servlet_name [MyScalatraFilter]:
-> scala_version [2.9.0-1]:
-> version [1.0]:
+> package [com.example.app]: 
+> name [scalatra-sbt-prototype]: 
+> servlet_name [MyScalatraServlet]: 
+> scala_version [2.9.1]: 
+> version [0.1.0-SNAPSHOT]: 
 {pygmentize}
 
-This creates a new Scalatra project in `scalatra-example`.
+* `organization`: Used for publishing.  Should be the reverse of a domain 
+name you control.  If you don''t own a domain, `com.github.username` is a
+popular choice.  
+
+* `package`: All Scala code belongs in a package.  The [Scala Style
+Guide](http://docs.scala-lang.org/style/naming-conventions.html#packages)
+recommends that your packages start with your organization.  This convention is
+used across multiple JVM languages and gives your project a globally unique
+namespace.
+
+* `name`: The name of your project.  g8 will generate a project into a
+folder of this name, and the artifacts you publish will be based on this name.
+
+* `servlet_name`: the name of your servlet.
+
+* `scala_version`: The version of Scala your project is built with.  When in
+doubt, use the default.
+
+* `version`: The version number of your project.  This is entirely up to you,
+but we like [Semantic Versioning](http://semver.org/).
 
 ### Git clone alternative
 
@@ -64,11 +85,14 @@ Hello World Application
 -----------------------
 
 Scalatra is installed, how about making your first application?  Source files
-go into `src/main/scala`.  Open `src/main/scala/MyScalatraFilter.scala`:
+go into `src/main/scala/com/example/app` (substitute your package for
+`com/example/app`).  Open
+`src/main/scala/com/example/app/MyScalatraFilter.scala`:
 
 {pygmentize:: scala}
+package com.example.app
+
 import org.scalatra._
-import java.net.URL
 import scalate.ScalateSupport
 
 class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
