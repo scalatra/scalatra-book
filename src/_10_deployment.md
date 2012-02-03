@@ -1,4 +1,3 @@
-
 Deployment
 ==========
 
@@ -32,7 +31,7 @@ class JettyScalatraProject(info: ProjectInfo) extends DefaultProject(info) with 
 ** SBT 0.11.x **
 
 Create a runner for Jetty.
-{pygmentize:: scala}
+{pygmentize::scala}
 import org.eclipse.jetty.server._ 
 import org.eclipse.jetty.servlet.ServletContextHandler 
 import org.eclipse.jetty.webapp.WebAppContext 
@@ -107,15 +106,11 @@ Easiest way to do this is create a Main method to start jetty. See JettyLauncher
 
 To enable the plugin, add the following to project/plugins/build.sbt
 
-    resolvers += {
-        val typesafeRepoUrl = new java.net.URL("http://repo.typesafe.com/typesafe/ivy-snapshots")
-        val pattern = Patterns(false, "[organisation]/[module]/[sbtversion]/[revision]/[type]s/[module](-[classifier])-[revision].[ext]")
-        Resolver.url("Typesafe Ivy Snapshot Repository", typesafeRepoUrl)(pattern)
-    }
-    
-    libraryDependencies <<= (libraryDependencies, sbtVersion) { (deps, version) =>
-        deps :+ ("com.typesafe.startscript" %% "xsbt-start-script-plugin" % "0.1-SNAPSHOT" extra("sbtversion" -> version))
-    }
+{pygmentize:: scala}
+resolvers += Classpaths.typesafeResolver
+
+addSbtPlugin("com.typesafe.startscript" % "xsbt-start-script-plugin" % "0.5.0")
+{pygmentize}
 
 And the following to your build.sbt
 
