@@ -1,0 +1,40 @@
+{# Filename: _templates/layout.html #}
+{% extends '!layout.html' %}
+
+<!-- Navigation bar				   -->
+<!-- ============================================= -->
+{% block extrahead %}
+ <link href="_static/scalatra.css" media="screen" rel="stylesheet" type="text/css" />
+ <link href="_static/book.css" media="screen" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block header %}
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container">
+			<ul>
+			<li><a href="http://www.scaltra.org/">Home</a></li>
+			<li><a href="index.html">Book</a></li>
+			<li><a href="http://www.scaltra.org/community.html">Community</a></li>
+			<li><a href="http://github.com/scalatra">Source</a></li>
+			<li><a href="http://www.scaltra.org/built-with.html">Built With</a></li>
+			<li><a href="http://www.scaltra.org/stable/api">API</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="wrapper">
+  <div class="container">
+    <div id="overview">
+		<div class="logo">
+		  <img src="_static/logo-x.png" alt="Scalatra logo" border="0" />
+		</div>
+	</div>
+	<div id="content">
+{% endblock %}
+
+{% block footer %}
+	</div>
+  </div>
+</div>
+{% endblock %}

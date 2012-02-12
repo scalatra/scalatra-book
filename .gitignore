@@ -8,6 +8,7 @@ project/plugins/lib_managed/
 project/plugins/src_managed/
 src_managed/
 target/
+build/
 *.eml
 *.iml
 *.ipr
