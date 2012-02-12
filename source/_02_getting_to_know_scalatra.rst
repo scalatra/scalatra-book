@@ -30,18 +30,20 @@ services <http://en.wikipedia.org/wiki/Representational_State_Transfer#RESTful_w
 in a very obvious manner. Here's an example of how one-such service
 might look:
 
-{pygmentize:: scala} get("/dogs") { # get a listing of all the dogs }
+.. code-block:: scala
 
-get("/dog/:id") { # just get one dog, you might find him like this: val
-dog = Dog.find(params("id")) # using the params convention, you
-specified in your route }
+   get("/dogs") { # get a listing of all the dogs }
 
-post("/dog") { # create a new dog listing }
+   get("/dog/:id") { # just get one dog, you might find him like this: val
+     dog = Dog.find(params("id")) # using the params convention, you
+     specified in your route 
+   }
+   
+   post("/dog") { # create a new dog listing }
 
-put("/dog/:id") { # HTTP PUT request method to update an existing dog }
+   put("/dog/:id") { # HTTP PUT request method to update an existing dog }
 
-delete("/dog/:id") { # HTTP DELETE request method to remove a dog who's
-been sold! } {pygmentize}
+   delete("/dog/:id") { # HTTP DELETE request method to remove a dog who's been sold! }
 
 As you can see from this contrived example, Scalatra's routing is very
 easy to get along with. Don't be fooled, though, Scalatra can do some
@@ -87,7 +89,9 @@ after
 The ``after`` method lets you pass a block to be evaluated **after**
 *each* and *every* route gets processed.
 
-{pygmentize:: scala} after() { MyDB.disconnect } {pygmentize}
+.. code-block:: scala
+
+   after() { MyDB.disconnect }
 
 As you can see from this example, we're asking the ``MyDB`` module to
 disconnect after the request has been processed.
@@ -100,9 +104,12 @@ URI during processing. Here's a quick example you could use to run a
 contrived ``authenticate!`` method before accessing any "admin" type
 requests.
 
-{pygmentize:: scala} before("/admin/\*") { basicAuth }
+.. code-block:: scala
 
-after("/admin/\*") { user.logout } {pygmentize}
+   before("/admin/\*") { basicAuth }
+   
+   after("/admin/\*") { user.logout }
+
 
 Handlers
 --------
@@ -114,8 +121,10 @@ common HTTP routines. For instance there are handlers for
 
 There are also handlers for redirection:
 
-{pygmentize:: scala} get("/"){ redirect("/someplace/else") }
-{pygmentize}
+.. code-block:: scala
+
+   get("/"){ redirect("/someplace/else") }
+
 
 This will return a 302 HTTP Response to ``/someplace/else``.
 
@@ -128,10 +137,15 @@ don't want to catch it in an action.
 Then you will be able to use the default cookie based session handler in
 your application:
 
-{pygmentize:: scala} get("/") { if(session.contains("counter"))
-session("counter") = 0 session("counter") = session("counter").toInt + 1
-"You've hit this page %s times!" format session("counter").toInt }
-{pygmentize}
+.. code-block:: scala
+
+   get("/") { 
+     if(session.contains("counter")) session("counter") = 0 
+     session("counter") = session("counter").toInt + 1   
+
+     "You've hit this page %s times!" format session("counter").toInt 
+   }
+
 
 Handlers can be extremely useful when used properly, probably the most
 common use is the ``params`` convention, which gives you access to any
@@ -143,46 +157,33 @@ Halting
 
 To immediately stop a request within a filter or route:
 
-{pygmentize:: scala} halt() {pygmentize}
+.. code-block:: scala
+
+   halt()
 
 You can also specify the status:
 
-{pygmentize:: scala} halt(403) {pygmentize}
+.. code-block:: scala
+
+   halt(403)
 
 Or the status and the body:
 
-{pygmentize:: scala} halt(403,
+.. code-block:: scala
 
-.. raw:: html
-
-   <h1>
-
-Go away!
-
-.. raw:: html
-
-   </h1>
-
-) {pygmentize}
+   halt(403,
+   <h1>Go away!</h1>
+   )
 
 Or even the HTTP status reason and headers. For more complex
 invocations, it is recommended to use named arguments:
 
-{pygmentize:: scala} halt(status = 403, reason = "Forbidden", headers =
-Map("X-Your-Mother-Was-A" -> "hamster", "X-And-Your-Father-Smelt-Of" ->
-"Elderberries"), body =
-
-.. raw:: html
-
-   <h1>
-
-Go away or I shall taunt you a second time!
-
-.. raw:: html
-
-   </h1>
-
-) {pygmentize}
+.. code-block:: scala
+   
+   halt(status = 403, reason = "Forbidden", headers =
+     Map("X-Your-Mother-Was-A" -> "hamster", "X-And-Your-Father-Smelt-Of" ->"Elderberries"), body =
+     <h1>Go away or I shall taunt you a second time!</h1>
+   )
 
 The ``reason`` argument is ignored unless ``status`` is not null. The
 default arguments leave that part of the request unchanged.
@@ -196,10 +197,16 @@ Passing
 A route can punt processing to the next matching route using ``pass()``.
 Remember, unlike Sinatra, routes are matched from the bottom up.
 
-{pygmentize:: scala} get("/guess/\*") { "You missed!" }
+.. code-block:: scala
 
-get("/guess/:who") { params("who") match { case "Frank" => "You got me!"
-case \_ => pass() } } {pygmentize}
+   get("/guess/*") { "You missed!" }
+
+   get("/guess/:who") { 
+     params("who") match { 
+       case "Frank" => "You got me!"
+       case _ => pass() 
+     } 
+   }
 
 The route block is immediately exited and control continues with the
 next matching route. If no matching route is found, a 404 is returned.
@@ -234,40 +241,29 @@ application root.
 
 So in your route you would have:
 
-{pygmentize:: scala} get("/") { templateEngine.layout("index.ssp") //
-renders webapp/index.ssp // OR look in a sub-directory
+.. code-block:: scala
 
-templateEngine.layout("/dogs/index.ssp") // would instead render
-webapp/dogs/index.ssp } {pygmentize}
+   get("/") { 
+     templateEngine.layout("index.ssp") // renders webapp/index.ssp 
+     // OR look in a sub-directory
+     templateEngine.layout("/dogs/index.ssp") // would instead render webapp/dogs/index.ssp 
+   }
 
 Another default convention of Scalatra, is the layout, which
 automatically looks for a ``webapp/layout`` template file to render
 before loading any other views. In the case of using ``SSP``, your
 ``webapp/layout/default.ssp`` would look something like this:
 
-{pygmentize:: html} <%@ var yield: String %>
+.. code-block:: html
 
-.. raw:: html
-
+   <%@ var yield: String %>
    <html>
-     <head>
-
-..
-
-.. raw:: html
-
-   </head>
+     <head></head>
      <body>
-       
-
-<%= yield %>
-
-.. raw:: html
-
-   </body>
+     <%= yield %>
+     </body>
    </html>
 
-{pygmentize}
 
 The possibilities are pretty much endless, here's a quick list of some
 of the most common use-cases covered in the README:
@@ -350,19 +346,11 @@ Not Found
 Whenever no route matches, the ``notFound`` handler is invoked. The
 default behavior is:
 
-{pygmentize:: scala} notFound {
+.. code-block:: scala
 
-.. raw:: html
-
-   <h1>
-
-Not found. Bummer.
-
-.. raw:: html
-
-   </h1>
-
-} {pygmentize}
+   notFound { 
+     <h1>Not found. Bummer.</h1>
+   }
 
 -  *ScalatraServlet*: send a 404 response
 -  *ScalatraFilter*: pass the request to the servlet filter chain

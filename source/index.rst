@@ -5,10 +5,10 @@
 
 
 .. globalindex::
-   :maxdepth: 3
+   :maxdepth: 2
 
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 3
 
    _01_introduction
    _02_getting_to_know_scalatra
