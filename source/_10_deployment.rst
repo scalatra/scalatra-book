@@ -143,7 +143,7 @@ And the following to your build.sbt
 
    import com.typesafe.startscript.StartScriptPlugin
    
-   seq(StartScriptPlugin.startScriptForClassesSettings: \_\*)
+   seq(StartScriptPlugin.startScriptForClassesSettings: _\*)
 
 Once this is done, you are ready to deploy to Heroku. Create a Procfile
 in the root if your project containing

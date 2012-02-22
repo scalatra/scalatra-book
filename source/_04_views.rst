@@ -7,53 +7,56 @@ using the ScalateSupport helper.
 Inline HTML
 -----------
 
-{pygmentize:: scala} def get("/") { contentType="text/html"
+.. code-block:: scala
 
-.. raw:: html
+  def get("/") { contentType="text/html"
 
-   <html>
-     <head>
+    <html>
+      <head>Test</head>
+      <body>
+      Test Body for {uri("/")}
+      </body>
+    </html>
 
-Test
-
-.. raw:: html
-
-   </head>
-     <body>
-
-Test Body for {uri("/")}
-
-.. raw:: html
-
-   </body>
-     </html>
-
-} {pygmentize}
+  }
 
 ScalateSupport
 --------------
 
 Including a basic template to be returned to the browser.
 
-Basic usage {pygmentize:: scala} def get("/") { contentType="text/html"
+Basic usage 
+.. code-block:: scala
+   
+   def get("/") { 
+     contentType="text/html"
 
-layoutTemplate("/WEB-INF/views/index.ssp") } {pygmentize}
+     layoutTemplate("/WEB-INF/views/index.ssp") 
+   }
 
-Choosing a different template {pygmentize:: scala} def get("/") {
-contentType="text/html"
+Choosing a different template 
+.. code-block:: scala
+   def get("/") {
+     contentType="text/html"
 
-layoutTemplate("/WEB-INF/views/index.ssp",("layout" ->
-"/WEB-INF/layouts/app.ssp")) } {pygmentize}
+     layoutTemplate("/WEB-INF/views/index.ssp",("layout" ->"/WEB-INF/layouts/app.ssp")) 
+   }
 
-Passing parameters {pygmentize:: scala} def get("/") {
-contentType="text/html"
+Passing parameters 
+.. code-block:: scala
+   
+   def get("/") {
+     contentType="text/html"
 
-layoutTemplate("/WEB-INF/views/index.ssp",Map("foo" ->
-"uno","bar"->"dos")) } {pygmentize}
+     layoutTemplate("/WEB-INF/views/index.ssp",Map("foo" ->"uno","bar"->"dos")) 
+   }
 
-Putting it all together {pygmentize:: scala} def get("/") {
-contentType="text/html"
+Putting it all together 
+.. code-block:: scala
+   
+   def get("/") {
+     contentType="text/html"
+   
+     layoutTemplate("/WEB-INF/views/index.ssp",("layout" ->"/WEB-INF/layouts/app.ssp"),Map("foo" -> "uno","bar"->"dos")) 
+   }
 
-layoutTemplate("/WEB-INF/views/index.ssp",("layout" ->
-"/WEB-INF/layouts/app.ssp"),Map("foo" -> "uno","bar"->"dos")) }
-{pygmentize}

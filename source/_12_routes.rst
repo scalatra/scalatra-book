@@ -4,7 +4,7 @@ Routes
 In Scalatra, a route is an HTTP method paired with a URL matching
 pattern.
 
-::
+.. code-block:: scala
 
     get("/") { 
       // show something 
@@ -41,7 +41,7 @@ Named parameters
 
 Route patterns may include named parameters:
 
-::
+.. code-block:: scala
 
     get("/hello/:name") {
       // Matches "GET /hello/foo" and "GET /hello/bar"
@@ -55,7 +55,7 @@ Wildcards
 Route patterns may also include wildcard parameters, accessible through
 the ``splat`` key.
 
-::
+.. code-block:: scala
 
     get("/say/*/to/*) {
       // Matches "GET /say/hello/to/world"
@@ -73,7 +73,7 @@ Regular expressions
 The route matcher may also be a regular expression. Capture groups are
 accessible through the ``captures`` key.
 
-::
+.. code-block:: scala
 
     get("""^\/f(.*)/b(.*)""".r) {
       // Matches "GET /foo/bar"
@@ -88,7 +88,7 @@ similar, but not identical, syntax, based on Rack::Mount's Strexp. The
 path pattern parser is resolved implicitly, and may be overridden if you
 prefer an alternate syntax:
 
-::
+.. code-block:: scala
 
     import org.scalatra._
 
@@ -105,7 +105,7 @@ Path patterns in the REPL
 If you want to experiment with path patterns, it's very easy in the
 REPL.
 
-::
+.. code-block:: scala
 
     scala> import org.scalatra.SinatraPathPatternParser
     import org.scalatra.SinatraPathPatternParser
@@ -129,7 +129,7 @@ Routes may include conditions. A condition is any expression that
 returns Boolean. Conditions are evaluated by-name each time the route
 matcher runs.
 
-::
+.. code-block:: scala
 
     get("/foo") {
       // Matches "GET /foo"
@@ -142,7 +142,7 @@ matcher runs.
 Multiple conditions can be chained together. A route must match all
 conditions:
 
-::
+.. code-block:: scala
 
     get("/foo", request.getRemoteHost == "127.0.0.1", request.getRemoteUser == "admin") {
       // Only matches if you're the admin, and you're localhost
@@ -150,7 +150,7 @@ conditions:
 
 No path pattern is necessary. A route may consist of solely a condition:
 
-::
+.. code-block:: scala
 
     get(isMaintenanceMode) {
       <h1>Go away!</h1>

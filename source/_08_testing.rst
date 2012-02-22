@@ -20,7 +20,7 @@ and run them all by default.
 Dependency
 ^^^^^^^^^^
 
-::
+.. code-block:: scala
 
     "org.scalatra" %% "scalatra-scalatest" % scalatraVersion % "test"
 
@@ -61,7 +61,7 @@ Convenience traits are provided for many Suite implementations:
 Dependency
 ^^^^^^^^^^
 
-::
+.. code-block:: scala
 
     "org.scalatra" %% "scalatra-specs2" % scalatraVersion % "test"
 
@@ -120,7 +120,7 @@ projects begin with Specs2.
 Dependency
 ^^^^^^^^^^
 
-::
+.. code-block:: scala
 
     "org.scalatra" %% "scalatra-specs" % scalatraVersion % "test"
 
@@ -132,9 +132,9 @@ Example
    object MyScalatraServletTests extends ScalatraSpecification { 
      addServlet(classOf[MyScalatraServlet], "/\*")
 
-     "MyScalatraServlet when using GET" should { "/path/to/something should
-   return 'hi!'" in { get("/") { status mustEqual(200) body
-   mustEqual("hi!") } } } 
+     "MyScalatraServlet when using GET" should { 
+       "/path/to/something should return 'hi!'" in { get("/") { status mustEqual(200) body mustEqual("hi!") } } 
+     } 
    }
 
 Other test frameworks
@@ -143,7 +143,7 @@ Other test frameworks
 Dependency
 ^^^^^^^^^^
 
-::
+.. code-block:: scala
 
     "org.scalatra" %% "scalatra-test" % scalatraVersion % "test"
 
@@ -165,7 +165,7 @@ so it does not read your web.xml. Most things you can do in a web.xml
 can be done from the context on the tester object. In this case, call
 this in the constructor of your servlet:
 
-::
+.. code-block:: scala
 
     tester.getContext.setInitParameter("db.username", "ross")
 
