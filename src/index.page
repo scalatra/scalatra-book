@@ -2,8 +2,6 @@
 title: Scalatra Book a tiny Sinatra-like web framework for Scala
 --- name:headExtra pipeline:jade
 script{:type => "text/javascript",
-        :src  => "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"}
-script{:type => "text/javascript",
         :src  => "/js/sh/scripts/shCore.js"}
 script{:type => "text/javascript",
         :src  => "/js/sh/scripts/shAutoloader.js"}
