@@ -205,74 +205,23 @@ get("/") {
 
 TODO: add reverse routing
 
-WebSocket and Comet support through Socket.IO
+AkkaSupport
 ---------------------------------------------
 
-**WebSocket support is Deprecated**
-
-Scalatra provides optional support for websockets and comet through [socket.io](http://socket.io). We depend on [the socketio-java project](http://code.google.com/p/socketio-java) to provide this support.
-
-1. Depend on the scalatra-socketio.jar. In your SBT build:
-{pygmentize:: scala}
-val scalatraSocketIO = "org.scalatra" %% "scalatra-socketio" % scalatraVersion
-{pygmentize}
-
-2. SocketIO mimics a socket connection so it's easiest if you just create a socketio servlet at /socket.io/*
+Provides a mechanism for adding Akka futures to your routes.
 
 {pygmentize:: scala}
-import org.scalatra.ScalatraServlet
-import org.scalatra.socketio.SocketIOSupport
+import _root_.akka.dispatch._
+import org.scalatra.akka.AkkaSupport
 
-class MySocketIOServlet extends ScalatraServlet with SocketIOSupport {
-  // ...
-}
-{pygmentize}
-
-3. Setup the callbacks
-
-{pygmentize:: scala}
-socketio { socket =>
-
-  socket.onConnect { connection =>
-    // Do stuff on connection
-  }
-
-  socket.onMessage { (connection, frameType, message) =>
-    // Receive a message
-    // use `connection.send("string")` to send a message
-    // use `connection.broadcast("to send")` to send a message to all connected clients except the current one
-    // use `connection.disconnect` to disconnect the client.
-  }
-
-  socket.onDisconnect { (connection, reason, message) =>
-    // Do stuff on disconnection
+class MyAppServlet extends ScalatraServlet with AkkaSupport {
+  get("/"){
+    Future {
+      // Add other logic here
+      
+      <html><body>Hello Akka</body></html>
+    }		
   }
 }
 {pygmentize}
 
-4. Add the necessary entries to web.xml
-
-{pygmentize:: xml}
-<servlet>
-  <servlet-name>SocketIOServlet</servlet-name>
-  <servlet-class>com.example.SocketIOServlet</servlet-class>
-  <init-param>
-    <param-name>flashPolicyServerHost</param-name>
-    <param-value>localhost</param-value>
-  </init-param>
-  <init-param>
-    <param-name>flashPolicyServerPort</param-name>
-    <param-value>843</param-value>
-  </init-param>
-  <init-param>
-    <param-name>flashPolicyDomain</param-name>
-    <param-value>localhost</param-value>
-  </init-param>
-  <init-param>
-    <param-name>flashPolicyPorts</param-name>
-    <param-value>8080</param-value>
-  </init-param>
-</servlet>  
-{pygmentize}
-              
-When you want to use websockets with jetty the sbt build tool gets in the way and that makes it look like the websocket stuff isn't working. If you deploy the war to a jetty distribution everything should work as expected.
