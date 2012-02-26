@@ -48,7 +48,7 @@ helper which can be used to find the template file, without a suffix, and withou
 def get("/") {
   contentType="text/html"
 
-  ssp("/index", "layout" -> "/layouts/app")
+  ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
 }
 {pygmentize}
 
@@ -70,7 +70,7 @@ Putting it all together, in a scaml example (alternatively use mustache, ssp, or
 def get("/") {
   contentType="text/html"
 
-  scaml("/index", "layout" -> "/layouts/app", "foo" -> "uno", "bar" -> "dos")
+  scaml("/index", "layout" -> "WEB-INF/layouts/app.scaml", "foo" -> "uno", "bar" -> "dos")
 }
 
 The "layout" key is somewhat special, as it's used by scalate to identify the 
@@ -83,6 +83,6 @@ something like this (in jade this time):
 def get("/") {
   contentType="text/html"
 
-  jade("/index",("layout" -> "/layouts/app"), "foo" -> "uno", "bar" -> "dos")
+  jade("/index",("layout" -> "WEB-INFO/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
 }
 {pygmentize}
