@@ -86,3 +86,10 @@ def get("/") {
   jade("/index",("layout" -> "WEB-INFO/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
 }
 {pygmentize}
+
+Default layouts
+
+Scalatra sets a default layout at "WEB-INF/layouts/default.xxxx" (where xxxx is one of the 
+scalate template types). If you are using ssp, for instance, and you put a default.ssp file
+in WEB-INFO/layouts.default.ssp, it will automatically be used. In this case, you can simply
+call ssp("/index") and render with your default layout. 
