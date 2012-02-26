@@ -45,7 +45,7 @@ Passing parameters
 def get("/") {
   contentType="text/html"
 
-  layoutTemplate("/WEB-INF/views/index.ssp",Map("foo" -> "uno","bar"->"dos"))
+  layoutTemplate("/WEB-INF/views/index.ssp",Map("foo" -> "uno","bar"->"dos").toSeq:_*)
 }
 {pygmentize}
 
@@ -54,6 +54,6 @@ Putting it all together
 def get("/") {
   contentType="text/html"
 
-  layoutTemplate("/WEB-INF/views/index.ssp",("layout" -> "/WEB-INF/layouts/app.ssp"),Map("foo" -> "uno","bar"->"dos"))
+  layoutTemplate("/WEB-INF/views/index.ssp",("layout" -> "/WEB-INF/layouts/app.ssp"),Map("foo" -> "uno","bar"->"dos").toSeq:_*)
 }
 {pygmentize}
