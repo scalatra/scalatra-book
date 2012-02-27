@@ -170,3 +170,36 @@ is then rendered to the response according to the following rules:
 
 This behavior may be customized for these or other return types by overriding 
 `renderResponse`.
+
+### Parameter handling
+
+Parameters become available to your actions through two methods: `multiParams` 
+and `params`.
+
+`multiparams` are a result of merging the standard request params (query 
+string or post params) with the route parameters extracted from the route 
+matchers of the current route. The default value for an unknown param is the 
+empty sequence. Keys return `Seq`s of values. 
+
+`params` are a special, simplified view of `multiparams`, containing only the
+head element for any known param, and returning the values as Strings. 
+
+If you have this route:
+{pygmentize:: scala}
+  get("/articles/:id") {
+    // do something
+  }
+{pygmentize}
+
+Hitting this route with a GET to 
+"/articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo" 
+produces the following results (note that there are two "foo" keys in there):
+
+params("id") // => "52"
+params("foo") // => "uno" (discarding the second "foo" parameter value)
+params("unknown") // => generates a NoSuchElementException
+
+multiParams("id") // => Seq("52")
+multiParams("foo") // => Seq("uno", "anotherfoo")
+multiParams("unknown") // => an empty Seq
+
