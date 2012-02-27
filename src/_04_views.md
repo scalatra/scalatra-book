@@ -53,7 +53,13 @@ Scalate includes support for some of the best engines available, such as
 All you need to get started is `Scalate`, which is included in Scalatra. Views
 by default look in the `views` directory in your application root.
 
-There are two ways to use Scalate. 
+There are two ways to use Scalate. Both of them require you to extend your 
+servlet with `ScalateSupport`:
+{pygmentize:: scala}
+class YourServlet extends ScalatraServlet with ScalateSupport {
+  // your class here
+}
+{pygmentize}
 
 Using Scalate directly
 ----------------------
