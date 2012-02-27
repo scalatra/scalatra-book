@@ -83,7 +83,7 @@ something like this (in jade this time):
 def get("/") {
   contentType="text/html"
 
-  jade("/index",("layout" -> "WEB-INFO/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
+  jade("/index",("layout" -> "WEB-INF/layouts/app.jade"), "foo" -> "uno", "bar" -> "dos")
 }
 {pygmentize}
 
@@ -91,5 +91,5 @@ Default layouts
 
 Scalatra sets a default layout at "WEB-INF/layouts/default.xxxx" (where xxxx is one of the 
 scalate template types). If you are using ssp, for instance, and you put a default.ssp file
-in WEB-INFO/layouts/default.ssp, it will automatically be used. In this case, you can simply
+in WEB-INF/layouts/default.ssp, it will automatically be used. In this case, you can simply
 call ssp("/index") and the response will render within the default layout. 
