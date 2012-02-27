@@ -117,7 +117,7 @@ def get("/") {
 
 Each possible kind of Scalate template (mustache, scaml, jade, ssp) has a
 corresponding helper which can be used to find the template file, without a
-suffix, and without the "WEB-INF" part of the path. The above example can be 
+suffix, and without the `WEB-INF/views` part of the path. The above example can be 
 written as:
 
 {pygmentize:: scala}
@@ -151,10 +151,10 @@ def get("/") {
 }
 {pygmentize}
 
-The "layout" key is somewhat special, as it's used by scalate to identify the 
+The `layout` key is somewhat special, as it's used by scalate to identify the 
 layout file. 
 
-If you want, you can set off your "layout" parameter from the others, perhaps
+If you want, you can set off your `layout` parameter from the others, perhaps
 by doing something like this (in jade this time):
 
 {pygmentize:: scala}
@@ -167,10 +167,10 @@ def get("/") {
 
 Default layouts
 
-Scalatra sets a default layout at "WEB-INF/layouts/default.xxxx" (where xxxx 
+Scalatra sets a default layout at `WEB-INF/layouts/default.xxxx` (where xxxx 
 is one of the scalate template types). If you are using ssp, for instance, and
 you put a default.ssp file in WEB-INF/layouts/default.ssp, it will 
-automatically be used. In this case, you can simply call ssp("/index") and the
+automatically be used. In this case, you can simply call `ssp("/index")` and the
 response will render within the default layout. 
 
 To disable a layout for certain templates, Scalate accepts an empty `layout` 
