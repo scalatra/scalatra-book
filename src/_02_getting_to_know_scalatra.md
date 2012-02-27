@@ -218,8 +218,6 @@ to catch it in an action.
 
 ## Templates
 
-Scalatra is built upon an incredibly powerful templating engine, [Scalate][scalate].
-Which, is designed to be a "thin interface" for frameworks that want to support
 Scalatra uses an incredibly powerful templating engine, [Scalate][scalate].
 It is designed to be a "thin interface" for frameworks that want to support
 multiple template engines.
@@ -232,12 +230,12 @@ Some of Scalate's other all-star features include:
 *   Backtraces with correct filenames and line numbers
 *   Template file caching and reloading
 
-And includes support for some of the best engines available, such as
-[SSP][ssp], [SCAML][scaml], and [Jade][jade].
 Scalate includes support for some of the best engines available, such as
+[SSP][ssp], [SCAML][scaml], [Mustache][mustache] and [Jade][jade].
 
 [ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
 [scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
+[mustache]: http://scalate.fusesource.org/documentation/mustache.html
 [jade]: http://scalate.fusesource.org/documentation/jade.html
 
 All you need to get started is `Scalate`, which is included in Scalatra. Views by
