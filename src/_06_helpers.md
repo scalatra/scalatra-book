@@ -1,5 +1,5 @@
-Helpers
-=======
+Helpers in Scalatra
+===================
 
 ### Scalate error page
 

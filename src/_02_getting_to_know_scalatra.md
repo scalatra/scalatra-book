@@ -250,6 +250,10 @@ For more info, see the [Views][views] section.
 Helpers exist as traits in Scalatra that can applied to your base class. 
 Please see [Helpers][helpers] for more details.
 
+[scalate]: http://scalate.fusesource.org
+[views]: http://www.scalatra.org/stable/book/#Views
+[helpers]: http://www.scalatra.org/stable/book/#Helpers%20in%20Scalatra
+
 ## Accessing the Servlet API
 
 ### HttpServletRequest
