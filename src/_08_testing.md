@@ -23,7 +23,8 @@ default.
 
 #### Example
 
-Extend ScalatraSuite with your preferred Suite implementation.  You get ShouldMatchers and MustMatchers for free.
+Extend ScalatraSuite with your preferred Suite implementation.  You get 
+ShouldMatchers and MustMatchers for free.
 
 {pygmentize:: scala}
 class MyScalatraServletTests extends ScalatraSuite with FunSuite {
@@ -160,7 +161,9 @@ the constructor of your servlet:
 
 ## Maven Repository
 
-To make usage of Scalatra as a dependency convenient, Maven hosting is now available courtesy of [Sonatype](https://docs.sonatype.com/display/NX/OSS+Repository+Hosting).
+To make usage of Scalatra as a dependency convenient, Maven hosting is now 
+available courtesy of 
+[Sonatype](https://docs.sonatype.com/display/NX/OSS+Repository+Hosting).
 
 * [Releases](https://oss.sonatype.org/content/repositories/releases)
 * [Snapshots](https://oss.sonatype.org/content/repositories/snapshots)
