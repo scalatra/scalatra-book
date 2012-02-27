@@ -218,70 +218,30 @@ to catch it in an action.
 
 ## Templates
 
-Scalatra uses an incredibly powerful templating engine, [Scalate][scalate].
-It is designed to be a "thin interface" for frameworks that want to support
-multiple template engines.
-
-Some of Scalate's other all-star features include:
-
-*   Custom template evaluation scopes / bindings
-*   Ability to pass locals to template evaluation
-*   Support for passing a block to template evaluation for "yield"
-*   Backtraces with correct filenames and line numbers
-*   Template file caching and reloading
-
-Scalate includes support for some of the best engines available, such as
-[SSP][ssp], [SCAML][scaml], [Mustache][mustache] and [Jade][jade].
-
-[ssp]: http://scalate.fusesource.org/documentation/ssp-reference.html
-[scaml]: http://scalate.fusesource.org/documentation/scaml-reference.html
-[mustache]: http://scalate.fusesource.org/documentation/mustache.html
-[jade]: http://scalate.fusesource.org/documentation/jade.html
-
-All you need to get started is `Scalate`, which is included in Scalatra. Views by
-default look in the `views` directory in your application root.
-
-So in your route you would have:
+Scalatra has very powerful templating support. You can either inline your views:
 
 {pygmentize:: scala}
-get("/") {
-  templateEngine.layout("index.ssp")
-  // renders webapp/index.ssp
-  // OR look in a sub-directory
+def get("/") {
+  contentType="text/html"
 
-  templateEngine.layout("/dogs/index.ssp")
-  // would instead render webapp/dogs/index.ssp
+  <html>
+  <head><title>Test</title></head>
+  <body>Test Body for {uri("/")}</body>
+  </html>
 }
 {pygmentize}
 
-Another default convention of Scalatra, is the layout, which automatically looks
-for a `webapp/layout` template file to render before loading any other views. In
-the case of using `SSP`, your `webapp/layout/default.ssp` would look something like
-this:
+Or you can use the [Scalate][scalate] templating engine:
 
-{pygmentize:: html}
-<%@ var yield: String %> 
-<html>
-  <head>..</head>
-  <body>
-    <%= yield %>
-  </body>
-</html>
+{pygmentize:: scala}
+def get("/") {
+  contentType="text/html"
+
+  templateEngine.layout("index.ssp")
+}
 {pygmentize}
 
-The possibilities are pretty much endless, here's a quick list of some of the most common use-cases covered in the README:
-
-*   [Inline Templates][inline]
-*   [Embedded Templates][embedded]
-*   [Named Templates][named]
-
-For more specific details on how Scalatra handles templates, check the [README][templates].
-
-[inline]: http://www.scalatra.org/stable/book/#Inline%20Templates
-[embedded]: http://www.scalatra.org/stable/book/#Embedded%20Templates
-[named]: http://www.scalatra.org/stable/book/#Named%20Templates
-[templates]: http://www.scalatra.org/stable/book/#Views%20/%20Templates
-[scalate]: http://scalate.fusesource.org/documentation/user-guide.html
+For more info, see the [Views][views] section.
 
 ## Helpers
 
