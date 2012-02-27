@@ -72,6 +72,7 @@ def get("/") {
 
   scaml("/index", "layout" -> "WEB-INF/layouts/app.scaml", "foo" -> "uno", "bar" -> "dos")
 }
+{pygmentize}
 
 The "layout" key is somewhat special, as it's used by scalate to identify the 
 layout file. 
