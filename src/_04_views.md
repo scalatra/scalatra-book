@@ -107,8 +107,8 @@ def get("/") {
 
 The `notFound` method
 
-Once you have the `ScalateSupport` trait applied you can call 
-`templateEngine.layout('index.page')` within your action handlers.
+You may need to render a page when Scalatra can't find a route. You can do
+this using the `notFound` method.
 
 Using Scalate directly:
 
