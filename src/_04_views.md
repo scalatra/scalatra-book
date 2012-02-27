@@ -32,6 +32,8 @@ Scalatra can use the incredibly powerful templating engine,
 [Scalate][scalate]. It is designed to be a "thin interface" for frameworks 
 that want to support multiple template engines.
 
+[scalate]: http://scalate.fusesource.org/documentation/user-guide.html
+
 Some of Scalate's all-star features include:
 
 *   Custom template evaluation scopes / bindings
@@ -88,26 +90,6 @@ would look something like this:
   </body>
 </html>
 {pygmentize}
-
-The possibilities are pretty much endless, here's a quick list of some of the 
-most common use-cases covered in the README:
-
-*   [Inline Templates][inline]
-*   [Embedded Templates][embedded]
-*   [Named Templates][named]
-
-For more specific details on how Scalatra handles templates, check the 
-[README][templates].
-
-[inline]: http://www.scalatra.org/stable/book/#Inline%20Templates
-[embedded]: http://www.scalatra.org/stable/book/#Embedded%20Templates
-[named]: http://www.scalatra.org/stable/book/#Named%20Templates
-[templates]: http://www.scalatra.org/stable/book/#Views%20/%20Templates
-[scalate]: http://scalate.fusesource.org/documentation/user-guide.html
-
-
-Views can either be constructed within your Scala classes with HTML or using the ScalateSupport helper.
-
 
 ScalateSupport helpers
 ----------------------
