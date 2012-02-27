@@ -1,36 +1,6 @@
 Helpers
 =======
 
-Scalate
--------
-
-[Scalate](http://scalate.fusesource.org/) is a template engine for 
-generating text and markup. It is the default rendering engine included
-as a helper trait.
-
-Once you have the `ScalateSupport` trait applied you can call 
-`templateEngine.layout('index.page')` within your action handlers.
-
-{pygmentize:: scala}
-class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
-  notFound {
-    // If no route matches, then try to render a Scaml template
-    val templateBase = requestPath match {
-      case s if s.endsWith("/") => s + "index"
-      case s => s
-    }
-    val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
-    servletContext.getResource(templatePath) match {
-      case url: URL => 
-        contentType = "text/html"
-        templateEngine.layout(templatePath)
-      case _ => 
-        filterChain.doFilter(request, response)
-    } 
-  }
-}
-{pygmentize}
-
 ### Scalate error page
 
 Mixing in ScalateSupport enables the Scalate error page for any uncaught
