@@ -178,30 +178,22 @@ empty sequence. Keys return `Seq`s of values.
 `params` are a special, simplified view of `multiparams`, containing only the
 head element for any known param, and returning the values as Strings. 
 
-If you have this route:
-{pygmentize:: scala}
-  get("/articles/:id") {
-    // do something
-  }
-{pygmentize}
-
-Hitting this route with a GET like this:
-
+Hitting a URL with a GET like this:
 {pygmentize::}
   /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
 {pygmentize}
+(note that there are two "foo" keys in there)
 
-produces the following results (note that there are two "foo" keys in there):
-
+Assuming the following route, we get the following results inside the action:
 {pygmentize:: scala}
-params("id") // => "52"
-params("foo") // => "uno" (discarding the second "foo" parameter value)
-params("unknown") // => generates a NoSuchElementException
-params.get("unknown") // => None - this is what Scala does with unknown keys in a Map
+  get("/articles/:id") {
+    params("id") // => "52"
+    params("foo") // => "uno" (discarding the second "foo" parameter value)
+    params("unknown") // => generates a NoSuchElementException
+    params.get("unknown") // => None - this is what Scala does with unknown keys in a Map
 
-multiParams("id") // => Seq("52")
-multiParams("foo") // => Seq("uno", "anotherfoo")
-multiParams("unknown") // => an empty Seq
+    multiParams("id") // => Seq("52")
+    multiParams("foo") // => Seq("uno", "anotherfoo")
+    multiParams("unknown") // => an empty Seq
+  }
 {pygmentize}
-
-
