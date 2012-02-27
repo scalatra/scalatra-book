@@ -106,6 +106,9 @@ class FooServlet extends ScalatraServlet with FlashMapSupport {
 }
 {pygmentize}
 
+Extending your ScalatraServlet with FlashMapSupport triggers a session, 
+which is why it's an optional mixin. 
+
 You can also add more than one entry to the FlashMap, using +=:
 
 {pygmentize:: scala}
