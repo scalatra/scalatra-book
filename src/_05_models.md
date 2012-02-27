@@ -3,7 +3,8 @@ Models
 ======
 
 While Scalatra does not provide a native structure for models the 
-following persistence libraries are a few that have been successfully integrated.
+following persistence libraries are a few that have been successfully 
+integrated.
 
 * [Squeryl](http://squeryl.org/)
 * [Lift Record](http://www.liftweb.com/)

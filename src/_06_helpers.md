@@ -48,8 +48,11 @@ Scentry is a user submitted authentication scheme. Combined
 `ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
 User class to the session and Basic Authentication methods.
 
-There is a new authentication middleware in the auth directory, to be documented soon.  See an example at [usage example](http://gist.github.com/660701).
-Another [example](https://gist.github.com/732347) for basic authentication can be found
+There is a new authentication middleware in the auth directory, to be 
+documented soon.  See an example at 
+[usage example](http://gist.github.com/660701).
+Another [example](https://gist.github.com/732347) for basic authentication 
+can be found
 
 To use it from an SBT project, add the following to your project:
 
@@ -119,7 +122,8 @@ flash.now += ("info" -> "redirect to see the error")
 File Upload
 -----------
 
-Scalatra provides optional support for file uploads with Apache Commons [FileUpload](http://commons.apache.org/fileupload/).
+Scalatra provides optional support for file uploads with Apache Commons 
+[FileUpload](http://commons.apache.org/fileupload/).
 
 1. Depend on scalatra-fileupload.jar.  In your SBT build:
 
@@ -193,7 +197,9 @@ get("/") {
 URL Support and Reverse Routes
 ------------------------------
 
-UrlSupport provides two instances that provide you with relative url's. UrlSupport.url will return a string that can be used in your output or a redirect statement.
+UrlSupport provides two instances that provide you with relative url's. 
+UrlSupport.url will return a string that can be used in your output or a 
+redirect statement.
 
 1. Page relative url
 {pygmentize:: scala}
