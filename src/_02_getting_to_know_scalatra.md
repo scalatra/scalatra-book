@@ -22,7 +22,6 @@ Routes are the backbone of your application, they're like a guide-map to how
 users will navigate the actions you define for your application.
 
 They also enable to you create [RESTful web services][restful-web-services], in
-a very obvious manner. Here's an example of how one-such service might look:
 a very obvious manner. Here's an example of how one such service might look:
 
 {pygmentize:: scala}
@@ -84,7 +83,7 @@ get("/") {
 {pygmentize}
 
 In this example, we've set up a `before` filter to connect using a contrived
-`MyDB` module.
+`MyDb` module.
 
 ### after
 
@@ -93,7 +92,7 @@ _every_ route gets processed.
 
 {pygmentize:: scala}
 after() {
-  MyDB.disconnect
+  MyDb.disconnect
 }
 {pygmentize}
 
