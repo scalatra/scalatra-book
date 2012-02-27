@@ -106,6 +106,7 @@ def get("/") {
 {pygmentize}
 
 The `notFound` method
+---------------------
 
 You may need to render a page when Scalatra can't find a route. You can do
 this using the `notFound` method.
