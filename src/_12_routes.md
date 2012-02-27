@@ -188,7 +188,7 @@ If you have this route:
 Hitting this route with a GET like this:
 
 {pygmentize::}
-"/articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo" 
+  /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
 {pygmentize}
 
 produces the following results (note that there are two "foo" keys in there):
