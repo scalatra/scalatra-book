@@ -117,7 +117,7 @@ class MyApp extends ScalatraServlet with FileUploadSupport {
 {pygmentize:: scala}
 get("/") {
   <form method="post" enctype="multipart/form-data">
-    <input type="file" name="foo" />
+    <input type="file" name="thefile" />
     <input type="submit" />
   </form>
 }
@@ -127,7 +127,7 @@ get("/") {
 
 {pygmentize:: scala}
 post("/") {
-  processFile(fileParams("file"))
+  processFile(fileParams("thefile"))
 }
 {pygmentize}
 
