@@ -152,7 +152,7 @@ is then rendered to the response according to the following rules:
 `Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.  
 The byte array is written to the response's output stream.
 
-`NodeSeq` - If no content-type is set, it is set to`text/html`.  The node 
+`NodeSeq` - If no content-type is set, it is set to `text/html`.  The node 
 sequence is converted to a string and written to the response's writer.
 
 `Unit` - This signifies that the action has rendered the entire response, and 
