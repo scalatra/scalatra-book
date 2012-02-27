@@ -23,6 +23,7 @@ users will navigate the actions you define for your application.
 
 They also enable to you create [RESTful web services][restful-web-services], in
 a very obvious manner. Here's an example of how one-such service might look:
+a very obvious manner. Here's an example of how one such service might look:
 
 {pygmentize:: scala}
 get("/dogs") {
