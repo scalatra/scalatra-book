@@ -149,24 +149,18 @@ No path pattern is necessary.  A route may consist of solely a condition:
 Each route is followed by an action.  An Action may return any value, which 
 is then rendered to the response according to the following rules:
 
-<dl>
-  <dt>`Array[Byte]`</dt>
-  <dd>If no content-type is set, it is set to `application/octet-stream`.  
-    The byte array is written to the response's output stream.</dd>
+`Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.  
+The byte array is written to the response's output stream.
 
-  <dt>`NodeSeq`</dt>
-  <dd>If no content-type is set, it is set to`text/html`.  The node sequence 
-    is converted to a string and written to the response's writer.</dd>
+`NodeSeq` - If no content-type is set, it is set to`text/html`.  The node 
+sequence is converted to a string and written to the response's writer.
 
-  <dt>`Unit`</dt>
-  <dd>This signifies that the action has rendered the entire response, and 
-    no further action is taken.</dd>
+`Unit` - This signifies that the action has rendered the entire response, and 
+no further action is taken.
 
-  <dt>Any</dt>
-  <dd>For any other value, if the content type is not set, it is set to 
-    `text/plain`.  The value is converted to a string and written to the 
-    response's writer</dd>.
-</dl>
+`Any` - For any other value, if the content type is not set, it is set to 
+`text/plain`.  The value is converted to a string and written to the 
+response's writer.
 
 This behavior may be customized for these or other return types by overriding 
 `renderResponse`.
@@ -194,7 +188,7 @@ If you have this route:
 Hitting this route with a GET like this:
 
 {pygmentize::}
-"/articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo" 
+  /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
 {pygmentize}
 
 produces the following results (note that there are two "foo" keys in there):
