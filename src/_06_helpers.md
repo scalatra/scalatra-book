@@ -200,7 +200,7 @@ TODO: add reverse routing
 AkkaSupport
 ---------------------------------------------
 
-Provides a mechanism for adding Akka futures to your routes. Akka support
+Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
 is only available in Scalatra 2.1 and up. 
 
 {pygmentize:: scala}
@@ -218,3 +218,4 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 }
 {pygmentize}
 
+[akka]: http://akka.io/
