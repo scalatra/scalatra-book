@@ -133,22 +133,8 @@ get("/"){
 
 This will return a 302 HTTP Response to `/someplace/else`.
 
-Scalatra has session handling built in by default. There are no modules or 
-traits that you need to include.
-
 _Caution:_ `redirect` is implemented as a HaltException.  You probably don't
 want to catch it in an action.
-
-Then you will be able to use the default cookie based session handler in your
-application:
-
-{pygmentize:: scala}
-get("/") {
-  if(session.contains("counter")) session("counter") = 0
-  session("counter") = session("counter").toInt + 1
-  "You've hit this page %s times!" format session("counter").toInt
-}
-{pygmentize}
 
 Handlers can be extremely useful when used properly, probably the most common
 use is the `params` convention, which gives you access to any parameters passed
@@ -275,10 +261,37 @@ prevent a conflict with multiple writes.
 
 ### HttpSession
 
-The session is available through the `session` variable.  The session 
-implicitly implements `scala.collection.mutable.Map` backed by session 
-attributes.  To avoid creating a session, it may be accessed through 
-`sessionOption`.
+Scalatra has session handling built into the framework by default. There are 
+no modules or traits that you need to include. 
+
+However, sessions are *off* until the `session` method is called. 
+Once `session` is called, a cookie-based session will be created. 
+
+Then you will be able to use the default cookie based session handler in your
+application:
+
+{pygmentize:: scala}
+get("/") {
+  if(session.contains("counter")) session("counter") = 0
+  session("counter") = session("counter").toInt + 1
+  "You've hit this page %s times!" format session("counter").toInt
+}
+{pygmentize}
+
+The `session` implicitly implements `scala.collection.mutable.Map` backed by 
+`session` attributes.  
+
+There's also a `sessionOption` method, which returns a `session` if one already 
+exists, and `None` if it doesn't. This is a good way to avoid creating a 
+`session`.
+
+If you don't need a `session` in your application, e.g. if you're building out
+a stateless RESTFul API, never call the `session` method, and don't mix in 
+`FlashMapSupport` (which also creates a session). 
+
+The default session in Scalatra is cookie-based, but the cookie is used only 
+as a session identifier (session data is stored server-side). If you are 
+building out a shared-nothing architecture, this is something to be aware of.
 
 ### ServletContext
 
