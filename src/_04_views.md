@@ -93,3 +93,13 @@ Scalatra sets a default layout at "WEB-INF/layouts/default.xxxx" (where xxxx is 
 scalate template types). If you are using ssp, for instance, and you put a default.ssp file
 in WEB-INF/layouts/default.ssp, it will automatically be used. In this case, you can simply
 call ssp("/index") and the response will render within the default layout. 
+
+To disable a layout for certain templates, Scalate accepts an empty `layout` 
+attribute:
+
+{pygmentize:: scala}
+def get("/") {
+  // This template will render without a layout.
+  jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
+}
+{pygmentize}
