@@ -112,7 +112,7 @@ def get("/") {
 }
 {pygmentize}
 
-Choosing a different template
+Rendering with a different layout
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
