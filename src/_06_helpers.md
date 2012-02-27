@@ -95,7 +95,7 @@ File Upload
 Scalatra provides optional support for file uploads with Apache Commons 
 [FileUpload](http://commons.apache.org/fileupload/).
 
-1. Depend on scalatra-fileupload.jar.  In your SBT build:
+1. Depend on `scalatra-fileupload.jar`.  In your SBT build:
 
 {pygmentize:: scala}
 val scalatraFileUpload = "org.scalatra" %% "scalatra-fileupload" % scalatraVersion
@@ -136,7 +136,7 @@ Anti-XML integration
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
-1. Depend on scalatra-anti-xml.jar.  In your SBT build:
+1. Depend on `scalatra-anti-xml.jar`.  In your SBT build:
 
 {pygmentize:: scala}
 val scalatraAntiXml = "org.scalatra" %% "scalatra-anti-xml" % scalatraVersion
@@ -167,8 +167,8 @@ get("/") {
 URL Support and Reverse Routes
 ------------------------------
 
-UrlSupport provides two instances that provide you with relative url's. 
-UrlSupport.url will return a string that can be used in your output or a 
+UrlSupport provides two instances that provide you with relative URLs. 
+`UrlSupport.url` will return a string that can be used in your output or a 
 redirect statement.
 
 1. Page relative url
