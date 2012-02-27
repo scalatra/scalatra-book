@@ -66,7 +66,7 @@ normally available within the current request scope. The exception is adding
 new flash entries into `flash.now`.
 
 In order to enable flash support, you'll need to extend your servlet class
-with FlashMapSupport:
+with `FlashMapSupport`:
 
 TODO: Add better supporting examples
 
@@ -79,10 +79,10 @@ class FooServlet extends ScalatraServlet with FlashMapSupport {
 }
 {pygmentize}
 
-Extending your ScalatraServlet with FlashMapSupport triggers a session, 
+Extending your ScalatraServlet with `FlashMapSupport` triggers a session, 
 which is why it's an optional mixin. 
 
-You can also add more than one entry to the FlashMap, using `+=`:
+You can also add more than one entry to the `FlashMap`, using `+=`:
 
 {pygmentize:: scala}
 flash += ("error" -> "An error occurred")
