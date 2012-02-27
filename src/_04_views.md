@@ -188,3 +188,42 @@ def get("/") {
   jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
 }
 {pygmentize}
+
+The `notFound` method
+---------------------
+
+You may need to render a page when Scalatra can't find a route. You can do
+this using the `notFound` method.
+
+Using Scalate directly:
+
+{pygmentize:: scala}
+class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
+  notFound {
+    // If no route matches, then try to render a Scaml template
+    val templateBase = requestPath match {
+      case s if s.endsWith("/") => s + "index"
+      case s => s
+    }
+    val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
+    servletContext.getResource(templatePath) match {
+      case url: URL => 
+        contentType = "text/html"
+        templateEngine.layout(templatePath)
+      case _ => 
+        filterChain.doFilter(request, response)
+    } 
+  }
+}
+{pygmentize}
+
+Or more simply, using the Scalate helpers:
+
+{pygmentize:: scala}
+notFound {
+  findTemplate(requestPath) map { path =>
+    contentType = "text/html"
+    layoutTemplate(path)
+  } orElse serveStaticResource() getOrElse resourceNotFound() 
+}
+{pygmentize}

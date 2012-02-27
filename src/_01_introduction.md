@@ -4,7 +4,8 @@ Introduction
 What is Scalatra?
 -----------------
 
-Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework for [Scala](http://www.scala-lang.org/).
+Scalatra is a tiny, [Sinatra](http://www.sinatrarb.com/)-like web framework 
+for [Scala](http://www.scala-lang.org/).
 
 Introduction
 ------------
@@ -58,21 +59,23 @@ You will need to manually update organization, name, and version in `build.sbt`.
 
 Your `build.sbt` file declares a few dependencies:
 
-* `"org.scalatra" %% "scalatra" % "2.1.0-SNAPSHOT"`: This is the core Scalatra module,
-  and is required to run the framework.
+* `"org.scalatra" %% "scalatra" % "2.1.0-SNAPSHOT"`: This is the core Scalatra 
+  module, and is required to run the framework.
 
 * `"org.scalatra" %% "scalatra-scalate" % "2.1.0-SNAPSHOT"`: This integrates with 
   [Scalate](http://scalate.fusesource.org), a template engine supporting multiple
   template formats.  This is optional, but highly recommended for any app requiring
   templating.
 
-* `"org.eclipse.jetty" % "jetty-webapp" % "8.0.4.v20111024" % "test;container"`: This is the
-  embedded servlet container used by the web plugin.  Your application should be
-  portable to any servlet container supporting at least the 2.5 specification.
+* `"org.eclipse.jetty" % "jetty-webapp" % "8.0.4.v20111024" % "test;container"`: 
+  This is the embedded servlet container used by the web plugin.  Your 
+  application should be portable to any servlet container supporting at least
+  the 2.5 specification.
 
-* `"javax.servlet" % "servlet-api" % "3.0.1" % "provided"`: Required for building your
-  app.  It is placed in the provided configuration so that it is not bundled with
-  your application.  Your servlet container will provide this at deployment time.
+* `"javax.servlet" % "servlet-api" % "3.0.1" % "provided"`: Required for 
+  building your app.  It is placed in the provided configuration so that it 
+  is not bundled with your application.  Your servlet container will provide 
+  this at deployment time.
 
 You may add any other dependencies you wish in this section.
 
@@ -134,7 +137,9 @@ ChaCha is using it in multiple internal applications.
 
 ### The Guardian
 
-Scalatra is used in a number of systems that help power [The Guardian](http:///www.guardian.co.uk/), for instance the [music artist pages](http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet).
+Scalatra is used in a number of systems that help power 
+[The Guardian](http:///www.guardian.co.uk/), for instance the 
+[music artist pages](http://www.guardian.co.uk/info/developer-blog/2011/jun/23/internet).
 
 Check out a full list of Scalatra apps [in the wild][in-the-wild].
 
@@ -143,7 +148,8 @@ Check out a full list of Scalatra apps [in the wild][in-the-wild].
 About this book
 ---------------
 
-This book will assume you have a basic knowledge of the Scala scripting language.
+This book will assume you have a basic knowledge of the Scala scripting 
+language.
 
 For more information about the Scala language visit the following links:
 
