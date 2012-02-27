@@ -191,15 +191,23 @@ If you have this route:
   }
 {pygmentize}
 
-Hitting this route with a GET to 
+Hitting this route with a GET like this:
+
+{pygmentize::}
 "/articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo" 
+{pygmentize}
+
 produces the following results (note that there are two "foo" keys in there):
 
+{pygmentize:: scala}
 params("id") // => "52"
 params("foo") // => "uno" (discarding the second "foo" parameter value)
 params("unknown") // => generates a NoSuchElementException
+params.get("unknown") // => None - this is what Scala does with unknown keys in a Map
 
 multiParams("id") // => Seq("52")
 multiParams("foo") // => Seq("uno", "anotherfoo")
 multiParams("unknown") // => an empty Seq
+{pygmentize}
+
 
