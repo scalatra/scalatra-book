@@ -92,8 +92,21 @@ Flash support is included within Scalatra by default. Flash entries are not
 normally available within the current request scope. The exception is adding
 new flash entries into `flash.now`.
 
+In order to enable flash support, you'll need to extend your servlet class
+with FlashMapSupport:
 
 TODO: Add better supporting examples
+
+{pygmentize:: scala}
+class FooServlet extends ScalatraServlet with FlashMapSupport {
+  get("/") {
+    flash("notice") = "hello!"
+    <html><body>{flash.get("notice")}</body></html>
+  }
+}
+{pygmentize}
+
+You can also add more than one entry to the FlashMap, using +=:
 
 {pygmentize:: scala}
 flash += ("error" -> "An error occurred")
