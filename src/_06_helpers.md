@@ -1,35 +1,5 @@
-Helpers
-=======
-
-Scalate
--------
-
-[Scalate](http://scalate.fusesource.org/) is a template engine for 
-generating text and markup. It is the default rendering engine included
-as a helper trait.
-
-Once you have the `ScalateSupport` trait applied you can call 
-`templateEngine.layout('index.page')` within your action handlers.
-
-{pygmentize:: scala}
-class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
-  notFound {
-    // If no route matches, then try to render a Scaml template
-    val templateBase = requestPath match {
-      case s if s.endsWith("/") => s + "index"
-      case s => s
-    }
-    val templatePath = "/WEB-INF/scalate/templates/" + templateBase + ".scaml"
-    servletContext.getResource(templatePath) match {
-      case url: URL => 
-        contentType = "text/html"
-        templateEngine.layout(templatePath)
-      case _ => 
-        filterChain.doFilter(request, response)
-    } 
-  }
-}
-{pygmentize}
+Helpers in Scalatra
+===================
 
 ### Scalate error page
 
@@ -48,8 +18,11 @@ Scentry is a user submitted authentication scheme. Combined
 `ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
 User class to the session and Basic Authentication methods.
 
-There is a new authentication middleware in the auth directory, to be documented soon.  See an example at [usage example](http://gist.github.com/660701).
-Another [example](https://gist.github.com/732347) for basic authentication can be found
+There is a new authentication middleware in the auth directory, to be 
+documented soon.  See an example at 
+[usage example](http://gist.github.com/660701).
+Another [example](https://gist.github.com/732347) for basic authentication 
+can be found
 
 To use it from an SBT project, add the following to your project:
 
@@ -93,7 +66,7 @@ normally available within the current request scope. The exception is adding
 new flash entries into `flash.now`.
 
 In order to enable flash support, you'll need to extend your servlet class
-with FlashMapSupport:
+with `FlashMapSupport`:
 
 TODO: Add better supporting examples
 
@@ -106,10 +79,10 @@ class FooServlet extends ScalatraServlet with FlashMapSupport {
 }
 {pygmentize}
 
-Extending your ScalatraServlet with FlashMapSupport triggers a session, 
+Extending your ScalatraServlet with `FlashMapSupport` triggers a session, 
 which is why it's an optional mixin. 
 
-You can also add more than one entry to the FlashMap, using +=:
+You can also add more than one entry to the `FlashMap`, using `+=`:
 
 {pygmentize:: scala}
 flash += ("error" -> "An error occurred")
@@ -119,9 +92,10 @@ flash.now += ("info" -> "redirect to see the error")
 File Upload
 -----------
 
-Scalatra provides optional support for file uploads with Apache Commons [FileUpload](http://commons.apache.org/fileupload/).
+Scalatra provides optional support for file uploads with Apache Commons 
+[FileUpload](http://commons.apache.org/fileupload/).
 
-1. Depend on scalatra-fileupload.jar.  In your SBT build:
+1. Depend on `scalatra-fileupload.jar`.  In your SBT build:
 
 {pygmentize:: scala}
 val scalatraFileUpload = "org.scalatra" %% "scalatra-fileupload" % scalatraVersion
@@ -162,7 +136,7 @@ Anti-XML integration
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
-1. Depend on scalatra-anti-xml.jar.  In your SBT build:
+1. Depend on `scalatra-anti-xml.jar`.  In your SBT build:
 
 {pygmentize:: scala}
 val scalatraAntiXml = "org.scalatra" %% "scalatra-anti-xml" % scalatraVersion
@@ -193,7 +167,9 @@ get("/") {
 URL Support and Reverse Routes
 ------------------------------
 
-UrlSupport provides two instances that provide you with relative url's. UrlSupport.url will return a string that can be used in your output or a redirect statement.
+UrlSupport provides two instances that provide you with relative URLs. 
+`UrlSupport.url` will return a string that can be used in your output or a 
+redirect statement.
 
 1. Page relative url
 {pygmentize:: scala}
@@ -224,7 +200,8 @@ TODO: add reverse routing
 AkkaSupport
 ---------------------------------------------
 
-Provides a mechanism for adding Akka futures to your routes.
+Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
+is only available in Scalatra 2.1 and up. 
 
 {pygmentize:: scala}
 import _root_.akka.dispatch._
@@ -241,3 +218,4 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
 }
 {pygmentize}
 
+[akka]: http://akka.io/

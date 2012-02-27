@@ -22,7 +22,7 @@ Routes are the backbone of your application, they're like a guide-map to how
 users will navigate the actions you define for your application.
 
 They also enable to you create [RESTful web services][restful-web-services], in
-a very obvious manner. Here's an example of how one-such service might look:
+a very obvious manner. Here's an example of how one such service might look:
 
 {pygmentize:: scala}
 get("/dogs") {
@@ -48,9 +48,9 @@ delete("/dog/:id") {
 }
 {pygmentize}
 
-As you can see from this contrived example, Scalatra's routing is very easy to get
-along with. Don't be fooled, though, Scalatra can do some pretty amazing things
-with Routes.
+As you can see from this contrived example, Scalatra's routing is very easy 
+to get along with. Don't be fooled, though, Scalatra can do some pretty 
+amazing things with Routes.
 
 Take a more indepth look at [Scalatra's routes][routes], and see for yourself. 
 
@@ -83,7 +83,7 @@ get("/") {
 {pygmentize}
 
 In this example, we've set up a `before` filter to connect using a contrived
-`MyDB` module.
+`MyDb` module.
 
 ### after
 
@@ -92,7 +92,7 @@ _every_ route gets processed.
 
 {pygmentize:: scala}
 after() {
-  MyDB.disconnect
+  MyDb.disconnect
 }
 {pygmentize}
 
@@ -196,7 +196,8 @@ to catch it in an action.
 
 ## Passing
 
-A route can punt processing to the next matching route using `pass()`.  Remember, unlike Sinatra, routes are matched from the bottom up.
+A route can punt processing to the next matching route using `pass()`.  
+Remember, unlike Sinatra, routes are matched from the bottom up.
 
 {pygmentize:: scala}
 get("/guess/*") {
@@ -211,7 +212,8 @@ get("/guess/:who") {
 }
 {pygmentize}
 
-The route block is immediately exited and control continues with the next matching route.  If no matching route is found, a 404 is returned.
+The route block is immediately exited and control continues with the next 
+matching route.  If no matching route is found, a 404 is returned.
 
 _Caution:_ `halt` is implemented as a HaltException.  You probably don't want
 to catch it in an action.
@@ -245,13 +247,19 @@ For more info, see the [Views][views] section.
 
 ## Helpers
 
-Helpers exist as traits in Scalatra that can applied to your base class. Please see [Helpers][helpers] for more details.
+Helpers exist as traits in Scalatra that can applied to your base class. 
+Please see [Helpers][helpers] for more details.
+
+[scalate]: http://scalate.fusesource.org
+[views]: http://www.scalatra.org/stable/book/#Views
+[helpers]: http://www.scalatra.org/stable/book/#Helpers%20in%20Scalatra
 
 ## Accessing the Servlet API
 
 ### HttpServletRequest
 
-The request is available through the `request` variable.  The request is implicitly extended with the following methods:
+The request is available through the `request` variable.  The request is 
+implicitly extended with the following methods:
 
 1. `body`: to get the request body as a string
 2. `isAjax`: to detect AJAX requests
@@ -260,15 +268,23 @@ The request is available through the `request` variable.  The request is implici
 
 ### HttpServletResponse
 
-The response is available through the `response` variable. If you override the Scalatra handling and write directly to the response object (Ex: response.getOutputStream), then your action should return Unit() to prevent a conflict with multiple writes.
+The response is available through the `response` variable. If you override 
+the Scalatra handling and write directly to the response object 
+(Ex: response.getOutputStream), then your action should return Unit() to 
+prevent a conflict with multiple writes.
 
 ### HttpSession
 
-The session is available through the `session` variable.  The session implicitly implements `scala.collection.mutable.Map` backed by session attributes.  To avoid creating a session, it may be accessed through `sessionOption`.
+The session is available through the `session` variable.  The session 
+implicitly implements `scala.collection.mutable.Map` backed by session 
+attributes.  To avoid creating a session, it may be accessed through 
+`sessionOption`.
 
 ### ServletContext
 
-The servlet context is available through the `servletContext` variable.  The servlet context implicitly implements `scala.collection.mutable.Map` backed by servlet context attributes.
+The servlet context is available through the `servletContext` variable.  The 
+servlet context implicitly implements `scala.collection.mutable.Map` backed 
+by servlet context attributes.
 
 ## Configuration
 
@@ -278,7 +294,9 @@ The environment is defined by:
 2. The `org.scalatra.environment` init property.
 3. A default of `development`.
 
-If the environment starts with "dev", then `isDevelopmentMode` returns true.  This flag may be used by other modules, for example, to enable the Scalate console.
+If the environment starts with "dev", then `isDevelopmentMode` returns true.  
+This flag may be used by other modules, for example, to enable the Scalate 
+console.
 
 ## Error handling
 
@@ -286,7 +304,8 @@ Error handlers run within the same context as routes and before filters.
 
 ### Not Found
 
-Whenever no route matches, the `notFound` handler is invoked.  The default behavior is:
+Whenever no route matches, the `notFound` handler is invoked.  The default 
+behavior is:
 
 {pygmentize:: scala}
 notFound {

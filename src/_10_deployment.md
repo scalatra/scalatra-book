@@ -13,11 +13,16 @@ $ scp target/example.war user@example.com:/usr/share/jetty/webapp
 As a Single Jar
 ---------------
 
-Thanks to Riobard for this [post](http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f) to the mailing list.
+Thanks to Riobard for this 
+[post](http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f) to 
+the mailing list.
 
 ### Extend sbt project definition:
 
-Copy [this piece of code](http://bit.ly/92NWdu) (Note the link doesn't work anymore !) into your sbt project definition (/project/build/src/your project.scala) and extend your project with the AssemblyPorject, so you should have something like this:
+Copy [this piece of code](http://bit.ly/92NWdu) 
+(Note the link doesn't work anymore !) into your sbt project definition 
+(/project/build/src/your project.scala) and extend your project with the 
+AssemblyPorject, so you should have something like this:
 
 ** SBT 0.7.X **
 {pygmentize::scala}
@@ -63,7 +68,11 @@ resourceGenerators in Compile <+= (resourceManaged, baseDirectory) map { (manage
 } 
 {pygmentize}
 
-Then launch sbt or reload it if it is already running. This should give you a new sbt command called "assembly". Try that in the sbt interactive prompt and it should produce a ****-assembly-**.jar file in your sbt /target/scala-2.7.7 folder. All dependencies (like scala-library.jar) are included in this jar file and you can run it directly, e.g.
+Then launch sbt or reload it if it is already running. This should give you a 
+new sbt command called "assembly". Try that in the sbt interactive prompt and 
+it should produce a ****-assembly-**.jar file in your sbt /target/scala-2.7.7 
+folder. All dependencies (like scala-library.jar) are included in this jar 
+file and you can run it directly, e.g.
 
 {pygmentize::}
 java -jar ***-assembly-**.jar
@@ -71,7 +80,8 @@ java -jar ***-assembly-**.jar
 
 ### Launch Scalatra as a servlet
 
-ScalatraServlet is an HttpServlet, we just need some glue code to launch an embedded Jetty server with this Servlet. 
+ScalatraServlet is an HttpServlet, we just need some glue code to launch an 
+embedded Jetty server with this Servlet. 
 
 {pygmentize::scala}
 package com.example  // remember this package in the sbt project definition
@@ -90,19 +100,28 @@ object JettyLauncher { // this is my entry object as specified in sbt project de
 }
 {pygmentize}
 
-Now save this alongside your Scalatra project as JettyLauncher.scala and run <code>sbt clean assembly</code>. You'll have the ultimate executable jar file in the target soon. Try
+Now save this alongside your Scalatra project as JettyLauncher.scala and run 
+<code>sbt clean assembly</code>. You'll have the ultimate executable jar file 
+in the target soon. Try
 
 {pygmentize::}
 java -jar **-assembly-**.jar
 {pygmentize}
 
-and see it will launch the embedded Jetty at port 8080 with the example Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup costs 38MB memory.
+and see it will launch the embedded Jetty at port 8080 with the example 
+Scalatra project running. On my machine (OS X 10.6 with JVM 1.6) this setup 
+costs 38MB memory.
 
 ### Scalatra on Heroku
 
-This is pretty easy to get up and running. Only thing you really need to do is start jetty directly, and add a script to execute this. You don't want to have to rely on SBT to start your application.
+This is pretty easy to get up and running. Only thing you really need to do 
+is start jetty directly, and add a script to execute this. You don't want to 
+have to rely on SBT to start your application.
 
-Easiest way to do this is create a Main method to start jetty. See JettyLauncher.scala - save this in your src/main/scala dir, setting the filter to your applications filter. Then use Typesafe's start script plugin to generate a script to start the app.
+Easiest way to do this is create a Main method to start jetty. See 
+JettyLauncher.scala - save this in your src/main/scala dir, setting the 
+filter to your applications filter. Then use Typesafe's start script plugin 
+to generate a script to start the app.
 
 To enable the plugin, add the following to project/plugins/build.sbt
 
@@ -120,11 +139,13 @@ import com.typesafe.startscript.StartScriptPlugin
 seq(StartScriptPlugin.startScriptForClassesSettings: _*)
 {pygmentize}
 
-Once this is done, you are ready to deploy to Heroku. Create a Procfile in the root if your project containing
+Once this is done, you are ready to deploy to Heroku. Create a Procfile in 
+the root if your project containing
 
     web: target/start
 
-Commit your changes to git and make sure you have the heroku gem installed. You can then create and push the app.
+Commit your changes to git and make sure you have the heroku gem installed. 
+You can then create and push the app.
 
     heroku create appname --stack cedar
     git push heroku master
@@ -157,7 +178,8 @@ object JettyLauncher {
 Including Scala Compiler
 ------------------------
 
-If you need the Scala compiler included within a WAR file add the declaration below to your SBT build file.
+If you need the Scala compiler included within a WAR file add the declaration 
+below to your SBT build file.
 
 {pygmentize::scala}
 override def webappClasspath = super.webappClasspath +++ buildCompilerJar
