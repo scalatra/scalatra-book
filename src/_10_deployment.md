@@ -114,14 +114,14 @@ costs 38MB memory.
 
 ### Scalatra on Heroku
 
-This is pretty easy to get up and running. Only thing you really need to do 
-is start jetty directly, and add a script to execute this. You don't want to 
+This is pretty easy to get up and running. The only thing you really need to do 
+is start Jetty directly, and add a script to execute this. You don't want to 
 have to rely on SBT to start your application.
 
-Easiest way to do this is create a Main method to start jetty. See 
-JettyLauncher.scala - save this in your src/main/scala dir, setting the 
-filter to your applications filter. Then use Typesafe's start script plugin 
-to generate a script to start the app.
+The easiest way to do this is create a Main method to start Jetty. See 
+JettyLauncher.scala (listing at bottom of this section) - save this in your 
+src/main/scala dir, setting the filter to your applications filter. Then 
+use Typesafe's start script plugin to generate a script to start the app.
 
 To enable the plugin, add the following to project/plugins/build.sbt
 
@@ -140,11 +140,12 @@ seq(StartScriptPlugin.startScriptForClassesSettings: _*)
 {pygmentize}
 
 Once this is done, you are ready to deploy to Heroku. Create a Procfile in 
-the root if your project containing
+the root of your project containing
 
     web: target/start
 
-Commit your changes to git and make sure you have the heroku gem installed. 
+Commit your changes to git and make sure you have the heroku gem installed 
+(see Heroku's general [Scala instructions](http://devcenter.heroku.com/articles/scala)). 
 You can then create and push the app.
 
     heroku create appname --stack cedar
