@@ -1,8 +1,7 @@
-Deployment
-==========
+Production Deployment
+=====================
 
-As a War to Jetty/Tomcat/Etc
-----------------------------
+### As a War to Jetty/Tomcat/Etc
 
 {pygmentize:: shell}
 $ sbt package
@@ -10,8 +9,7 @@ $ mv target/example-1.0.war target/example.war
 $ scp target/example.war user@example.com:/usr/share/jetty/webapp
 {pygmentize}
 
-As a Single Jar
----------------
+### As a Single Jar
 
 Thanks to Riobard for this 
 [post](http://groups.google.com/group/scalatra-user/msg/7df47d814f12a45f) to 
@@ -176,8 +174,7 @@ object JettyLauncher {
 }
 {pygmentize}
 
-Including Scala Compiler
-------------------------
+### Including Scala Compiler
 
 If you need the Scala compiler included within a WAR file add the declaration 
 below to your SBT build file.

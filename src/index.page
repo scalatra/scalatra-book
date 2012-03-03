@@ -22,18 +22,17 @@ link{:type => "text/css",
 
 
 ${include("_00_toc.md")}
-${include("_01_introduction.md")}
-${include("_02_getting_to_know_scalatra.md")}
-${include("_03_organizing_your_application.md")}
-${include("_04_views.md")}
-${include("_05_models.md")}
-${include("_06_helpers.md")}
-${include("_07_middleware.md")}
-${include("_08_testing.md")}
-${include("_09_development.md")}
-${include("_10_deployment.md")}
-${include("_11_contributing.md")}
-${include("_12_routes.md")}
+${include("_05_installation.md")}
+${include("_10_hello_world.md")}
+${include("_13_organizing_your_application.md")}
+${include("_15_routes.md")}
+${include("_20_static_files.md")}
+${include("_25_views.md")}
+${include("_30_helpers.md")}
+${include("_35_models.md")}
+${include("_40_testing.md")}
+${include("_45_deployment.md")}
+${include("_50_contributing.md")}
 
 <script>
 $("div.toc").html('<p>In this book:</p>');
