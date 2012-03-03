@@ -35,34 +35,40 @@ ${include("_45_deployment.md")}
 ${include("_50_contributing.md")}
 
 <script>
-$("div.toc").html('<p>In this book:</p>');
-$("h1, h2, h3").each(function(i) {
-  var current = $(this);
-  var indent = "5px";
-  if(current.prop('tagName').toLowerCase()  == "h2"){ indent="10px"; }
-  if(current.prop('tagName').toLowerCase()  == "h3"){ indent="20px"; }
-  
-  $("div.toc").append("<a style='padding-left:"+indent+";' id='link" + i + "' href='#" +
-      current.attr("id") + "' title='" + current.attr("tagName") + "'>" + 
-      current.html() + "</a><br />");
-});
-      //$("pre[code:contains('$ ')]").addClass('brush:').addClass('shell');
-      //$("pre code:not(.shell)").addClass('brush:').addClass('scala');
-      function path(){
-      var args = arguments,
-         result = [];
-      for(var i = 0; i < args.length; i++){
-        result.push(args[i].replace('@', '/js/sh/scripts/'));
-        
-      }return result;}
-      SyntaxHighlighter.config.tagName="pre code";
-      SyntaxHighlighter.autoloader.apply(null, path(
-        'bash shell				@shBrushBash.js',
-        'scala					@shBrushScala.js',
-        'xml xhtml xslt html	@shBrushXml.js'
-      ));
-     
-      SyntaxHighlighter.all();
+  $("div.toc").html('<p>In this book:</p>');
+  $("h1, h2, h3").each(function(i) {
+    var current = $(this);
+    var indent = "5px";
+    if(current.prop('tagName').toLowerCase()  == "h2"){ indent="10px"; }
+    if(current.prop('tagName').toLowerCase()  == "h3"){ indent="20px"; }
+
+    current.before("<a class='toc-link' id='" + current.attr("id") + "'>&nbsp;</a>");
+    console.log(2);
+    
+    $("div.toc").append("<a style='padding-left:"+indent+";' id='link" + i + "' href='#" +
+        current.attr("id") + "' title='" + current.attr("tagName") + "'>" + 
+        current.html() + "</a><br />");
+
+    current.attr("id", "")
+  });
+
+  //$("pre[code:contains('$ ')]").addClass('brush:').addClass('shell');
+  //$("pre code:not(.shell)").addClass('brush:').addClass('scala');
+  function path(){
+  var args = arguments,
+     result = [];
+  for(var i = 0; i < args.length; i++){
+    result.push(args[i].replace('@', '/js/sh/scripts/'));
+    
+  }return result;}
+  SyntaxHighlighter.config.tagName="pre code";
+  SyntaxHighlighter.autoloader.apply(null, path(
+    'bash shell				@shBrushBash.js',
+    'scala					@shBrushScala.js',
+    'xml xhtml xslt html	@shBrushXml.js'
+  ));
+
+  SyntaxHighlighter.all();
 </script>
 <script type="text/javascript">
   var _gaq = _gaq || [];

@@ -590,7 +590,11 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
 }
 
 .wrapper {
-  padding-top: 40px; }
+  margin-top: 40px; }
+
+.toc-link {
+    position:relative; top: -50px;
+}
 
 .logo {
   text-align: center;

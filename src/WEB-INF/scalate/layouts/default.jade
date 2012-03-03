@@ -12,15 +12,15 @@ html<
     script(type="text/javascript" src={uri("/js/bootstrap-dropdown.js")})
     != headExtra
   body<
-    div.navbar.navbar-fixed-top
-      div.navbar-inner
-        div.container
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
           = include("/_navigation.jade")
-    div.wrapper
-      div.container
-        div#overview
+    .wrapper
+      .container
+        #overview
           = include("/_logo.jade")
-        div#content<
+        #content<
           != body
         
     = include("/_google_analytics.page")
