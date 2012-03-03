@@ -101,10 +101,11 @@ documented soon.  See an example at
 Another [example](https://gist.github.com/732347) for basic authentication 
 can be found
 
-To use it from an SBT project, add the following to your project:
+To use it from an SBT project, add the following to `libraryDependencies`
+in `build.sbt`:
 
 {pygmentize:: scala}
-val auth = "org.scalatra" %% "scalatra-auth" % scalatraVersion
+"org.scalatra" %% "scalatra-auth" % "2.0.3"
 {pygmentize}
 
 ### User Password
@@ -166,10 +167,11 @@ flash.now += ("info" -> "redirect to see the error")
 Scalatra provides optional support for file uploads with Apache Commons 
 [FileUpload](http://commons.apache.org/fileupload/).
 
-1. Depend on `scalatra-fileupload.jar`.  In your SBT build:
+1. Depend on `scalatra-fileupload.jar`.  Add the following
+   to `libraryDependencies` in `build.sbt`:
 
 {pygmentize:: scala}
-val scalatraFileUpload = "org.scalatra" %% "scalatra-fileupload" % scalatraVersion
+"org.scalatra" %% "scalatra-fileupload" % "2.0.3"
 {pygmentize}
 
 2. Extend your application with `FileUploadSupport`:
@@ -206,10 +208,11 @@ post("/") {
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
-1. Depend on `scalatra-anti-xml.jar`.  In your SBT build:
+1. Depend on `scalatra-anti-xml.jar`.  Add the following to `libraryDependencies`
+   in `build.sbt`:
 
 {pygmentize:: scala}
-val scalatraAntiXml = "org.scalatra" %% "scalatra-anti-xml" % scalatraVersion
+"org.scalatra" %% "scalatra-anti-xml" % "2.0.3"
 {pygmentize}
 
 2. Extend your application with `AntiXmlSupport`
@@ -267,6 +270,10 @@ get("/") {
 TODO: add reverse routing
 
 ### AkkaSupport
+
+TODO: this needs more documentation, re: is there support for Akka 1.x and/or 2.x?
+
+TODO: add SBT dependencies. 
 
 Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
 is only available in Scalatra 2.1 and up. 
