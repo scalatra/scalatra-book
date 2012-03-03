@@ -1,5 +1,83 @@
-Helpers in Scalatra
-===================
+Helpers
+=======
+
+Helpers exist as traits in Scalatra that can applied to your base class. 
+Please see [Helpers][helpers] for more details.
+
+[scalate]: http://scalate.fusesource.org
+[views]: http://www.scalatra.org/stable/book/#Views
+[helpers]: http://www.scalatra.org/stable/book/#Helpers%20in%20Scalatra
+
+### HttpServletRequest
+
+The request is available through the `request` variable.  The request is 
+implicitly extended with the following methods:
+
+1. `body`: to get the request body as a string
+2. `isAjax`: to detect AJAX requests
+3. `cookies` and `multiCookies`: a Map view of the request's cookies
+4. Implements `scala.collection.mutable.Map` backed by request attributes
+
+### HttpServletResponse
+
+The response is available through the `response` variable. If you override 
+the Scalatra handling and write directly to the response object 
+(Ex: response.getOutputStream), then your action should return Unit() to 
+prevent a conflict with multiple writes.
+
+### HttpSession
+
+Scalatra has session handling built into the framework by default. There are 
+no modules or traits that you need to include. 
+
+However, sessions are *off* until the `session` method is called. 
+Once `session` is called, a cookie-based session will be created. 
+
+Then you will be able to use the default cookie based session handler in your
+application:
+
+{pygmentize:: scala}
+get("/") {
+  if(session.contains("counter")) session("counter") = 0
+  session("counter") = session("counter").toInt + 1
+  "You've hit this page %s times!" format session("counter").toInt
+}
+{pygmentize}
+
+The `session` implicitly implements `scala.collection.mutable.Map` backed by 
+`session` attributes.  
+
+There's also a `sessionOption` method, which returns a `session` if one already 
+exists, and `None` if it doesn't. This is a good way to avoid creating a 
+`session`.
+
+If you don't need a `session` in your application, e.g. if you're building out
+a stateless RESTFul API, never call the `session` method, and don't mix in 
+`FlashMapSupport` (which also creates a session). 
+
+The default session in Scalatra is cookie-based, but the cookie is used only 
+as a session identifier (session data is stored server-side). If you are 
+building out a shared-nothing architecture, this is something to be aware of.
+
+### ServletContext
+
+The servlet context is available through the `servletContext` variable.  The 
+servlet context implicitly implements `scala.collection.mutable.Map` backed 
+by servlet context attributes.
+
+TODO: does "configuration" belong here in "helpers"?
+
+### Configuration
+
+The environment is defined by:
+
+1. The `org.scalatra.environment` system property.
+2. The `org.scalatra.environment` init property.
+3. A default of `development`.
+
+If the environment starts with "dev", then `isDevelopmentMode` returns true.  
+This flag may be used by other modules, for example, to enable the Scalate 
+console.
 
 ### Scalate error page
 
@@ -11,8 +89,7 @@ To disable this behavior, override `isScalateErrorPageEnabled`:
 override def isScalatePageEnabled = false
 {pygmentize}
 
-Scentry + Authentication
-------------------------
+### Scentry + Authentication
 
 Scentry is a user submitted authentication scheme. Combined 
 `ScentrySupport` and `BasicAuthSupport` traits allow you to quickly tie a
@@ -43,7 +120,6 @@ Remember Me is a common strategy that can be applied to your application.
 It allows your users to return to your site already logged into their 
 account by validating a secure token.
 
-
 TODO: Add example
 
 ### Basic Authentication
@@ -55,11 +131,7 @@ interaction.
 
 TODO: Add example
 
-
-
-
-Flash Map
----------
+### Flash Map
 
 Flash support is included within Scalatra by default. Flash entries are not
 normally available within the current request scope. The exception is adding
@@ -89,8 +161,7 @@ flash += ("error" -> "An error occurred")
 flash.now += ("info" -> "redirect to see the error")
 {pygmentize}
 
-File Upload
------------
+### File Upload
 
 Scalatra provides optional support for file uploads with Apache Commons 
 [FileUpload](http://commons.apache.org/fileupload/).
@@ -131,8 +202,7 @@ post("/") {
 }
 {pygmentize}
 
-Anti-XML integration
---------------------
+### Anti-XML integration
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
@@ -164,8 +234,7 @@ get("/") {
 }
 {pygmentize}
 
-URL Support and Reverse Routes
-------------------------------
+### URL Support and Reverse Routes
 
 UrlSupport provides two instances that provide you with relative URLs. 
 `UrlSupport.url` will return a string that can be used in your output or a 
@@ -197,8 +266,7 @@ get("/") {
 
 TODO: add reverse routing
 
-AkkaSupport
----------------------------------------------
+### AkkaSupport
 
 Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
 is only available in Scalatra 2.1 and up. 
@@ -213,9 +281,11 @@ class MyAppServlet extends ScalatraServlet with AkkaSupport {
       // Add other logic here
       
       <html><body>Hello Akka</body></html>
-    }		
+    }   
   }
 }
 {pygmentize}
 
 [akka]: http://akka.io/
+
+

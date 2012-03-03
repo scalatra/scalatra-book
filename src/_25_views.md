@@ -7,8 +7,7 @@ Scalatra can render views in three main ways.
 1. Using Scalate directly
 1. Using ScalateSupport helpers, with a bit more "magic"
 
-Inline HTML
------------
+### Inline HTML
 
 The simplest method of rendering a view is by using inline HTML:
 {pygmentize:: scala}
@@ -25,8 +24,7 @@ def get("/") {
 Note the use of the `{uri("/")}`, which renders Scala code within the inlined
 view. 
 
-Scalate
--------
+### Scalate
 
 Scalatra can use the incredibly powerful templating engine, 
 [Scalate][scalate]. It is designed to be a "thin interface" for frameworks 
@@ -61,8 +59,7 @@ class YourServlet extends ScalatraServlet with ScalateSupport {
 }
 {pygmentize}
 
-Using Scalate directly
-----------------------
+### Using Scalate directly
 
 Scalate can be called directly, using the 
 `templateEngine.layout("templateName")` method, like this:
@@ -97,8 +94,7 @@ would look something like this:
 </html>
 {pygmentize}
 
-ScalateSupport helpers
-----------------------
+### ScalateSupport helpers
 
 The second way of using Scalate is to use the ScalateSupport helpers, which
 are a bit more "magic" than calling Scalate directly. 
@@ -189,11 +185,23 @@ def get("/") {
 }
 {pygmentize}
 
-The `notFound` method
----------------------
+### The `notFound` method
 
-You may need to render a page when Scalatra can't find a route. You can do
-this using the `notFound` method.
+Error handlers run within the same context as routes and before filters.
+
+Whenever no route matches, the `notFound` handler is invoked.  The default 
+behavior is:
+
+{pygmentize:: scala}
+notFound {
+  <h1>Not found. Bummer.</h1>
+}
+{pygmentize}
+
+* _ScalatraServlet_: send a 404 response
+* _ScalatraFilter_: pass the request to the servlet filter chain
+
+You may need to render some other page when Scalatra can't find a route. 
 
 Using Scalate directly:
 

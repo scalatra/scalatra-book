@@ -7,8 +7,7 @@ application.  The framework lets you send requests to your app and examine the
 response.  All HTTP verbs are supported, as well as request parameters and
 session tracking.
 
-Integrations
-------------
+### Integrations
 
 scalatra-test can be used with the test framework of your choosing.  A basic
 example from each supported framework is shown below.  You may mix and match if
@@ -145,9 +144,19 @@ object MyScalatraServletTests extends ScalatraSpecification {
 Create an instance of `org.scalatra.test.ScalatraTests`.  Be sure to call
 `start()` and `stop()` before and after your test suite.
 
-## FAQ
 
-### How do I set a servlet init parameter?
+### Maven Repository
+
+To make usage of Scalatra as a dependency convenient, Maven hosting is now 
+available courtesy of 
+[Sonatype](https://docs.sonatype.com/display/NX/OSS+Repository+Hosting).
+
+* [Releases](https://oss.sonatype.org/content/repositories/releases)
+* [Snapshots](https://oss.sonatype.org/content/repositories/snapshots)
+
+### Testing FAQ
+
+#### How do I set a servlet init parameter?
 
 scalatra-test is built on Jetty''s [ServletTester] [ServletTester], so it
 does not read your web.xml.  Most things you can do in a web.xml can be
@@ -158,13 +167,3 @@ the constructor of your servlet:
 
 [Specs2 Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
 [ServletTester]: http://download.eclipse.org/jetty/stable-7/apidocs/org/eclipse/jetty/testing/ServletTester.html
-
-## Maven Repository
-
-To make usage of Scalatra as a dependency convenient, Maven hosting is now 
-available courtesy of 
-[Sonatype](https://docs.sonatype.com/display/NX/OSS+Repository+Hosting).
-
-* [Releases](https://oss.sonatype.org/content/repositories/releases)
-* [Snapshots](https://oss.sonatype.org/content/repositories/snapshots)
-
