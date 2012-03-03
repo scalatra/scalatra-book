@@ -92,7 +92,7 @@ highly recommended for any app requiring templating.
 
 `scalatra-specs2`: This integrates the [Specs2][specs2] testing libraries. 
 
-`logback-classic`: Basic logging functionality, courtesy of [Logback][qos-ch]
+`logback-classic`: Basic logging functionality, courtesy of [Logback][qos-ch].
 
 `jetty-webapp`: This is the embedded servlet container used by the web plugin.  
 Your application should be portable to any servlet container supporting at least
