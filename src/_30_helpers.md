@@ -105,7 +105,7 @@ To use it from an SBT project, add the following to `libraryDependencies`
 in `build.sbt`:
 
 {pygmentize:: scala}
-"org.scalatra" %% "scalatra-auth" % "2.0.3"
+"org.scalatra" %% "scalatra-auth" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
 ### User Password
@@ -171,7 +171,7 @@ Scalatra provides optional support for file uploads with Apache Commons
    to `libraryDependencies` in `build.sbt`:
 
 {pygmentize:: scala}
-"org.scalatra" %% "scalatra-fileupload" % "2.0.3"
+"org.scalatra" %% "scalatra-fileupload" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
 2. Extend your application with `FileUploadSupport`:
@@ -212,7 +212,7 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
    in `build.sbt`:
 
 {pygmentize:: scala}
-"org.scalatra" %% "scalatra-anti-xml" % "2.0.3"
+"org.scalatra" %% "scalatra-anti-xml" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
 2. Extend your application with `AntiXmlSupport`
