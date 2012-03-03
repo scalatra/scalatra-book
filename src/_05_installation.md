@@ -6,6 +6,10 @@ Installation
 The simplest way to get started with Scalatra is to generate a project with
 [giter8](http://github.com/n8han/giter8).
 
+Running `g8 scalatra/scalatra-sbt` will check out a pre-built application 
+skeleton for you (from Github), and ask you some questions about your 
+application:
+
 {pygmentize::}
 $ g8 scalatra/scalatra-sbt
 > organization [com.example]: 
@@ -48,39 +52,59 @@ $ git clone http://github.com/scalatra/scalatra-sbt-prototype.git
 
 You will need to manually update organization, name, and version in `build.sbt`.
 
-### Dependencies
+### Understanding Scalatra Dependencies
 
-Your `build.sbt` file defines the libraries which your application will depend on.
-It declares a few dependencies:
+The `build.sbt` file defines the libraries which your application will depend on.
 
-* `"org.scalatra" %% "scalatra" % "2.1.0-SNAPSHOT"`: This is the core Scalatra 
-  module, and is required to run the framework.
+{pygmentize:: scala}
+organization := "org.example"
 
-* `"org.scalatra" %% "scalatra-scalate" % "2.1.0-SNAPSHOT"`: This integrates with 
-  [Scalate](http://scalate.fusesource.org), a template engine supporting multiple
-  template formats.  This is optional, but highly recommended for any app requiring
-  templating.
+name := "blapp"
 
-* `"org.eclipse.jetty" % "jetty-webapp" % "8.0.4.v20111024" % "test;container"`: 
-  This is the embedded servlet container used by the web plugin.  Your 
-  application should be portable to any servlet container supporting at least
-  the 2.5 specification.
+version := "0.1.0-SNAPSHOT"
 
-* `"javax.servlet" % "servlet-api" % "3.0.1" % "provided"`: Required for 
-  building your app.  It is placed in the provided configuration so that it 
-  is not bundled with your application.  Your servlet container will provide 
-  this at deployment time.
+scalaVersion := "2.9.1"
+
+seq(webSettings :_*)
+
+libraryDependencies ++= Seq(
+  "org.scalatra" %% "scalatra" % "2.0.3",
+  "org.scalatra" %% "scalatra-scalate" % "2.0.3",
+  "org.scalatra" %% "scalatra-specs2" % "2.0.3" % "test",
+  "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime",
+  "org.eclipse.jetty" % "jetty-webapp" % "7.5.4.v20111024" % "container",
+  "javax.servlet" % "servlet-api" % "2.5" % "provided"
+)
+
+resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
+{pygmentize}
 
 If your project depends on any additional libraries, you may add any other 
-dependencies you wish in this section.
+dependencies you wish into the `libraryDependencies` section.
+
+The default dependencies are:
+
+`scalatra`: This is the core Scalatra module, and is required to run the framework. 
+
+`scalatra-scalate`: This integrates with [Scalate](http://scalate.fusesource.org), 
+a template engine supporting multiple template formats.  This is optional, but 
+highly recommended for any app requiring templating.
+
+`jetty-webapp`: This is the embedded servlet container used by the web plugin.  
+Your application should be portable to any servlet container supporting at least
+the 2.5 specification.
+
+`servlet-api`: Required for building your app.  It is placed in the 
+provided configuration so that it is not bundled with your application.  
+Your servlet container will provide this at deployment time.
 
 ### Building
 
 The prototype application uses [sbt >= 0.10](http://github.com/harrah/xsbt) 
 for its build system. 
 
-Enter your application's top-level directory and type `sbt`, and the site will
-build itself.
+Enter your application's top-level directory and type `sbt`, and the application will
+build.
 
 For info installing and running sbt on your system, see [the sbt website][sbt-site].
 
