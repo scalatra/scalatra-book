@@ -592,10 +592,6 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
 .wrapper {
   margin-top: 40px; }
 
-.toc-link {
-    position:relative; top: -50px;
-}
-
 .logo {
   text-align: center;
   padding: 55px 55px 35px; }

@@ -42,14 +42,14 @@ ${include("_50_contributing.md")}
     if(current.prop('tagName').toLowerCase()  == "h2"){ indent="10px"; }
     if(current.prop('tagName').toLowerCase()  == "h3"){ indent="20px"; }
 
-    current.before("<a class='toc-link' id='" + current.attr("id") + "'>&nbsp;</a>");
-    console.log(2);
+    var id = current.attr("id")
+
+    current.before("<a class='toc-anchor' id='" + id + "'>&nbsp;</a>")
+    current.removeAttr("id")
     
     $("div.toc").append("<a style='padding-left:"+indent+";' id='link" + i + "' href='#" +
-        current.attr("id") + "' title='" + current.attr("tagName") + "'>" + 
+        id + "' title='" + current.attr("tagName") + "'>" + 
         current.html() + "</a><br />");
-
-    current.attr("id", "")
   });
 
   //$("pre[code:contains('$ ')]").addClass('brush:').addClass('shell');
