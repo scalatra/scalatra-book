@@ -101,10 +101,10 @@ documented soon.  See an example at
 Another [example](https://gist.github.com/732347) for basic authentication 
 can be found
 
-To use it from an SBT project, add the following to `libraryDependencies`
-in `build.sbt`:
+#### Dependency
 
 {pygmentize:: scala}
+// Put this in build.sbt:
 "org.scalatra" %% "scalatra-auth" % "2.0.3"
 {pygmentize}
 
@@ -167,10 +167,10 @@ flash.now += ("info" -> "redirect to see the error")
 Scalatra provides optional support for file uploads with Apache Commons 
 [FileUpload](http://commons.apache.org/fileupload/).
 
-1. Depend on `scalatra-fileupload.jar`.  Add the following
-   to `libraryDependencies` in `build.sbt`:
+#### Dependency
 
 {pygmentize:: scala}
+// Put this in build.sbt:
 "org.scalatra" %% "scalatra-fileupload" % "2.0.3"
 {pygmentize}
 
@@ -208,10 +208,10 @@ post("/") {
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
-1. Depend on `scalatra-anti-xml.jar`.  Add the following to `libraryDependencies`
-   in `build.sbt`:
+#### Dependency
 
 {pygmentize:: scala}
+// Put this in build.sbt:
 "org.scalatra" %% "scalatra-anti-xml" % "2.0.3"
 {pygmentize}
 
