@@ -18,7 +18,7 @@ default.
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-scalatest" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-scalatest" % "2.0.3" % "test"
 
 #### Example
 
@@ -55,7 +55,7 @@ Convenience traits are provided for many Suite implementations:
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-specs2" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-specs2" % "2.0.3" % "test"
 
 #### Example 
 
@@ -114,7 +114,7 @@ begin with Specs2.
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-specs" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-specs" % "2.0.3" % "test"
 
 #### Example
 
@@ -137,7 +137,7 @@ object MyScalatraServletTests extends ScalatraSpecification {
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-test" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-test" % "2.0.3" % "test"
 
 #### Usage guide
 
