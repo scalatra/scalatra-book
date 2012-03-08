@@ -27,6 +27,7 @@ ${include("_10_hello_world.md")}
 ${include("_13_organizing_your_application.md")}
 ${include("_15_routes.md")}
 ${include("_20_static_files.md")}
+${include("_18_scalatra_filter_vs_scalatra_servlet.md")}
 ${include("_25_views.md")}
 ${include("_30_helpers.md")}
 ${include("_35_models.md")}

@@ -197,7 +197,7 @@ Assuming the following route, we get the following results inside the action:
   }
 {pygmentize}
 
-## Filters
+## Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
 application via [Filters][filters].
