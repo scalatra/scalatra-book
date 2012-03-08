@@ -4,6 +4,19 @@ ScalatraServlet vs. ScalatraFilter
 There are two base classes you can inherit from in order to make a 
 Scalatra application: `ScalatraServlet` and `ScalatraFilter`.
 
+{pygmentize:: scala}
+class YourServlet extends ScalatraServlet with ScalateSupport {
+  // your class here
+}
+{pygmentize}
+
+vs.
+
+{pygmentize:: scala}
+class YourFilter extends ScalatraFilter with ScalateSupport {
+  // your class here
+}
+{pygmentize}
 
 The main difference is the default behavior when a route is not found.
 A filter will delegate to the next filter or servlet in the chain (as

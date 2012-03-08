@@ -255,7 +255,7 @@ after("/admin/*") {
 }
 {pygmentize}
 
-[filters]: http://www.scalatra.org/stable/book#Filters
+[filters]: http://www.scalatra.org/stable/book#Request_Filters
 
 ## Handlers
 
