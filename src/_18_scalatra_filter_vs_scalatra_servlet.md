@@ -19,12 +19,12 @@ class YourFilter extends ScalatraFilter with ScalateSupport {
 {pygmentize}
 
 The main difference is the default behavior when a route is not found.
-A filter will delegate to the next filter or servlet in the chain (as
-configured by web.xml), whereas a ScalatraServlet will return a 404
+A `ScalatraFilter` will delegate to the next filter or servlet in the chain (as
+configured by web.xml), whereas a `ScalatraServlet` will return a 404
 response.
 
-Another difference is that ScalatraFilter matches routes relative to
-the WAR's context path. ScalatraServlet matches routes relative to the
+Another difference is that `ScalatraFilter` matches routes relative to
+the WAR's context path. `ScalatraServlet` matches routes relative to the
 servlet path. This allows you to mount multiple servlets under in
 different namespaces in the same WAR.
 
