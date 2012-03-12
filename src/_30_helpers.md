@@ -105,7 +105,7 @@ can be found
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" %% "scalatra-auth" % "2.0.3"
+"org.scalatra" %% "scalatra-auth" % "2.0.4"
 {pygmentize}
 
 ### User Password
@@ -171,7 +171,7 @@ Scalatra provides optional support for file uploads with Apache Commons
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" %% "scalatra-fileupload" % "2.0.3"
+"org.scalatra" %% "scalatra-fileupload" % "2.0.4"
 {pygmentize}
 
 2. Extend your application with `FileUploadSupport`:
@@ -212,7 +212,7 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" %% "scalatra-anti-xml" % "2.0.3"
+"org.scalatra" %% "scalatra-anti-xml" % "2.0.4"
 {pygmentize}
 
 2. Extend your application with `AntiXmlSupport`
