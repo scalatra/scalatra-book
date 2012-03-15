@@ -261,8 +261,6 @@
         display: block; }
     body {
         line-height: 1; }
-    ol, ul {
-        list-style: none; }
     blockquote, q {
         quotes: none; }
     blockquote:before, blockquote:after,
@@ -328,7 +326,7 @@
 /* #Lists
 ================================================== */
     ul, ol { margin-bottom: 20px; }
-    ul { list-style: none outside; }
+    ul {margin-left:15px;}
     ol { list-style: decimal; }
     ol, ul.square, ul.circle, ul.disc { margin-left: 30px; }
     ul.square { list-style: square outside; }
@@ -610,7 +608,7 @@ a { color: #008080; font-weight: bold; text-decoration: none; }
   border-bottom: 2px solid #444;
   margin-top: 35px; }
 
-#content ol { list-style: none; margin: 0; }
+/*#content ol { margin: 0; }*/
 
 #content table { 
   width: 100%; /* Requires reset for smaller screens */

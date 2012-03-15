@@ -20,25 +20,25 @@ $ g8 scalatra/scalatra-sbt
 > version [0.1.0-SNAPSHOT]: 
 {pygmentize}
 
-* `organization`: Used for publishing.  Should be the reverse of a domain 
+`organization`: Used for publishing.  Should be the reverse of a domain 
 name you control.  If you don''t own a domain, `com.github.username` is a
 popular choice.  
 
-* `package`: All Scala code belongs in a package.  The [Scala Style
+`package`: All Scala code belongs in a package.  The [Scala Style
 Guide](http://docs.scala-lang.org/style/naming-conventions.html#packages)
 recommends that your packages start with your organization.  This convention is
 used across multiple JVM languages and gives your project a globally unique
 namespace.
 
-* `name`: The name of your project.  g8 will generate a project into a
+`name`: The name of your project.  g8 will generate a project into a
 folder of this name, and the artifacts you publish will be based on this name.
 
-* `servlet_name`: the name of your servlet.
+`servlet_name`: the name of your servlet.
 
-* `scala_version`: The version of Scala your project is built with.  When in
+`scala_version`: The version of Scala your project is built with.  When in
 doubt, use the default.
 
-* `version`: The version number of your project.  This is entirely up to you,
+`version`: The version number of your project.  This is entirely up to you,
 but we like [Semantic Versioning](http://semver.org/).
 
 ### Installation using `git clone`
