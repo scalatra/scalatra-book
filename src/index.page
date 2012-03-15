@@ -33,6 +33,7 @@ ${include("_30_helpers.md")}
 ${include("_35_models.md")}
 ${include("_40_testing.md")}
 ${include("_45_deployment.md")}
+${include("_47_running_examples.md")}
 ${include("_50_contributing.md")}
 
 <script>
