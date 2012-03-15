@@ -174,8 +174,7 @@ Scalatra provides optional support for file uploads with Apache Commons
 "org.scalatra" %% "scalatra-fileupload" % "2.0.4"
 {pygmentize}
 
-2. Extend your application with `FileUploadSupport`:
-
+Extend your application with `FileUploadSupport`:
 {pygmentize:: scala}
 import org.scalatra.ScalatraServlet
 import org.scalatra.fileupload.FileUploadSupport
@@ -185,8 +184,7 @@ class MyApp extends ScalatraServlet with FileUploadSupport {
 }
 {pygmentize}
 
-3. Be sure that your form is of type `multipart/form-data`:
-
+Be sure that your form is of type `multipart/form-data`:
 {pygmentize:: scala}
 get("/") {
   <form method="post" enctype="multipart/form-data">
@@ -196,8 +194,7 @@ get("/") {
 }
 {pygmentize}
 
-4. Your files are available through the `fileParams` or `fileMultiParams` maps:
-
+Your files are available through the `fileParams` or `fileMultiParams` maps:
 {pygmentize:: scala}
 post("/") {
   processFile(fileParams("thefile"))
@@ -215,8 +212,7 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 "org.scalatra" %% "scalatra-anti-xml" % "2.0.4"
 {pygmentize}
 
-2. Extend your application with `AntiXmlSupport`
-
+Extend your application with `AntiXmlSupport`:
 {pygmentize:: scala}
 import org.scalatra.ScalatraServlet
 import org.scalatra.antixml.AntiXmlSupport
@@ -227,7 +223,7 @@ class MyApp extends ScalatraServlet with AntiXmlSupport {
 }
 {pygmentize}
 
-3. Actions results of type `com.codecommit.antixml.Elem` will be serialized
+Actions results of type `com.codecommit.antixml.Elem` will be serialized
 to the response body, and a content type of `text/html` will be inferred if
 none is set.
 
@@ -243,7 +239,7 @@ UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a 
 redirect statement.
 
-1. Page relative url
+#### Page relative url:
 {pygmentize:: scala}
 get("/"){
   // This will redirect to http://<host>/page-relative
@@ -251,7 +247,7 @@ get("/"){
 }
 {pygmentize}
 
-2. Context relative url
+#### Context relative url:
 {pygmentize:: scala}
 get("/"){
   // This will redirect to http://<host>/<context>/context-relative
@@ -259,7 +255,7 @@ get("/"){
 }
 {pygmentize}
 
-3. Mapped params
+#### Mapped params:
 {pygmentize:: scala}
 get("/") {
   // This will redirect to http://<host>/<context>/en-to-es?one=uno&two=dos
