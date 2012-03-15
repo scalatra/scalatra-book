@@ -18,12 +18,12 @@ including:
 To run the code, do the following:
 
 {pygmentize:: shell}
-git clone https://github.com/scalatra/scalatra.git
-cd scalatra
-sbt 
+$ git clone https://github.com/scalatra/scalatra.git
+$ cd scalatra
+$ sbt 
 # now you're in the sbt shell!
-project scalatra-example
-container:start 
+> project scalatra-example
+> container:start 
 {pygmentize}
 
 You should then get a website with examples running at http://localhost:8080/
