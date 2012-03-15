@@ -3,11 +3,11 @@ Production Deployment
 
 ### As a War to Jetty/Tomcat/Etc
 
-{pygmentize:: shell}
-$ sbt package
-$ mv target/example-1.0.war target/example.war
-$ scp target/example.war user@example.com:/usr/share/jetty/webapp
-{pygmentize}
+
+    $ sbt package
+    $ mv target/example-1.0.war target/example.war
+    $ scp target/example.war user@example.com:/usr/share/jetty/webapp
+
 
 ### As a Single Jar
 
