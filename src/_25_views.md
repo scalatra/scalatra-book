@@ -97,9 +97,9 @@ would look something like this:
 ### ScalateSupport helpers
 
 The second way of using Scalate is to use the ScalateSupport helpers, which
-are a bit more "magic" than calling Scalate directly. 
+are a bit more "magic" than calling Scalate directly.
 
-Basic usage
+Basic usage:
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
