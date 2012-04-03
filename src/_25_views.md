@@ -97,9 +97,9 @@ would look something like this:
 ### ScalateSupport helpers
 
 The second way of using Scalate is to use the ScalateSupport helpers, which
-are a bit more "magic" than calling Scalate directly. 
+are a bit more "magic" than calling Scalate directly.
 
-Basic usage
+Basic usage:
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
@@ -108,7 +108,11 @@ def get("/") {
 }
 {pygmentize}
 
-Rendering with a different layout
+When using `layoutTemplate`, you *must* prefix your view paths with a relative `/` 
+character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good, `layoutTemplate("WEB-INF/views/foo.ssp`
+will fail. 
+
+Rendering with a different layout:
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
@@ -129,6 +133,9 @@ def get("/") {
   ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
 }
 {pygmentize}
+
+When using the scalate helper methods, it is not required to having a leading `/`, so 
+`ssp("index")` would work just as well as `ssp("/index")`.
 
 Passing parameters
 
