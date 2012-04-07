@@ -133,6 +133,7 @@ object MyScalatraServletTests extends ScalatraSpecification {
 }
 {pygmentize}
 
+
 ### Other test frameworks
 
 #### Dependency
@@ -167,3 +168,32 @@ the constructor of your servlet:
 
 [Specs2 Quickstart]: http://etorreborre.github.com/specs2/guide/org.specs2.guide.QuickStart.html
 [ServletTester]: http://download.eclipse.org/jetty/stable-7/apidocs/org/eclipse/jetty/testing/ServletTester.html
+
+#### How do I test file uploads?
+
+Convenience methods exist for testing file uploads.
+
+Example based on Specs2:
+
+{pygmentize:: scala}
+class FileUploadSpec extends MutableScalatraSpec {
+  addServlet(classOf[FileUploadServlet], "/*")
+  
+  "POST /files" should {
+    "return status 200" in {
+      // You can also pass headers after the files Map
+      post("/files", Map("private" -> "true"), Map("kitten" -> new File("kitten.png"))) {
+        status must_== 200
+      }
+    }
+  }
+  
+  "PUT /files/:id" should {
+    "return status 200" in {
+      put("/files/10", Map("private" -> "false"), Map("kitten" -> new File("kitten.png"))) {
+        status must_== 200
+      }
+    }
+  }
+}
+{pygmentize}
