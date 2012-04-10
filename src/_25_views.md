@@ -268,3 +268,11 @@ notFound {
   } orElse serveStaticResource() getOrElse resourceNotFound() 
 }
 {pygmentize}
+
+### Further reading
+
+For more information on Scalate, please refer to the [Scalate User's guide][sug]. 
+It has advice about layouts, partials, how to DRY up layout code, making Scalate
+work with your IDE or text editor, and an extensive set of examples. 
+
+[sug]: http://scalate.fusesource.org/documentation/user-guide.html
