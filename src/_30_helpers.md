@@ -65,8 +65,6 @@ The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed 
 by servlet context attributes.
 
-TODO: does "configuration" belong here in "helpers"?
-
 ### Configuration
 
 The environment is defined by:
