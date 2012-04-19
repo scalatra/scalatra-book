@@ -197,6 +197,20 @@ Assuming the following route, we get the following results inside the action:
   }
 {pygmentize}
 
+You can set defaults for parameter values easily by using `params.getOrElse`.
+
+Let's say you wanted to require an :author name param, and set a :page value
+to 1 by default. If you don't receive an :author, you want to stop execution.
+You could do it like this:
+
+{pygmentize:: scala}
+get("/articles-by/:author/:page") {
+  val name:String = params.getOrElse("name", halt(400))
+  val page:Int = params.getOrElse("page", "1").toInt
+  // now do stuff with your params
+}
+{pygmentize}
+
 ## Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
