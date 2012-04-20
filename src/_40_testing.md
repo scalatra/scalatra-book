@@ -1,4 +1,3 @@
-
 Testing
 =======
 
@@ -96,7 +95,7 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 > integration scenarios
 
 {pygmentize:: scala }
-import org.scalatra.test.specs2
+import org.scalatra.test.specs2._
 
 class HelloWorldServletSpec extends ScalatraSpec { def is =
   "GET / on HelloWorldServlet"                     ^
