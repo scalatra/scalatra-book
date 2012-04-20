@@ -26,6 +26,8 @@ Extend ScalatraSuite with your preferred Suite implementation.  You get
 ShouldMatchers and MustMatchers for free.
 
 {pygmentize:: scala}
+import org.scalatra.test.scalatest._
+
 class MyScalatraServletTests extends ScalatraSuite with FunSuite {
   // `MyScalatraServlet` is your app which extends ScalatraServlet
   addServlet(classOf[MyScalatraServlet], "/*")
@@ -94,6 +96,8 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 > integration scenarios
 
 {pygmentize:: scala }
+import org.scalatra.test.specs2
+
 class HelloWorldServletSpec extends ScalatraSpec { def is =
   "GET / on HelloWorldServlet"                     ^
     "return status 200"                            ! getRoot200^
@@ -119,6 +123,8 @@ begin with Specs2.
 #### Example
 
 {pygmentize:: scala}
+import org.scalatra.test.specs._
+
 object MyScalatraServletTests extends ScalatraSpecification {
   addServlet(classOf[MyScalatraServlet], "/*")
 
