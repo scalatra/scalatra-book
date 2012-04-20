@@ -69,13 +69,39 @@ by servlet context attributes.
 
 The environment is defined by:
 
-1. The `org.scalatra.environment` system property.
-2. The `org.scalatra.environment` init property.
-3. A default of `development`.
+1. The `org.scalatra.environment` system property. 
+2. The `org.scalatra.environment` init parameter.
+3. The default is `development`.
 
 If the environment starts with "dev", then `isDevelopmentMode` returns true.  
 This flag may be used by other modules, for example, to enable the Scalate 
 console.
+
+You can set the application's environment in the following ways:
+
+1. As a system property: this is most commonly set with a `-D` option on the
+command line: `java -Dorg.scalatra.environment=development`
+2. As an init-param in web.xml:
+
+{pygmentize:: xml}
+<servlet>
+  <init-param>
+    <param-name>org.scalatra.environment</param-name>
+    <param-value>development</param-value>
+  </init-param>
+</servlet>
+{pygmentize}
+
+In development mode, a few things happen.
+
+1. In a ScalatraServlet, the notFound handler is enhanced so that it dumps the 
+effective request path and the list of routes it tried to match. This does not 
+happen in a ScalatraFilter, which just delegates to the filterChain when no 
+route matches.
+2. Meaningful error pages are enabled (e.g. on 404s, 500s).
+3. The [Scalate console][console] is enabled.
+
+[console]: http://scalate.fusesource.org/documentation/console.html
 
 ### Scalate error page
 
