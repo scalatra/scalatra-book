@@ -97,9 +97,9 @@ would look something like this:
 ### ScalateSupport helpers
 
 The second way of using Scalate is to use the ScalateSupport helpers, which
-are a bit more "magic" than calling Scalate directly. 
+are a bit more "magic" than calling Scalate directly.
 
-Basic usage
+Basic usage:
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
@@ -108,7 +108,11 @@ def get("/") {
 }
 {pygmentize}
 
-Rendering with a different layout
+When using `layoutTemplate`, you *must* prefix your view paths with a relative `/` 
+character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good, `layoutTemplate("WEB-INF/views/foo.ssp`
+will fail. 
+
+Rendering with a different layout:
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
@@ -129,6 +133,9 @@ def get("/") {
   ssp("/index", "layout" -> "WEB-INF/layouts/app.ssp")
 }
 {pygmentize}
+
+When using the scalate helper methods, it is not required to having a leading `/`, so 
+`ssp("index")` would work just as well as `ssp("/index")`.
 
 Passing parameters
 
@@ -153,8 +160,11 @@ def get("/") {
 }
 {pygmentize}
 
+### Layouts
+
 The `layout` key is somewhat special, as it's used by scalate to identify the 
-layout file. 
+layout file, which wraps a standard layout around the output for the current
+action. 
 
 If you want, you can set off your `layout` parameter from the others, perhaps
 by doing something like this (in jade this time):
@@ -184,6 +194,29 @@ def get("/") {
   jade("/index", "layout" -> "", "foo" -> "uno", "bar" -> "dos")
 }
 {pygmentize}
+
+Your layout file itself might look something like this:
+
+{pygmentize:: html}
+<%@ var body: String %>
+<%@ var title: String = "Some Default Title" %>
+<html>
+<head>
+  <title>${title}</title>
+</head>
+<body>
+  <p>layout header goes here...</p>
+
+  ${unescape(body)}
+
+  <p>layout footer goes here...</p>
+</body>
+</html>
+{pygmentize}
+
+In this layout, the template output for the current action will be inserted
+at the `${unescape(body)}` directive. 
+
 
 ### The `notFound` method
 
@@ -235,3 +268,11 @@ notFound {
   } orElse serveStaticResource() getOrElse resourceNotFound() 
 }
 {pygmentize}
+
+### Further reading
+
+For more information on Scalate, please refer to the [Scalate User's guide][sug]. 
+It has advice about layouts, partials, how to DRY up layout code, making Scalate
+work with your IDE or text editor, and an extensive set of examples. 
+
+[sug]: http://scalate.fusesource.org/documentation/user-guide.html

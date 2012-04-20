@@ -65,19 +65,43 @@ The servlet context is available through the `servletContext` variable.  The
 servlet context implicitly implements `scala.collection.mutable.Map` backed 
 by servlet context attributes.
 
-TODO: does "configuration" belong here in "helpers"?
-
 ### Configuration
 
 The environment is defined by:
 
-1. The `org.scalatra.environment` system property.
-2. The `org.scalatra.environment` init property.
-3. A default of `development`.
+1. The `org.scalatra.environment` system property. 
+2. The `org.scalatra.environment` init parameter.
+3. The default is `development`.
 
 If the environment starts with "dev", then `isDevelopmentMode` returns true.  
 This flag may be used by other modules, for example, to enable the Scalate 
 console.
+
+You can set the application's environment in the following ways:
+
+1. As a system property: this is most commonly set with a `-D` option on the
+command line: `java -Dorg.scalatra.environment=development`
+2. As an init-param in web.xml:
+
+{pygmentize:: xml}
+<servlet>
+  <init-param>
+    <param-name>org.scalatra.environment</param-name>
+    <param-value>development</param-value>
+  </init-param>
+</servlet>
+{pygmentize}
+
+In development mode, a few things happen.
+
+1. In a ScalatraServlet, the notFound handler is enhanced so that it dumps the 
+effective request path and the list of routes it tried to match. This does not 
+happen in a ScalatraFilter, which just delegates to the filterChain when no 
+route matches.
+2. Meaningful error pages are enabled (e.g. on 404s, 500s).
+3. The [Scalate console][console] is enabled.
+
+[console]: http://scalate.fusesource.org/documentation/console.html
 
 ### Scalate error page
 
@@ -101,10 +125,10 @@ documented soon.  See an example at
 Another [example](https://gist.github.com/732347) for basic authentication 
 can be found
 
-To use it from an SBT project, add the following to `libraryDependencies`
-in `build.sbt`:
+#### Dependency
 
 {pygmentize:: scala}
+// Put this in build.sbt:
 "org.scalatra" % "scalatra-auth" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
@@ -233,15 +257,14 @@ error {
 
 Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
-1. Depend on `scalatra-anti-xml.jar`.  Add the following to `libraryDependencies`
-   in `build.sbt`:
+#### Dependency
 
 {pygmentize:: scala}
+// Put this in build.sbt:
 "org.scalatra" % "scalatra-anti-xml" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
-2. Extend your application with `AntiXmlSupport`
-
+Extend your application with `AntiXmlSupport`:
 {pygmentize:: scala}
 import org.scalatra.ScalatraServlet
 import org.scalatra.antixml.AntiXmlSupport
@@ -252,7 +275,7 @@ class MyApp extends ScalatraServlet with AntiXmlSupport {
 }
 {pygmentize}
 
-3. Actions results of type `com.codecommit.antixml.Elem` will be serialized
+Actions results of type `com.codecommit.antixml.Elem` will be serialized
 to the response body, and a content type of `text/html` will be inferred if
 none is set.
 
@@ -268,7 +291,7 @@ UrlSupport provides two instances that provide you with relative URLs.
 `UrlSupport.url` will return a string that can be used in your output or a 
 redirect statement.
 
-1. Page relative url
+#### Page relative url:
 {pygmentize:: scala}
 get("/"){
   // This will redirect to http://<host>/page-relative
@@ -276,7 +299,7 @@ get("/"){
 }
 {pygmentize}
 
-2. Context relative url
+#### Context relative url:
 {pygmentize:: scala}
 get("/"){
   // This will redirect to http://<host>/<context>/context-relative
@@ -284,7 +307,7 @@ get("/"){
 }
 {pygmentize}
 
-3. Mapped params
+#### Mapped params:
 {pygmentize:: scala}
 get("/") {
   // This will redirect to http://<host>/<context>/en-to-es?one=uno&two=dos

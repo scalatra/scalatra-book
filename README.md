@@ -18,3 +18,5 @@ In a shell, run the following:
 
 Review changes at [http://127.0.0.1:8081](http://127.0.0.1:8081)
 
+Note: only sbt version 0.7 works at present, so make sure you install and use
+that if you're having trouble generating the docs. 

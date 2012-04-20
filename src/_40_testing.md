@@ -1,4 +1,3 @@
-
 Testing
 =======
 
@@ -18,7 +17,7 @@ default.
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-scalatest" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-scalatest" % "2.0.4" % "test"
 
 #### Example
 
@@ -26,6 +25,8 @@ Extend ScalatraSuite with your preferred Suite implementation.  You get
 ShouldMatchers and MustMatchers for free.
 
 {pygmentize:: scala}
+import org.scalatra.test.scalatest._
+
 class MyScalatraServletTests extends ScalatraSuite with FunSuite {
   // `MyScalatraServlet` is your app which extends ScalatraServlet
   addServlet(classOf[MyScalatraServlet], "/*")
@@ -55,7 +56,7 @@ Convenience traits are provided for many Suite implementations:
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-specs2" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-specs2" % "2.0.4" % "test"
 
 #### Example 
 
@@ -94,6 +95,8 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 > integration scenarios
 
 {pygmentize:: scala }
+import org.scalatra.test.specs2._
+
 class HelloWorldServletSpec extends ScalatraSpec { def is =
   "GET / on HelloWorldServlet"                     ^
     "return status 200"                            ! getRoot200^
@@ -114,11 +117,13 @@ begin with Specs2.
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-specs" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-specs" % "2.0.4" % "test"
 
 #### Example
 
 {pygmentize:: scala}
+import org.scalatra.test.specs._
+
 object MyScalatraServletTests extends ScalatraSpecification {
   addServlet(classOf[MyScalatraServlet], "/*")
 
@@ -138,7 +143,7 @@ object MyScalatraServletTests extends ScalatraSpecification {
 
 #### Dependency
 
-    "org.scalatra" %% "scalatra-test" % scalatraVersion % "test"
+    "org.scalatra" %% "scalatra-test" % "2.0.4" % "test"
 
 #### Usage guide
 
@@ -159,7 +164,7 @@ available courtesy of
 
 #### How do I set a servlet init parameter?
 
-scalatra-test is built on Jetty''s [ServletTester] [ServletTester], so it
+scalatra-test is built on Jetty's [ServletTester] [ServletTester], so it
 does not read your web.xml.  Most things you can do in a web.xml can be
 done from the context on the tester object.  In this case, call this in
 the constructor of your servlet:

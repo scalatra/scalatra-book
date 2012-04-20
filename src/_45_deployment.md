@@ -3,11 +3,11 @@ Production Deployment
 
 ### As a War to Jetty/Tomcat/Etc
 
-{pygmentize:: shell}
-$ sbt package
-$ mv target/example-1.0.war target/example.war
-$ scp target/example.war user@example.com:/usr/share/jetty/webapp
-{pygmentize}
+
+    $ sbt package
+    $ mv target/example-1.0.war target/example.war
+    $ scp target/example.war user@example.com:/usr/share/jetty/webapp
+
 
 ### As a Single Jar
 
@@ -20,7 +20,7 @@ the mailing list.
 Copy [this piece of code](http://bit.ly/92NWdu) 
 (Note the link doesn't work anymore !) into your sbt project definition 
 (/project/build/src/your project.scala) and extend your project with the 
-AssemblyPorject, so you should have something like this:
+AssemblyProject, so you should have something like this:
 
 ** SBT 0.7.X **
 {pygmentize::scala}
@@ -53,7 +53,7 @@ ServletContextHandler(ServletContextHandler.SESSIONS)
 }
 {pygmentize}
 
-Include the "webapp" directory in the assembley Jar.
+Include the "webapp" directory in the assembly Jar.
 {pygmentize::scala}
 resourceGenerators in Compile <+= (resourceManaged, baseDirectory) map { (managedBase, base) => 
   val webappBase = base / "src" / "main" / "webapp" 
