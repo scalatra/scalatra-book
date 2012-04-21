@@ -248,10 +248,27 @@ post("/") {
 
 {pygmentize:: scala}
 error {
-  case e: IllegalStateException => halt(413, "too much!")
+  case e: SizeConstraintExceededException => RequestEntityTooLarge("too much!")
 }
 {pygmentize}
 
+Scalatra wraps `IllegalStateException` thrown by `HttpServletRequest#getParts()` inside
+`SizeConstraintExceededException` for the convenience of use. If the container for some
+reason throws other exception than `IllegalStateException` when it detects a too large file upload
+or a too large request in general, or you are getting false positives, you can configure
+the wrapping by overriding `isSizeConstraintException` method.
+
+For example, Jetty 8.1.3 incorrectly throws `ServletException` instead of `IllegalStateException`.
+You can configure that to be wrapped inside `SizeConstraintExceededException`s by including the
+following snippet to your servlet:
+
+{pygmentize:: scala}
+override def isSizeConstraintException(e: Exception) = e match {
+  case se: ServletException if se.getMessage.contains("exceeds max filesize") ||
+                               se.getMessage.startsWith("Request exceeds maxRequestSize") => true
+  case _ => false
+}
+{pygmentize}
 
 ### Anti-XML integration
 
