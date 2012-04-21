@@ -308,7 +308,34 @@ get("/") {
 }
 {pygmentize}
 
-TODO: add reverse routing
+#### Reverse routes:
+
+It is possible to save your routes as variables so that they have convenient 
+handles:
+
+{pygmentize:: scala}
+class MyApp extends ScalatraServlet with UrlGeneratorSupport {
+  // When you create a route, you can save it as a variable
+  val viewUser = get("/user/:id") {
+     // your user action would go here
+   }
+
+  post("/user/new") {
+    // url method provided by UrlGeneratorSupport.  Pass it the route
+    // and the params.
+    redirect(url(viewUser, "id" -> newUser.id))
+  }
+}
+{pygmentize}
+
+There's also a `ScalateUrlGeneratorSupport`.  It reflectively finds all
+members of your app of type Route (e.g., viewUser above) and makes them 
+available in your templates.  You should then be able to do something like this 
+right in your templates:
+
+{pygmentize:: scala}
+  url(viewUser, "id" -> 1) 
+{pygmentize}
 
 ### AkkaSupport
 
