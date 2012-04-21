@@ -218,25 +218,6 @@ In this layout, the template output for the current action will be inserted
 at the `${unescape(body)}` directive. 
 
 
-### Setting template attributes prior to layout calls
-
-Sometimes it's convenient to be able to set scalate template attributes
-before calling out to your layout helper. You can use the `templateAttributes`
-map to accomplish this.
-
-Let's say you've got a `user` object. Rather than setting up the template
-attribute "user" in each method call, you can make the `user` available from 
-your `before()` filter, like so:
-
-{pygmentize:: scala}
-before() { templateAttributes("user") = user }
-get("/") { 
-  // the render context created here gets the user from the map.
-  ssp("index")
-}
-{pygmentize}
-
-
 ### The `notFound` method
 
 Error handlers run within the same context as routes and before filters.
