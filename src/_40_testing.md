@@ -64,7 +64,7 @@ Convenience traits are provided for many Suite implementations:
 Specs2 supports two basic styles: Unit and Acceptance.  Both are supported
 by scalatra-test.
 
-##### Unit
+#### Unit testing
 
 From the [Specs2 QuickStart][Specs2 Quickstart]:
 
@@ -87,7 +87,7 @@ class HelloWorldMutableServletSpec extends MutableScalatraSpec {
 }
 {pygmentize}
 
-##### Acceptance
+#### Acceptance testing
 
 From the [Specs2 QuickStart][Specs2 Quickstart]:
 
