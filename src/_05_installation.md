@@ -98,9 +98,9 @@ highly recommended for any app requiring templating.
 Your application should be portable to any servlet container supporting at least
 the 2.5 specification.
 
-`servlet-api`: Required for building your app.  It is placed in the 
-provided configuration so that it is not bundled with your application.  
-Your servlet container will provide this at deployment time.
+`servlet-api`: Required for building your app.  It is placed in the provided
+configuration so that it is not bundled with your application.  Your servlet 
+container will provide this at deployment time.
 
 [specs2]: https://github.com/etorreborre/specs2
 [qos-ch]: http://logback.qos.ch/

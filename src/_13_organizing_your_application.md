@@ -1,6 +1,8 @@
 Organizing your application
 ===========================
 
+The recommended way of structuring a Scalatra project is as follows:
+
     project
 
     src
