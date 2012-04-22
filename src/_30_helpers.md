@@ -71,7 +71,7 @@ The environment is defined by:
 2. The `org.scalatra.environment` init parameter.
 3. The default is `development`.
 
-If the environment starts with "dev", then `isDevelopmentMode` returns true.  
+If the environment starts with "dev", then `isDevelopmentMode` returns true. 
 This flag may be used by other modules, for example, to enable the Scalate 
 console.
 
