@@ -137,7 +137,7 @@ def get("/") {
 When using the scalate helper methods, it is not required to having a leading `/`, so 
 `ssp("index")` would work just as well as `ssp("/index")`.
 
-Passing parameters
+### Passing parameters
 
 Parameters may be passed to your templates using a Seq(String, Any) after the 
 path to the template file. The simplest example might look like this:
@@ -177,7 +177,7 @@ def get("/") {
 }
 {pygmentize}
 
-Default layouts
+#### Default layouts
 
 Scalatra sets a default layout at `WEB-INF/layouts/default.xxxx` (where xxxx 
 is one of the scalate template types). If you are using ssp, for instance, and
