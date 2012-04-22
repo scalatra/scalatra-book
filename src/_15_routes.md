@@ -177,13 +177,18 @@ empty sequence. Keys return `Seq`s of values.
 `params` are a special, simplified view of `multiparams`, containing only the
 head element for any known param, and returning the values as Strings. 
 
-Hitting a URL with a GET like this:
+#### A params example
+
+As an example, let's hit a URL with a GET like this:
+
 {pygmentize::}
   /articles/52?foo=uno&bar=dos&baz=three&foo=anotherfoo
 {pygmentize}
 (note that there are two "foo" keys in there)
 
-Assuming the following route, we get the following results inside the action:
+Assuming there's a matching route at `/articles/:id`, we get the following 
+results inside the action:
+
 {pygmentize:: scala}
   get("/articles/:id") {
     params("id") // => "52"
@@ -196,6 +201,8 @@ Assuming the following route, we get the following results inside the action:
     multiParams("unknown") // => an empty Seq
   }
 {pygmentize}
+
+#### params.getOrElse
 
 You can set defaults for parameter values easily by using `params.getOrElse`.
 
@@ -336,8 +343,8 @@ to catch it in an action.
 
 ## Passing
 
-A route can punt processing to the next matching route using `pass()`.  
-Remember, unlike Sinatra, routes are matched from the bottom up.
+A route can punt processing to the next matching route using `pass()`.  Remember, 
+unlike Sinatra, routes are matched from the bottom up.
 
 {pygmentize:: scala}
 get("/guess/*") {
