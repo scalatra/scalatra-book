@@ -336,8 +336,8 @@ to catch it in an action.
 
 ## Passing
 
-A route can punt processing to the next matching route using `pass()`.  
-Remember, unlike Sinatra, routes are matched from the bottom up.
+A route can punt processing to the next matching route using `pass()`.  Remember, 
+unlike Sinatra, routes are matched from the bottom up.
 
 {pygmentize:: scala}
 get("/guess/*") {
