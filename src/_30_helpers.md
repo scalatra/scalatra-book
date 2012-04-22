@@ -2,11 +2,9 @@ Helpers
 =======
 
 Helpers exist as traits in Scalatra that can applied to your base class. 
-Please see [Helpers][helpers] for more details.
 
 [scalate]: http://scalate.fusesource.org
 [views]: http://www.scalatra.org/stable/book/#Views
-[helpers]: http://www.scalatra.org/stable/book/#Helpers%20in%20Scalatra
 
 ### HttpServletRequest
 
@@ -73,7 +71,7 @@ The environment is defined by:
 2. The `org.scalatra.environment` init parameter.
 3. The default is `development`.
 
-If the environment starts with "dev", then `isDevelopmentMode` returns true.  
+If the environment starts with "dev", then `isDevelopmentMode` returns true. 
 This flag may be used by other modules, for example, to enable the Scalate 
 console.
 
