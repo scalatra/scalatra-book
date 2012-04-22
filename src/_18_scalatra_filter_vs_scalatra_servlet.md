@@ -25,8 +25,8 @@ response.
 
 Another difference is that `ScalatraFilter` matches routes relative to
 the WAR's context path. `ScalatraServlet` matches routes relative to the
-servlet path. This allows you to mount multiple servlets under in
-different namespaces in the same WAR.
+servlet path. This allows you to mount multiple servlets in different namespaces
+in the same WAR.
 
 ### Use ScalatraFilter if:
 
