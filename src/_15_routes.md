@@ -227,6 +227,7 @@ Filters define two methods available, `before` and `after` which both accept a
 block to yield corresponding the request and optionally take a URL pattern to
 match to the request.
 
+
 ### before
 
 The `before` method will let you pass a block to be evaluated **before** _each_
@@ -235,6 +236,7 @@ and _every_ route gets processed.
 {pygmentize:: scala}
 before() {
   MyDb.connect
+  contentType="text/html"
 }
 
 get("/") {
@@ -244,12 +246,12 @@ get("/") {
 {pygmentize}
 
 In this example, we've set up a `before` filter to connect using a contrived
-`MyDb` module.
+`MyDb` module, and set the `contentType` for all requests to `text/html`.
 
 ### after
 
 The `after` method lets you pass a block to be evaluated **after** _each_ and
-_every_ route gets processed.
+_every_ route gets processed. 
 
 {pygmentize:: scala}
 after() {
