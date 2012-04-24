@@ -280,6 +280,18 @@ after("/admin/*") {
 
 [filters]: http://www.scalatra.org/stable/book#Request_Filters
 
+## Processing order
+
+Route actions, errors and filters run in the following order:
+
+1. `before` filters.
+2. Routes and actions. 
+3. If an exception is thrown during the `before` filter or route actions, it is
+   passed to the `errorHandler` function, and its result becomes the action result. 
+4. `after` filters.
+5. The response is rendered.
+
+
 ## Handlers
 
 Handlers are top-level methods available in Scalatra to take care of common HTTP
