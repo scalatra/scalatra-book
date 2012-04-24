@@ -376,6 +376,3 @@ get("/guess/:who") {
 The route block is immediately exited and control continues with the next 
 matching route.  If no matching route is found, a 404 is returned.
 
-_Caution:_ `halt` is implemented as a HaltException.  You probably don't want
-to catch it in an action.
-
