@@ -326,7 +326,9 @@ To immediately stop a request within a filter or route:
 halt()
 {pygmentize}
 
-You can also specify the status:
+You can also specify the [HTTP status][statuses]:
+
+[statuses]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 
 {pygmentize:: scala}
 halt(403)
