@@ -351,8 +351,9 @@ halt(status = 403,
      body = <h1>Go away or I shall taunt you a second time!</h1>)
 {pygmentize}
 
-The `reason` argument is ignored unless `status` is not null.  The default 
-arguments leave that part of the request unchanged.
+The `reason` argument is ignored unless `status` is not null.  If you don't pass
+arguments for `status`, `reason`, or `body`, those parts of the response will
+be left unchanged.
 
 _Caution:_ `halt` is implemented as a HaltException.  You probably don't want
 to catch it in an action.
