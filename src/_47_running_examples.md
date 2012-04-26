@@ -1,9 +1,11 @@
 Scalatra Examples
 =================
 
-The Scalatra code base contains example servlets which you can easily run
-yourself. This is a great way to dissect some running code for common tasks, 
+The Scalatra code base contains [examples][examples] which you can easily run
+yourself. This is a great way to dissect some running code for common tasks,
 including:
+
+[examples]: https://github.com/scalatra/scalatra/tree/develop/example/src/main
 
 * parameters
 * form submission
@@ -19,7 +21,7 @@ To run the code, do the following:
 
     $ git clone https://github.com/scalatra/scalatra.git
     $ cd scalatra
-    $ sbt 
+    $ sbt
     # now you're in the sbt shell!
     > project scalatra-example
     > container:start
