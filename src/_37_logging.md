@@ -2,8 +2,12 @@
 Logging
 =======
 
-You can easily add logging facilities to your project, if you're using the
-default logging dependency in your `build.sbt` file:
+By default, Scalatra uses [Logback][logback] for logging.
+
+[logback]:http://logback.qos.ch
+
+You can easily add logging facilities to your project, if you've got the
+logging dependency in your `build.sbt` file:
 
       "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
 
