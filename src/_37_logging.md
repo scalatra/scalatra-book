@@ -11,7 +11,7 @@ logging dependency in your `build.sbt` file:
 
       "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
 
-In your servlet or filter class, you can do something like this:
+In your servlet or filter class:
 
 {pygmentize:: scala}
 
@@ -29,9 +29,13 @@ class YourServlet extends ScalatraServlet {
 
 {pygmentize}
 
-This should get you basic logging. There are some additional logging
-libraries you might want to investigate: [slf4s] and [grizzled-slf4j], 
+This will get you basic logging support. There are some additional logging
+libraries you might want to investigate: [slf4s][slf4s] and 
+[grizzled-slf4j][grizzled-slf4j],
 which act as Scala wrappers around slf4j. 
+
+[slf4s]:https://github.com/weiglewilczek/slf4s
+[grizzled-slf4j]:http://software.clapper.org/grizzled-slf4j/
 
 The Scala wrappers use by-name parameters for the log message, and 
 check to see that the logging level is enabled.  This is a performance
