@@ -11,23 +11,30 @@ logging dependency in your `build.sbt` file:
 
       "ch.qos.logback" % "logback-classic" % "1.0.0" % "runtime"
 
-To add a logger to your project, put a companion object next to your servlet:
+In your servlet or filter class, you can do something like this:
 
 {pygmentize:: scala}
-object YourServlet {
-  val logger = LoggerFactory getLogger(UploadServlet getClass)
-}
-{pygmentize}
 
-Then in your servlet or filter class, you can do something like this:
+import org.slf4j.{Logger, LoggerFactory}
 
-{pygmentize:: scala}
 class YourServlet extends ScalatraServlet {
-  val logger = YourServlet.logger
+
+  val logger =  LoggerFactory.getLogger(getClass)
 
   def get("/") {
     logger.info("foo")
     // whatever else you want to put in the body of the action
   }
 }
+
 {pygmentize}
+
+This should get you basic logging. There are some additional logging
+libraries you might want to investigate: [slf4s] and [grizzled-slf4j], 
+which act as Scala wrappers around slf4j. 
+
+The Scala wrappers use by-name parameters for the log message, and 
+check to see that the logging level is enabled.  This is a performance
+win for complex log messages involving expensive `toString`s or many 
+concatenations.
+
