@@ -237,7 +237,7 @@ servlet or filter:
 {pygmentize:: scala}
 class RailsLikeRouting extends ScalatraFilter with MethodOverride {
   
-  // POST to "/foo/bar" with params "id=2" and "_method=put" will this route:
+  // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
   put("/foo/bar/:id") {
     // update your resource here
   }
