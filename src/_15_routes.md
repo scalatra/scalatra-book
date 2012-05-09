@@ -218,6 +218,31 @@ get("/articles-by/:author/:page") {
 }
 {pygmentize}
 
+## Enabling Support for PUT and DELETE requests
+
+Scalatra supports all of the HTTP verbs: GET and POST, which are supported by 
+browser clients, but also PUT and DELETE, which are not. 
+
+Many client libraries use non-standard but simple conventions to indicate 
+that they would like the request to be considered as a PUT or DELETE instead of 
+a POST: for example, jQuery adds a X-HTTP-METHOD-OVERRIDE header to the request.
+
+Other clients and frameworks often indicate the same thing by adding a 
+`_method=put` or `_method=delete` parameter to a POST body. 
+
+You can enable pseudo-support for PUT and DELETE requests by adding the 
+MethodOverride trait into your servlet or filter:
+
+{pygmentize:: scala}
+class RailsLikeRouting extends ScalatraFilter with MethodOverride {
+  
+  put("/foo/bar/:id") {
+    // update your resource here
+  }
+}
+{pygmentize}
+
+
 ## Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
