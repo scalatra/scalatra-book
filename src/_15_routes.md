@@ -235,7 +235,7 @@ the request method automatically if you add the `MethodOverride` trait into your
 servlet or filter:
 
 {pygmentize:: scala}
-class RailsLikeRouting extends ScalatraFilter with MethodOverride {
+class MyFilter extends ScalatraFilter with MethodOverride {
   
   // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
   put("/foo/bar/:id") {
