@@ -338,12 +338,19 @@ This will return a 302 HTTP Response to `/someplace/else`.
 _Caution:_ `redirect` is implemented as a HaltException.  You probably don't
 want to catch it in an action.
 
+Although there's no built-in handler for permanent redirects, if you'd like to do a 301 permanent redirect, you can do something like this: 
+
+{pygmentize:: scala}
+halt(status = 301, headers = Map("Location" -> "http://example.org/"))
+{pygmentize}
+
 Handlers can be extremely useful when used properly, probably the most common
 use is the `params` convention, which gives you access to any parameters passed
 in via the request object, or generated in your route pattern.
 
 [halting]: http://www.scalatra.org/stable/book/#Halting
 [passing]: http://www.scalatra.org/stable/book/#Passing
+
 
 ## Halting
 
