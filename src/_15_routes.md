@@ -212,7 +212,7 @@ You could do it like this:
 
 {pygmentize:: scala}
 get("/articles-by/:author/:page") {
-  val name:String = params.getOrElse("name", halt(400))
+  val author:String = params.getOrElse("author", halt(400))
   val page:Int = params.getOrElse("page", "1").toInt
   // now do stuff with your params
 }
