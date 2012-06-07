@@ -218,6 +218,33 @@ get("/articles-by/:author/:page") {
 }
 {pygmentize}
 
+## Enabling Support for PUT and DELETE requests
+
+Scalatra supports all of the HTTP verbs: `GET` and `POST`, which are supported by 
+browser clients, but also `PUT` and `DELETE`, which are not. 
+
+Many client libraries use non-standard but simple conventions to indicate 
+that they would like the request to be considered as a `PUT` or `DELETE` instead of 
+a POST: for example, jQuery adds a `X-HTTP-METHOD-OVERRIDE` header to the request.
+
+Other clients and frameworks often indicate the same thing by adding a 
+`_method=put` or `_method=delete` parameter to a POST body. 
+
+Scalatra will look for these conventions on incoming requests and transform 
+the request method automatically if you add the `MethodOverride` trait into your 
+servlet or filter:
+
+{pygmentize:: scala}
+class MyFilter extends ScalatraFilter with MethodOverride {
+  
+  // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
+  put("/foo/bar/:id") {
+    // update your resource here
+  }
+}
+{pygmentize}
+
+
 ## Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
@@ -311,12 +338,19 @@ This will return a 302 HTTP Response to `/someplace/else`.
 _Caution:_ `redirect` is implemented as a HaltException.  You probably don't
 want to catch it in an action.
 
+Although there's no built-in handler for permanent redirects, if you'd like to do a 301 permanent redirect, you can do something like this: 
+
+{pygmentize:: scala}
+halt(status = 301, headers = Map("Location" -> "http://example.org/"))
+{pygmentize}
+
 Handlers can be extremely useful when used properly, probably the most common
 use is the `params` convention, which gives you access to any parameters passed
 in via the request object, or generated in your route pattern.
 
 [halting]: http://www.scalatra.org/stable/book/#Halting
 [passing]: http://www.scalatra.org/stable/book/#Passing
+
 
 ## Halting
 
