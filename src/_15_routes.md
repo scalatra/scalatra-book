@@ -4,20 +4,20 @@ Routes
 In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 
 {pygmentize:: scala}
-    get("/") { 
-      // show something 
-    }
-   
-    post("/") { 
-      // submit/create something 
+    get("/") {
+      // show something
     }
 
-    put("/") { 
-      // update something 
+    post("/") {
+      // submit/create something
     }
 
-    delete("/") { 
-      // delete something 
+    put("/") {
+      // update something
+    }
+
+    delete("/") {
+      // delete something
     }
 {pygmentize}
 
@@ -25,12 +25,12 @@ In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 ### Route order
 
 The first matching route is invoked.  Routes are matched from the bottom up.  _This is the opposite of Sinatra._
-Route definitions are executed as part of a Scala constructor; by matching 
+Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
 ### Path patterns
 
-Path patterns add parameters to the `params` map.  Repeated values are 
+Path patterns add parameters to the `params` map.  Repeated values are
 accessible through the `multiParams` map.
 
 ### Named parameters
@@ -42,12 +42,12 @@ Route patterns may include named parameters:
       // Matches "GET /hello/foo" and "GET /hello/bar"
       // params("name") is "foo" or "bar"
       <p>Hello, {params("name")}</p>
-    } 
+    }
 {pygmentize}
 
 ### Wildcards
 
-Route patterns may also include wildcard parameters, accessible through the 
+Route patterns may also include wildcard parameters, accessible through the
 `splat` key.
 
 {pygmentize:: scala}
@@ -64,21 +64,21 @@ Route patterns may also include wildcard parameters, accessible through the
 
 ### Regular expressions
 
-The route matcher may also be a regular expression.  Capture groups are 
+The route matcher may also be a regular expression.  Capture groups are
 accessible through the `captures` key.
 
 {pygmentize:: scala}
     get("""^\/f(.*)/b(.*)""".r) {
       // Matches "GET /foo/bar"
-      multiParams("captures") // == Seq("oo", "ar") 
+      multiParams("captures") // == Seq("oo", "ar")
     }
 {pygmentize}
 
 ### Rails-like pattern matching
 
-By default, route patterns parsing is based on Sinatra.  Rails has a similar, 
-but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern 
-parser is resolved implicitly, and may be overridden if you prefer an 
+By default, route patterns parsing is based on Sinatra.  Rails has a similar,
+but not identical, syntax, based on Rack::Mount's Strexp.  The path pattern
+parser is resolved implicitly, and may be overridden if you prefer an
 alternate syntax:
 
 {pygmentize:: scala}
@@ -102,7 +102,7 @@ If you want to experiment with path patterns, it's very easy in the REPL.
     scala> val pattern = SinatraPathPatternParser("/foo/:bar")
     pattern: PathPattern = PathPattern(^/foo/([^/?#]+)$,List(bar))
 
-    scala> pattern("/y/x") // doesn't match 
+    scala> pattern("/y/x") // doesn't match
     res1: Option[MultiParams] = None
 
     scala> pattern("/foo/x") // matches
@@ -113,7 +113,7 @@ Alternatively, you may use the `RailsPathPatternParser` in place of the
 
 ### Conditions
 
-Routes may include conditions.  A condition is any expression that returns 
+Routes may include conditions.  A condition is any expression that returns
 Boolean.  Conditions are evaluated by-name each time the route matcher runs.
 
 {pygmentize:: scala}
@@ -126,7 +126,7 @@ Boolean.  Conditions are evaluated by-name each time the route matcher runs.
     }
 {pygmentize}
 
-Multiple conditions can be chained together.  A route must match all 
+Multiple conditions can be chained together.  A route must match all
 conditions:
 
 {pygmentize:: scala}
@@ -143,39 +143,39 @@ No path pattern is necessary.  A route may consist of solely a condition:
     }
 {pygmentize}
 
-### Actions 
+### Actions
 
-Each route is followed by an action.  An Action may return any value, which 
+Each route is followed by an action.  An Action may return any value, which
 is then rendered to the response according to the following rules:
 
-`Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.  
+`Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.
 The byte array is written to the response's output stream.
 
-`NodeSeq` - If no content-type is set, it is set to `text/html`.  The node 
+`NodeSeq` - If no content-type is set, it is set to `text/html`.  The node
 sequence is converted to a string and written to the response's writer.
 
-`Unit` - This signifies that the action has rendered the entire response, and 
+`Unit` - This signifies that the action has rendered the entire response, and
 no further action is taken.
 
-`Any` - For any other value, if the content type is not set, it is set to 
-`text/plain`.  The value is converted to a string and written to the 
+`Any` - For any other value, if the content type is not set, it is set to
+`text/plain`.  The value is converted to a string and written to the
 response's writer.
 
-This behavior may be customized for these or other return types by overriding 
+This behavior may be customized for these or other return types by overriding
 `renderResponse`.
 
 ### Parameter handling
 
-Parameters become available to your actions through two methods: `multiParams` 
+Parameters become available to your actions through two methods: `multiParams`
 and `params`.
 
-`multiparams` are a result of merging the standard request params (query 
-string or post params) with the route parameters extracted from the route 
-matchers of the current route. The default value for an unknown param is the 
-empty sequence. Keys return `Seq`s of values. 
+`multiparams` are a result of merging the standard request params (query
+string or post params) with the route parameters extracted from the route
+matchers of the current route. The default value for an unknown param is the
+empty sequence. Keys return `Seq`s of values.
 
 `params` are a special, simplified view of `multiparams`, containing only the
-head element for any known param, and returning the values as Strings. 
+head element for any known param, and returning the values as Strings.
 
 #### A params example
 
@@ -186,7 +186,7 @@ As an example, let's hit a URL with a GET like this:
 {pygmentize}
 (note that there are two "foo" keys in there)
 
-Assuming there's a matching route at `/articles/:id`, we get the following 
+Assuming there's a matching route at `/articles/:id`, we get the following
 results inside the action:
 
 {pygmentize:: scala}
@@ -212,7 +212,7 @@ You could do it like this:
 
 {pygmentize:: scala}
 get("/articles-by/:author/:page") {
-  val name:String = params.getOrElse("name", halt(400))
+  val author:String = params.getOrElse("author", halt(400))
   val page:Int = params.getOrElse("page", "1").toInt
   // now do stuff with your params
 }
@@ -278,7 +278,7 @@ In this example, we've set up a `before` filter to connect using a contrived
 ### after
 
 The `after` method lets you pass a block to be evaluated **after** _each_ and
-_every_ route gets processed. 
+_every_ route gets processed.
 
 {pygmentize:: scala}
 after() {
@@ -312,9 +312,9 @@ after("/admin/*") {
 Route actions, errors and filters run in the following order:
 
 1. `before` filters.
-2. Routes and actions. 
+2. Routes and actions.
 3. If an exception is thrown during the `before` filter or route actions, it is
-   passed to the `errorHandler` function, and its result becomes the action result. 
+   passed to the `errorHandler` function, and its result becomes the action result.
 4. `after` filters.
 5. The response is rendered.
 
@@ -374,7 +374,7 @@ Or the status and the body:
 halt(403, <h1>Go away!</h1>)
 {pygmentize}
 
-Or even the HTTP status reason and headers.  For more complex invocations, it 
+Or even the HTTP status reason and headers.  For more complex invocations, it
 is recommended to use named arguments:
 
 {pygmentize:: scala}
@@ -394,7 +394,7 @@ to catch it in an action.
 
 ## Passing
 
-A route can punt processing to the next matching route using `pass()`.  Remember, 
+A route can punt processing to the next matching route using `pass()`.  Remember,
 unlike Sinatra, routes are matched from the bottom up.
 
 {pygmentize:: scala}
@@ -410,6 +410,5 @@ get("/guess/:who") {
 }
 {pygmentize}
 
-The route block is immediately exited and control continues with the next 
+The route block is immediately exited and control continues with the next
 matching route.  If no matching route is found, a 404 is returned.
-

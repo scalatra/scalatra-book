@@ -6,23 +6,23 @@ Installation
 The simplest way to get started with Scalatra is to generate a project with
 [giter8](http://github.com/n8han/giter8).
 
-Running `g8 scalatra/scalatra-sbt` will check out a pre-built application 
-skeleton for you (from Github), and ask you some questions about your 
+Running `g8 scalatra/scalatra-sbt` will check out a pre-built application
+skeleton for you (from Github), and ask you some questions about your
 application:
 
 {pygmentize::}
 $ g8 scalatra/scalatra-sbt
-> organization [com.example]: 
-> package [com.example.app]: 
-> name [scalatra-sbt-prototype]: 
-> servlet_name [MyScalatraServlet]: 
-> scala_version [2.9.1]: 
-> version [0.1.0-SNAPSHOT]: 
+> organization [com.example]:
+> package [com.example.app]:
+> name [scalatra-sbt-prototype]:
+> servlet_name [MyScalatraServlet]:
+> scala_version [2.9.1]:
+> version [0.1.0-SNAPSHOT]:
 {pygmentize}
 
-`organization`: Used for publishing.  Should be the reverse of a domain 
-name you control.  If you don''t own a domain, `com.github.username` is a
-popular choice.  
+`organization`: Used for publishing.  Should be the reverse of a domain
+name you control.  If you don't own a domain, `com.github.username` is a
+popular choice.
 
 `package`: All Scala code belongs in a package.  The [Scala Style
 Guide](http://docs.scala-lang.org/style/naming-conventions.html#packages)
@@ -52,7 +52,9 @@ $ git clone http://github.com/scalatra/scalatra-sbt-prototype.git
 
 You will need to manually update organization, name, and version in `build.sbt`.
 
-### Understanding Scalatra Dependencies
+### Understanding SBT Dependencies
+
+Scalatra uses Scala's [Simple Build Tool][sbt-site], or `sbt`, as a build system.
 
 The `build.sbt` file defines the libraries which your application will depend on.
 
@@ -79,27 +81,27 @@ libraryDependencies ++= Seq(
 resolvers += "Sonatype OSS Snapshots" at "http://oss.sonatype.org/content/repositories/snapshots/"
 {pygmentize}
 
-If your project depends on any additional libraries, you may add any other 
+If your project depends on any additional libraries, you may add any other
 dependencies you wish into the `libraryDependencies` section.
 
 The default dependencies are:
 
-`scalatra`: This is the core Scalatra module, and is required to run the framework. 
+`scalatra`: This is the core Scalatra module, and is required to run the framework.
 
-`scalatra-scalate`: This integrates with [Scalate](http://scalate.fusesource.org), 
-a template engine supporting multiple template formats.  This is optional, but 
+`scalatra-scalate`: This integrates with [Scalate](http://scalate.fusesource.org),
+a template engine supporting multiple template formats.  This is optional, but
 highly recommended for any app requiring templating.
 
-`scalatra-specs2`: This integrates the [Specs2][specs2] testing libraries. 
+`scalatra-specs2`: This integrates the [Specs2][specs2] testing libraries.
 
 `logback-classic`: Basic logging functionality, courtesy of [Logback][qos-ch].
 
-`jetty-webapp`: This is the embedded servlet container used by the web plugin.  
+`jetty-webapp`: This is the embedded servlet container used by the web plugin.
 Your application should be portable to any servlet container supporting at least
 the 2.5 specification.
 
-`servlet-api`: Required for building your app.  It is placed in the provided
-configuration so that it is not bundled with your application.  Your servlet 
+`servlet-api`: Required for building your app.  It is placed in the `provided`
+configuration so that it is not bundled with your application.  Your servlet
 container will provide this at deployment time.
 
 [specs2]: https://github.com/etorreborre/specs2
@@ -107,8 +109,8 @@ container will provide this at deployment time.
 
 ### Building
 
-The prototype application uses [sbt >= 0.10](http://github.com/harrah/xsbt) 
-for its build system. 
+The prototype application uses [sbt >= 0.10](http://github.com/harrah/xsbt)
+for its build system.
 
 Enter your application's top-level directory and type `sbt`, and the application will
 build.
