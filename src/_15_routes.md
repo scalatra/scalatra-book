@@ -28,11 +28,6 @@ The first matching route is invoked.  Routes are matched from the bottom up.  _T
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
-### Path patterns
-
-Path patterns add parameters to the `params` map.  Repeated values are
-accessible through the `multiParams` map.
-
 ### Named parameters
 
 Route patterns may include named parameters:
@@ -218,25 +213,25 @@ get("/articles-by/:author/:page") {
 }
 {pygmentize}
 
-## Enabling Support for PUT and DELETE requests
+### Enabling Support for PUT and DELETE requests
 
-Scalatra supports all of the HTTP verbs: `GET` and `POST`, which are supported by 
-browser clients, but also `PUT` and `DELETE`, which are not. 
+Scalatra supports all of the HTTP verbs: `GET` and `POST`, which are supported by
+browser clients, but also `PUT` and `DELETE`, which are not.
 
-Many client libraries use non-standard but simple conventions to indicate 
-that they would like the request to be considered as a `PUT` or `DELETE` instead of 
+Many client libraries use non-standard but simple conventions to indicate
+that they would like the request to be considered as a `PUT` or `DELETE` instead of
 a POST: for example, jQuery adds a `X-HTTP-METHOD-OVERRIDE` header to the request.
 
-Other clients and frameworks often indicate the same thing by adding a 
-`_method=put` or `_method=delete` parameter to a POST body. 
+Other clients and frameworks often indicate the same thing by adding a
+`_method=put` or `_method=delete` parameter to a POST body.
 
-Scalatra will look for these conventions on incoming requests and transform 
-the request method automatically if you add the `MethodOverride` trait into your 
+Scalatra will look for these conventions on incoming requests and transform
+the request method automatically if you add the `MethodOverride` trait into your
 servlet or filter:
 
 {pygmentize:: scala}
 class MyFilter extends ScalatraFilter with MethodOverride {
-  
+
   // POST to "/foo/bar" with params "id=2" and "_method=put" will hit this route:
   put("/foo/bar/:id") {
     // update your resource here
@@ -245,17 +240,16 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 {pygmentize}
 
 
-## Request Filters
+### Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
 application via [Filters][filters].
 
-Filters define two methods available, `before` and `after` which both accept a
-block to yield corresponding the request and optionally take a URL pattern to
-match to the request.
+Filters define two methods, `before` and `after` which both accept a
+block to yield. Filters optionally take a URL pattern to match to the request.
 
 
-### before
+#### before
 
 The `before` method will let you pass a block to be evaluated **before** _each_
 and _every_ route gets processed.
@@ -275,7 +269,7 @@ get("/") {
 In this example, we've set up a `before` filter to connect using a contrived
 `MyDb` module, and set the `contentType` for all requests to `text/html`.
 
-### after
+#### after
 
 The `after` method lets you pass a block to be evaluated **after** _each_ and
 _every_ route gets processed.
@@ -307,7 +301,7 @@ after("/admin/*") {
 
 [filters]: http://www.scalatra.org/stable/book#Request_Filters
 
-## Processing order
+### Processing order
 
 Route actions, errors and filters run in the following order:
 
@@ -319,13 +313,14 @@ Route actions, errors and filters run in the following order:
 5. The response is rendered.
 
 
-## Handlers
+### Handlers
 
 Handlers are top-level methods available in Scalatra to take care of common HTTP
-routines. For instance there are handlers for [halting][halting] and
-[passing][passing].
+routines.
 
-There are also handlers for redirection:
+#### Redirects
+
+There is a handler for redirection:
 
 {pygmentize:: scala}
 get("/"){
@@ -333,26 +328,20 @@ get("/"){
 }
 {pygmentize}
 
-This will return a 302 HTTP Response to `/someplace/else`.
+This will return a redirect response, with HTTP status 302, pointing to
+`/someplace/else`.
 
 _Caution:_ `redirect` is implemented as a HaltException.  You probably don't
 want to catch it in an action.
 
-Although there's no built-in handler for permanent redirects, if you'd like to do a 301 permanent redirect, you can do something like this: 
+Although there's no built-in handler for permanent redirects, if you'd like to
+do a 301 permanent redirect, you can do something like this:
 
 {pygmentize:: scala}
 halt(status = 301, headers = Map("Location" -> "http://example.org/"))
 {pygmentize}
 
-Handlers can be extremely useful when used properly, probably the most common
-use is the `params` convention, which gives you access to any parameters passed
-in via the request object, or generated in your route pattern.
-
-[halting]: http://www.scalatra.org/stable/book/#Halting
-[passing]: http://www.scalatra.org/stable/book/#Passing
-
-
-## Halting
+#### Halting
 
 To immediately stop a request within a filter or route:
 
@@ -392,7 +381,7 @@ be left unchanged.
 _Caution:_ `halt` is implemented as a HaltException.  You probably don't want
 to catch it in an action.
 
-## Passing
+#### Passing
 
 A route can punt processing to the next matching route using `pass()`.  Remember,
 unlike Sinatra, routes are matched from the bottom up.
