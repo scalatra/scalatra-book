@@ -21,8 +21,8 @@ def get("/") {
 }
 {pygmentize}
 
-Note the use of the `{uri("/")}`, which renders Scala code within the inlined
-view.
+Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
+This tells Scalatra to render Scala code.
 
 ### Scalate
 
