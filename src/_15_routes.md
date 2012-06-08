@@ -319,6 +319,9 @@ Handlers are top-level methods available in Scalatra to take care of common HTTP
 routines. For instance there are handlers for [halting][halting] and
 [passing][passing].
 
+[halting]: http://www.scalatra.org/stable/book/#Halting
+[passing]: http://www.scalatra.org/stable/book/#Passing
+
 There are also handlers for redirection:
 
 {pygmentize:: scala}
@@ -341,9 +344,6 @@ halt(status = 301, headers = Map("Location" -> "http://example.org/"))
 Handlers can be extremely useful when used properly. Probably the most common
 use is the `params` convention, which gives you access to any parameters passed
 in via the request object, or generated in your route pattern.
-
-[halting]: http://www.scalatra.org/stable/book/#Halting
-[passing]: http://www.scalatra.org/stable/book/#Passing
 
 
 #### Halting
