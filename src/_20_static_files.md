@@ -2,8 +2,8 @@ Static Files
 ============
 
 Static files can be served out of the `webapp` folder, which acts as the ROOT
-directory. As with any servlet based application, the contents of this directory 
-are all public, with the exception of files in the WEB-INF directory. 
+directory. As with any servlet based application, the contents of this directory
+are all public, with the exception of files in the WEB-INF directory.
 
 An example structure may help in understanding this.
 
@@ -28,5 +28,5 @@ An example structure may help in understanding this.
 
 
 In this application, the only publicly accessible files will be at
-`stylesheets/default.css` and `images/foo.jpg`. Everything else will be 
+`stylesheets/default.css` and `images/foo.jpg`. Everything else will be
 protected by the web application container. 
