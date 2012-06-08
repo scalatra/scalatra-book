@@ -316,13 +316,11 @@ Route actions, errors and filters run in the following order:
 ### Handlers
 
 Handlers are top-level methods available in Scalatra to take care of common HTTP
-routines. For instance there are handlers for [halting][halting] and
-[passing][passing].
+routines.
 
-[halting]: http://www.scalatra.org/stable/book/#Halting
-[passing]: http://www.scalatra.org/stable/book/#Passing
+#### Redirects
 
-There are also handlers for redirection:
+There is a handler for redirection:
 
 {pygmentize:: scala}
 get("/"){
