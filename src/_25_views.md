@@ -27,7 +27,7 @@ This tells Scalatra to render Scala code.
 ### Scalate
 
 Scalatra can use the incredibly powerful templating engine,
-[Scalate][scalate]. It is designed to be a "thin interface" for frameworks
+[Scalate][scalate]. It is designed to be a thin interface for frameworks
 that want to support multiple template engines.
 
 [scalate]: http://scalate.fusesource.org/documentation/user-guide.html
