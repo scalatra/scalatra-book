@@ -328,12 +328,14 @@ get("/"){
 }
 {pygmentize}
 
-This will return a 302 HTTP Response to `/someplace/else`.
+This will return a redirect response, with HTTP status 302, pointing to
+`/someplace/else`.
 
 _Caution:_ `redirect` is implemented as a HaltException.  You probably don't
 want to catch it in an action.
 
-Although there's no built-in handler for permanent redirects, if you'd like to do a 301 permanent redirect, you can do something like this:
+Although there's no built-in handler for permanent redirects, if you'd like to
+do a 301 permanent redirect, you can do something like this:
 
 {pygmentize:: scala}
 halt(status = 301, headers = Map("Location" -> "http://example.org/"))
