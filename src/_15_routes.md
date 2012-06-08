@@ -245,9 +245,8 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 Scalatra offers a way for you too hook into the request chain of your
 application via [Filters][filters].
 
-Filters define two methods available, `before` and `after` which both accept a
-block to yield corresponding the request and optionally take a URL pattern to
-match to the request.
+Filters define two methods, `before` and `after` which both accept a
+block to yield. Filters optionally take a URL pattern to match to the request.
 
 
 #### before
