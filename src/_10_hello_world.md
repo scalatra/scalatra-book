@@ -24,8 +24,8 @@ class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
   }
 }
 {pygmentize}
-     
-Back at the shell prompt, from your project root, you can run the project
+
+If you haven't already done so, from your project root, you can run the project
 with:
 
 {pygmentize::}
