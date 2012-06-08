@@ -28,11 +28,6 @@ The first matching route is invoked.  Routes are matched from the bottom up.  _T
 Route definitions are executed as part of a Scala constructor; by matching
 from the bottom up, routes can be overridden in child classes.
 
-### Path patterns
-
-Path patterns add parameters to the `params` map.  Repeated values are
-accessible through the `multiParams` map.
-
 ### Named parameters
 
 Route patterns may include named parameters:
