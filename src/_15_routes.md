@@ -243,7 +243,7 @@ class MyFilter extends ScalatraFilter with MethodOverride {
 ### Request Filters
 
 Scalatra offers a way for you too hook into the request chain of your
-application via [Filters][filters].
+application via filters.
 
 Filters define two methods, `before` and `after` which both accept a
 block to yield. Filters optionally take a URL pattern to match to the request.
@@ -299,7 +299,6 @@ after("/admin/*") {
 }
 {pygmentize}
 
-[filters]: http://www.scalatra.org/stable/book#Request_Filters
 
 ### Processing order
 
