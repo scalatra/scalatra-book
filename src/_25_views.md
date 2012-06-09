@@ -80,9 +80,9 @@ in the `webapp` folder of your application (which is found under `src/main/`
 in the project tree).
 
 Another default convention of Scalatra is the layout, which automatically
-looks for a `webapp/layout` template file to render before loading any
-other views. In the case of using `SSP`, your `webapp/layout/default.ssp`
-would look something like this:
+looks for a `webapp/layout/default.xx` template file to render before loading any
+other views (where `xx` is a Scalate template suffix type). If you're using
+`SSP`, your `webapp/layout/default.ssp` would look something like this:
 
 {pygmentize:: html}
 <%@ var yield: String %>
@@ -96,7 +96,7 @@ would look something like this:
 
 ### ScalateSupport helpers
 
-The second way of using Scalate is to use the ScalateSupport helpers, which
+The second way of using Scalate is to use Scalatra's ScalateSupport helpers, which
 are a bit more "magic" than calling Scalate directly.
 
 Basic usage:
@@ -108,9 +108,9 @@ def get("/") {
 }
 {pygmentize}
 
-When using `layoutTemplate`, you *must* prefix your view paths with a relative `/`
-character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good, `layoutTemplate("WEB-INF/views/foo.ssp`
-will fail.
+When using `layoutTemplate`, you *must* prefix your view paths with a relative
+`/` character. So, `layoutTemplate("/WEB-INF/views/foo.ssp")` is good,
+`layoutTemplate("WEB-INF/views/foo.ssp)` will fail.
 
 Rendering with a different layout:
 {pygmentize:: scala}
@@ -134,10 +134,10 @@ def get("/") {
 }
 {pygmentize}
 
-When using the scalate helper methods, it is not required to having a leading `/`, so
-`ssp("index")` would work just as well as `ssp("/index")`.
+When using the scalate helper methods, it is not required to having a leading
+`/`, so `ssp("index")` would work just as well as `ssp("/index")`.
 
-### Passing parameters
+### Passing parameters to templates
 
 Parameters may be passed to your templates using a Seq(String, Any) after the
 path to the template file. The simplest example might look like this:
@@ -179,7 +179,7 @@ def get("/") {
 
 #### Default layouts
 
-Scalatra sets a default layout at `WEB-INF/layouts/default.xxxx` (where xxxx
+Scalatra sets a default layout at `WEB-INF/layouts/default.xx` (where xx
 is one of the scalate template types). If you are using ssp, for instance, and
 you put a default.ssp file in WEB-INF/layouts/default.ssp, it will
 automatically be used. In this case, you can simply call `ssp("/index")` and the
