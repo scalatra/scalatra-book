@@ -218,21 +218,7 @@ In this layout, the template output for the current action will be inserted
 at the `${unescape(body)}` directive.
 
 
-### The `notFound` method
-
-Error handlers run within the same context as routes and before filters.
-
-Whenever no route matches, the `notFound` handler is invoked.  The default
-behavior is:
-
-{pygmentize:: scala}
-notFound {
-  <h1>Not found. Bummer.</h1>
-}
-{pygmentize}
-
-* _ScalatraServlet_: send a 404 response
-* _ScalatraFilter_: pass the request to the servlet filter chain
+### Rendering a 404 page using the `notFound` handler
 
 You may need to render some other page when Scalatra can't find a route.
 

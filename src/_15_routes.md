@@ -400,4 +400,25 @@ get("/guess/:who") {
 {pygmentize}
 
 The route block is immediately exited and control continues with the next
-matching route.  If no matching route is found, a 404 is returned.
+matching route.  If no matching route is found, the `notFound` handler is
+invoked.
+
+#### `notFound`
+
+The `notFound` handler allows you to execute code when there is no matching
+route for the current request's URL.
+
+The default behavior is:
+
+{pygmentize:: scala}
+notFound {
+  <h1>Not found. Bummer.</h1>
+}
+{pygmentize}
+
+What happens next differs slightly based on whether you've set your application
+up using ScalatraServlet or ScalatraFilter.
+
+* _ScalatraServlet_: sends a 404 response
+* _ScalatraFilter_: passes the request to the servlet filter chain, which may
+  then throw a 404 or decide to do something different with it. 
