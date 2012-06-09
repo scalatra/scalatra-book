@@ -161,8 +161,8 @@ This behavior may be customized for these or other return types by overriding
 
 ### Parameter handling
 
-Parameters become available to your actions through two methods: `multiParams`
-and `params`.
+Incoming HTTP request parameters become available to your actions through
+two methods: `multiParams` and `params`.
 
 `multiparams` are a result of merging the standard request params (query
 string or post params) with the route parameters extracted from the route
