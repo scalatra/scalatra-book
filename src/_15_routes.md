@@ -89,7 +89,7 @@ alternate syntax:
 
 ### Path patterns in the REPL
 
-If you want to experiment with path patterns, it's very easy in the REPL.
+If you want to experiment with path patterns, it's very easy in the [REPL][repl].
 
     scala> import org.scalatra.SinatraPathPatternParser
     import org.scalatra.SinatraPathPatternParser
@@ -105,6 +105,8 @@ If you want to experiment with path patterns, it's very easy in the REPL.
 
 Alternatively, you may use the `RailsPathPatternParser` in place of the
 `SinatraPathPatternParser`.
+
+[repl]: http://www.scala-lang.org/node/2097
 
 ### Conditions
 
