@@ -337,8 +337,6 @@ right in your templates:
 
 ### AkkaSupport
 
-TODO: this needs more documentation, re: is there support for Akka 1.x and/or 2.x?
-
 TODO: add SBT dependencies. 
 
 Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
