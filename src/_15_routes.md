@@ -46,12 +46,12 @@ Route patterns may also include wildcard parameters, accessible through the
 `splat` key.
 
 {pygmentize:: scala}
-    get("/say/*/to/*) {
+    get("/say/*/to/*") {
       // Matches "GET /say/hello/to/world"
       multiParams("splat") // == Seq("hello", "world")
     }
 
-    get("/download/*.*) {
+    get("/download/*.*") {
       // Matches "GET /download/path/to/file.xml"
       multiParams("splat") // == Seq("path/to/file", "xml")
     }
