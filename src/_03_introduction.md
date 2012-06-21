@@ -21,7 +21,7 @@ class MyScalatraFilter extends ScalatraFilter {
 Notice a few things about it:
 
 * it's small
-* it uses a Sinatra-style DSL
+* it uses a [Sinatra](http://sinatrarb.com/)-style DSL
 * it defines a single method, an HTTP GET to the path "/"
 * it responds with some text
 
