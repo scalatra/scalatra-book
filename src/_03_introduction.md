@@ -23,7 +23,7 @@ Notice a few things about it:
 * it's small.
 * it uses a [Sinatra](http://sinatrarb.com/)-style DSL.
 * it defines a single method, an HTTP GET to the path "/".
-* it responds with some text.
+* it renders a response, in this case the text _Hello World!_.  
 
 This is the essence of Scalatra - small, easy to understand systems which embrace HTTP's stateless nature. You can build anything you want with Scalatra, but one of the things it's been most successful at is the construction of RESTful APIs. 
 
