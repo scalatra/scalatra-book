@@ -22,6 +22,7 @@ link{:type => "text/css",
 
 
 ${include("_00_toc.md")}
+${include("_03_introduction.md")}
 ${include("_05_installation.md")}
 ${include("_10_hello_world.md")}
 ${include("_13_organizing_your_application.md")}
