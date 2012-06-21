@@ -3,7 +3,7 @@ Introduction
 
 Scalatra is one of a new breed of simple, accessible, scalable web frameworks. It combines the power of the JVM with the beauty and brevity of [Scala](http://scala-lang.org), allowing you to build high-performance web APIs which may be asynchronous or realtime. 
 
-Getting started is easy!
+### Getting started
 
 You need to install a few things before you can get started, but before we get to that, here's a very simple Scalatra app:
 
@@ -27,7 +27,7 @@ Notice a few things about it:
 
 This is the essence of Scalatra - small, easy to understand systems which embrace HTTP's stateless nature. You can build anything you want with Scalatra, but one of the things it's been most successful at is the construction of RESTful APIs. 
 
-Why would you want to use Scalatra?
+### Why would you want to use Scalatra?
 
 * it's a perfect server-side counterpart to in-browser client development frameworks such as [backbone.js](http://backbonejs.org/) or [angular.js](http://angularjs.org)
 * it helps you to quickly build high-performance, scalable HTTP APIs
