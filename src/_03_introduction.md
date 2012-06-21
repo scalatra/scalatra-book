@@ -5,7 +5,7 @@ Scalatra is one of a new breed of simple, accessible, scalable web frameworks. I
 
 ### Getting started
 
-You need to install a few things before you can get started, but before we get to that, here's a very simple Scalatra app:
+You need to install a few things before you can get started, but first, here's a very simple Scalatra app:
 
 {pygmentize:: scala}
 package com.example.app
