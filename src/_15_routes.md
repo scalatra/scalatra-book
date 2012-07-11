@@ -166,12 +166,12 @@ This behavior may be customized for these or other return types by overriding
 Incoming HTTP request parameters become available to your actions through
 two methods: `multiParams` and `params`.
 
-`multiparams` are a result of merging the standard request params (query
+`multiParams` are a result of merging the standard request params (query
 string or post params) with the route parameters extracted from the route
 matchers of the current route. The default value for an unknown param is the
 empty sequence. Keys return `Seq`s of values.
 
-`params` are a special, simplified view of `multiparams`, containing only the
+`params` are a special, simplified view of `multiParams`, containing only the
 head element for any known param, and returning the values as Strings.
 
 #### A params example
