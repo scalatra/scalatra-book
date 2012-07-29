@@ -127,7 +127,7 @@ can be found
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" %% "scalatra-auth" % "2.0.4"
+"org.scalatra" % "scalatra-auth" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
 ### User Password
@@ -207,27 +207,45 @@ a session, which is why it's an optional mixin.
 
 ### File Upload
 
-Scalatra provides optional support for file uploads with Apache Commons 
-[FileUpload](http://commons.apache.org/fileupload/).
+File upload support is included within Scalatra by default by leveraging
+the Servlet 3.0 API's built-in support for `multipart/form-data` requests.
 
-#### Dependency
+1. Extend your application with `FileUploadSupport`:
 
-{pygmentize:: scala}
-// Put this in build.sbt:
-"org.scalatra" %% "scalatra-fileupload" % "2.0.4"
-{pygmentize}
-
-Extend your application with `FileUploadSupport`:
 {pygmentize:: scala}
 import org.scalatra.ScalatraServlet
-import org.scalatra.fileupload.FileUploadSupport
+import org.scalatra.servlet.FileUploadSupport
+import javax.servlet.annotation.MultipartConfig
 
+@MultipartConfig(maxFileSize=3*1024*1024)
 class MyApp extends ScalatraServlet with FileUploadSupport {
   // ...
 }
 {pygmentize}
 
-Be sure that your form is of type `multipart/form-data`:
+If you prefer using your _web.xml_ over the `@MultipartConfig` annotation, you can also
+place `<multipart-config>` to your `<servlet>`:
+
+{pygmentize::}
+<servlet>
+  <servlet-name>myapp</servlet-name>
+  <servlet-class>com.me.MyApp</servlet-class>
+  
+  <multipart-config>
+    <max-file-size>3145728</max-file-size>
+  </multipart-config>
+</servlet>
+{pygmentize}
+
+See
+[javax.servlet.annotation.MultipartConfig Javadoc](http://docs.oracle.com/javaee/6/api/javax/servlet/annotation/MultipartConfig.html)
+for more details on configurable attributes.
+
+**Note for Jetty users**: `@MultipartConfig` and the _web.xml_ `<multipart-config>` does not
+work correctly in Jetty prior to version 8.1.3.
+
+2. Be sure that your form is of type `multipart/form-data`:
+
 {pygmentize:: scala}
 get("/") {
   <form method="post" enctype="multipart/form-data">
@@ -237,10 +255,37 @@ get("/") {
 }
 {pygmentize}
 
-Your files are available through the `fileParams` or `fileMultiParams` maps:
+3. Your files are available through the `fileParams` or `fileMultiParams` maps:
+
 {pygmentize:: scala}
 post("/") {
   processFile(fileParams("thefile"))
+}
+{pygmentize}
+
+4. To handle the case where user uploads too large file, you can define an error handler:
+
+{pygmentize:: scala}
+error {
+  case e: SizeConstraintExceededException => RequestEntityTooLarge("too much!")
+}
+{pygmentize}
+
+Scalatra wraps `IllegalStateException` thrown by `HttpServletRequest#getParts()` inside
+`SizeConstraintExceededException` for the convenience of use. If the container for some
+reason throws other exception than `IllegalStateException` when it detects a too large file upload
+or a too large request in general, or you are getting false positives, you can configure
+the wrapping by overriding `isSizeConstraintException` method.
+
+For example, Jetty 8.1.3 incorrectly throws `ServletException` instead of `IllegalStateException`.
+You can configure that to be wrapped inside `SizeConstraintExceededException`s by including the
+following snippet to your servlet:
+
+{pygmentize:: scala}
+override def isSizeConstraintException(e: Exception) = e match {
+  case se: ServletException if se.getMessage.contains("exceeds max filesize") ||
+                               se.getMessage.startsWith("Request exceeds maxRequestSize") => true
+  case _ => false
 }
 {pygmentize}
 
@@ -252,7 +297,7 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" %% "scalatra-anti-xml" % "2.0.4"
+"org.scalatra" % "scalatra-anti-xml" % "2.1.0-SNAPSHOT"
 {pygmentize}
 
 Extend your application with `AntiXmlSupport`:
