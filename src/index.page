@@ -1,4 +1,4 @@
---- 
+---
 title: Scalatra Book a tiny Sinatra-like web framework for Scala
 --- name:headExtra pipeline:jade
 script{:type => "text/javascript",
@@ -25,10 +25,8 @@ ${include("_00_toc.md")}
 ${include("_03_introduction.md")}
 ${include("_05_installation.md")}
 ${include("_10_hello_world.md")}
-${include("_13_organizing_your_application.md")}
 ${include("_15_routes.md")}
-${include("_20_static_files.md")}
-${include("_18_scalatra_filter_vs_scalatra_servlet.md")}
+${include("_20_organizing_your_application.md")}
 ${include("_25_views.md")}
 ${include("_30_helpers.md")}
 ${include("_35_models.md")}
@@ -49,9 +47,9 @@ ${include("_50_contributing.md")}
 
     current.before("<a class='toc-anchor' id='" + id + "'>&nbsp;</a>")
     current.removeAttr("id")
-    
+
     $("div.toc").append("<a style='padding-left:"+indent+";' id='link" + i + "' href='#" +
-        id + "' title='" + current.attr("tagName") + "'>" + 
+        id + "' title='" + current.attr("tagName") + "'>" +
         current.html() + "</a><br />");
   });
 
@@ -62,7 +60,7 @@ ${include("_50_contributing.md")}
      result = [];
   for(var i = 0; i < args.length; i++){
     result.push(args[i].replace('@', '/js/sh/scripts/'));
-    
+
   }return result;}
   SyntaxHighlighter.config.tagName="pre code";
   SyntaxHighlighter.autoloader.apply(null, path(
