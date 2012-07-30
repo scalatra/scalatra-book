@@ -1,9 +1,8 @@
-
 Models
 ======
 
-While Scalatra does not provide a library for models, you are free to use
-(or not use) any sort of data model you please.
+While Scalatra does not provide a library for models, you are free to use (or not use)
+any sort of data model you please. Here are some commonly used libraries:
 
 Here are some examples:
 

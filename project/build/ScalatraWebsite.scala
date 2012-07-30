@@ -11,7 +11,7 @@ class ScalatraWebsite(info: ProjectInfo) extends DefaultWebProject(info)
   val jettyGroupId = "org.eclipse.jetty"
   val jettyVersion = "7.2.2.v20101205"
   val slf4jVersion = "1.6.1"
-  val scalateVersion = "1.5.1"
+  val scalateVersion = "1.5.3"
   val description = "Runs www.scalatra.org"
   def projectUrl = "http://www.scalatra.org/"
 

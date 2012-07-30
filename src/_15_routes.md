@@ -145,6 +145,20 @@ No path pattern is necessary.  A route may consist of solely a condition:
 Each route is followed by an action.  An Action may return any value, which
 is then rendered to the response according to the following rules:
 
+`ActionResult` - Sets status, body and headers. After importing
+`org.scalatra.ActionResult._`, you can return 200 OK, 404 Not Found
+and other responses by referencing them by their descriptions:
+
+{pygmentize:: scala}
+    get("/file/:id") {
+      fileService.find(params("id")) match {
+        case Some(file) => Ok(file)
+        case None       => NotFound("Sorry, the file could not be found")
+     }
+   }
+{pygmentize}
+
+
 `Array[Byte]` - If no content-type is set, it is set to `application/octet-stream`.
 The byte array is written to the response's output stream.
 
