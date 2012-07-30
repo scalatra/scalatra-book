@@ -2,9 +2,10 @@
 Models
 ======
 
-While Scalatra does not provide a native structure for models the
-following persistence libraries are a few that have been successfully
-integrated.
+While Scalatra does not provide a library for models, you are free to use
+(or not use) any sort of data model you please.
+
+Here are some examples:
 
 ### For RDBMSs:
 
