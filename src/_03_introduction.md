@@ -40,7 +40,7 @@ RESTful APIs.
 * It helps you to quickly build high-performance, scalable HTTP APIs.
 * It's been proven in production - [LinkedIn][linkedin], the [Guardian newspaper][guardian], games website [IGN][ign], and the [UK government][govuk] all rely on it.
 * It will happily use all available cores of that new 16-core server. It also gives you easy access to Scala's new concurrency-management constructs: Akka Actors.
-* It's a simple, fun, and practical way to learn Scala.
+* It's a simple, fun, and practical way to learn [Scala](http://www.scala-lang.org).
 
 [linkedin]: http://www.linkedin.com
 [guardian]: http://www.guardian.co.uk
