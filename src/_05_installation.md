@@ -52,17 +52,18 @@ Now you can use conscript to install Giter8:
 cs n8han/giter8
 {pygmentize}
 
-generate your project
-make something great!
-
 ### Generating a Scalatra project
 
-The simplest way to get started with Scalatra is to generate a project with
-[giter8](http://github.com/n8han/giter8).
+Now that all the dependencies out of the way, let's generate a project. 
 
-Running `g8 scalatra/scalatra-sbt` will check out a pre-built application
-skeleton for you (from Github), and ask you some questions about your
-application:
+Run:
+
+{pygmentize:: }
+g8 scalatra/scalatra-sbt
+{pygmentize}
+
+This will check out a pre-built application skeleton for you (from Github), 
+and ask you some questions about your application:
 
 {pygmentize::}
 $ g8 scalatra/scalatra-sbt
@@ -99,15 +100,10 @@ but we like [Semantic Versioning](http://semver.org/).
 
 ### Building
 
-The prototype application uses [sbt >= 0.10](http://github.com/harrah/xsbt)
-for its build system.
+Scala is a compiled language, so you need to build your Scalatra project. 
 
-Enter your application's top-level directory and type `sbt`, and the application will
-build.
-
-For info installing and running sbt on your system, see [the sbt website][sbt-site].
-
-[sbt-site]: http://www.scala-sbt.org/
+Enter your application's top-level directory and type `sbt`, and the 
+application will build.
 
 Running in Development
 ======================
