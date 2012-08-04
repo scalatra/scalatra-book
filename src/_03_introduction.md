@@ -42,9 +42,9 @@ RESTful APIs.
 * It will happily use all available cores of that new 16-core server. It also gives you easy access to Scala's new concurrency-management constructs: Akka Actors.
 * It's a simple, fun, and practical way to learn Scala.
 
-[linkedin]: (http://www.linkedin.com)
-[guardian]: (http://www.guardian.co.uk)
-[ign]: (http://www.ign.com)
-[govuk]: (http://www.gov.uk)
+[linkedin]: http://www.linkedin.com
+[guardian]: http://www.guardian.co.uk
+[ign]: http://www.ign.com
+[govuk]: http://www.gov.uk
 
 
