@@ -4,7 +4,8 @@ Hello World Application
 Scalatra is installed, how about making your first application?  Source files
 go into `src/main/scala/com/example/app` (substitute your package for
 `com/example/app`).  Open
-`src/main/scala/com/example/app/MyScalatraFilter.scala`:
+`src/main/scala/com/example/app/MyScalatraServlet.scala`, or whatever you named
+your servlet when you generated your project with g8:
 
 {pygmentize:: scala}
 package com.example.app
@@ -12,7 +13,7 @@ package com.example.app
 import org.scalatra._
 import scalate.ScalateSupport
 
-class MyScalatraFilter extends ScalatraFilter with ScalateSupport {
+class MyScalatraServlet extends ScalatraServlet with ScalateSupport {
 
   get("/") {
     <html>
