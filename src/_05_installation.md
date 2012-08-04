@@ -18,7 +18,7 @@ The next thing you'll need is `sbt`, the Simple Build Tool. This is a Scala
 program which will automatically download everything your Scalatra project 
 needs, and build it. 
 
-You can download `sbt` at the [SBT website](http://www.scala-sbt.org/download.html)
+You can download `sbt` at the [SBT website](http://www.scala-sbt.org/download.html).
 
 ### 3. Install conscript and giterate
 
@@ -39,11 +39,11 @@ path, by adding the following to your shell's profile (e.g. ~/.bash_profile):
 {pygmentize:: }
 PATH=$PATH:~/bin
 export path
-{pygmentize:: }
+{pygmentize}
 
 Make sure you reload your shell:
 
-{pygmentize}
+{pygmentize:: }
 source ~/.bash_profile
 {pygmentize}
 
@@ -51,6 +51,8 @@ Now you can use conscript to install Giter8:
 {pygmentize:: }
 cs n8han/giter8
 {pygmentize}
+
+That's it! You've now got everything you need. 
 
 ### Generating a Scalatra project
 
