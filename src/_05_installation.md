@@ -56,9 +56,7 @@ That's it! You've now got everything you need.
 
 ### Generating a Scalatra project
 
-Now that all of the dependencies are out of the way, you can generate a project. 
-
-Run:
+Now that all of the dependencies are out of the way, you can generate a project. Run:
 
 {pygmentize:: }
 g8 scalatra/scalatra-sbt
