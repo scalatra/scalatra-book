@@ -4,13 +4,13 @@ Installation
 Getting started with a new web framework can be a bit scary. Luckily, Scalatra 
 is actually quite easy to install, as it has relatively few dependencies.
 
-### 1. Install a JVM
+### 1. Install a JDK
  
 Scalatra is web microframework written in Scala, so you'll need to have a 
-Java Virtual Machine (JVM) installed. Many systems will already include 
-a JVM (do `java -version` in a terminal to find if yours does). If you don't 
-yet have Java installed, you can find out how to install it for your system
-[here](http://docs.oracle.com/javase/7/docs/webnotes/install/index.html).
+Java Development Kit (JDK) installed. Many systems will already include 
+a JDK (do `java -version` and `javac -version` in a terminal to find if yours 
+does). If you don't yet have Java installed, you can find out how to install 
+it for your system [here](http://docs.oracle.com/javase/7/docs/webnotes/install/index.html).
 
 ### 2. Install SBT 
 
