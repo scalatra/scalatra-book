@@ -15,9 +15,9 @@ here's a very simple Scalatra app:
 package com.example.app
 import org.scalatra._
 
-class MyScalatraFilter extends ScalatraFilter {
+class HelloWorldApp extends ScalatraFilter {
   get("/") { 
-    Hello world! 
+    "Hello world!" 
   }
 }
 {pygmentize}
