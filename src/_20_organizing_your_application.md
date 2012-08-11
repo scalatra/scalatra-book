@@ -157,4 +157,4 @@ in the same WAR.
 
 #### Use ScalatraServlet if:
 
-* You want to match routes with a prefix deeper than the context path. c
+* You want to match routes with a prefix deeper than the context path.
