@@ -127,7 +127,7 @@ can be found
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" % "scalatra-auth" % "2.1.0-SNAPSHOT"
+"org.scalatra" % "scalatra-auth" % "2.1.0"
 {pygmentize}
 
 ### User Password
@@ -297,7 +297,7 @@ Scalatra provides optional [Anti-XML](http://anti-xml.org/) integration:
 
 {pygmentize:: scala}
 // Put this in build.sbt:
-"org.scalatra" % "scalatra-anti-xml" % "2.1.0-SNAPSHOT"
+"org.scalatra" % "scalatra-anti-xml" % "2.1.0"
 {pygmentize}
 
 Extend your application with `AntiXmlSupport`:
