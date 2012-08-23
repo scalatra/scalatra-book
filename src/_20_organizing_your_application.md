@@ -36,7 +36,7 @@ If you've got more than one servlet or filter in your application, you'll
 need to mount them. If you're an old Java hand, you'll be quite comfortable
 doing this through the `web.xml` file in traditional servlet style, but
 Scalatra 2.1.x also introduces a more dynamic (and less XML-ish) method
-of wiring your app together.
+of wiring your app together: the Scalatra bootstrap file.
 
 You can set your web.xml file up like this:
 
@@ -74,6 +74,11 @@ import org.yourdomain.projectname._
 class Scalatra extends LifeCycle {
 
   override def init(context: ServletContext) {
+
+    // set init params like this:
+    org.scalatra.cors.allowedOrigins = "http://example.com:8080 http://foo.example.com"
+
+    // mount servlets like this:
     context mount (new ArticlesServlet, "/articles/*")
     context mount (new UsersServlet, "/users/*")
   }
