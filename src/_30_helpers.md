@@ -432,7 +432,7 @@ at [HTML5Rocks][html5rocks].
 [html5rocks]: http://www.html5rocks.com/en/tutorials/cors/
 
 Init params can go into either your web.xml file or into your Scalatra
-bootstrap config file (src/main/scala/Scalatra.scala), see the
+bootstrap config file (src/main/scala/Scalatra.scala). See the
 [Scalatra bootstrap][bootstrap] section for further info.
 
 [bootstrap]: http://www.scalatra.org/2.1/book/#Mounting_multiple_servlets__or_filters_
