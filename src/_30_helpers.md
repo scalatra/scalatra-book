@@ -90,6 +90,8 @@ command line: `java -Dorg.scalatra.environment=development`
 </servlet>
 {pygmentize}
 
+You can also set init params in the [Scalatra bootstrap][bootstrap] file.
+
 In development mode, a few things happen.
 
 1. In a ScalatraServlet, the notFound handler is enhanced so that it dumps the
