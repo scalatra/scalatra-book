@@ -382,7 +382,12 @@ right in your templates:
 
 ### AkkaSupport
 
-TODO: add SBT dependencies.
+Dependency:
+
+{pygmentize:: scala}
+// Put this in build.sbt:
+"io.akka" % "akka" % "2.0.3"
+{pygmentize}
 
 Provides a mechanism for adding [Akka][akka] futures to your routes. Akka support
 is only available in Scalatra 2.1 and up.
