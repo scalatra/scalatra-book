@@ -360,7 +360,11 @@ right in your templates:
 
 ### AkkaSupport
 
-Dependency:
+Akka is a toolkit and runtime for building highly concurrent, distributed, and
+fault tolerant event-driven applications on the JVM. Scalatra allows you to
+mix it right into your application.
+
+#### Dependency:
 
 {pygmentize:: scala}
 // Put this in build.sbt:
