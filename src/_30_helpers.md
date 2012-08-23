@@ -132,30 +132,6 @@ can be found
 "org.scalatra" % "scalatra-auth" % "2.1.0"
 {pygmentize}
 
-### User Password
-
-The User Password is the most common form/ajax/mixed strategy used in
-standard application development.
-
-TODO: Add example
-
-### Remember Me
-
-Remember Me is a common strategy that can be applied to your application.
-It allows your users to return to your site already logged into their
-account by validating a secure token.
-
-TODO: Add example
-
-### Basic Authentication
-
-Basic Authentication is the simplest authentication method. Due to the
-constraints of Basic Authentication it is recommended that people utilize
-the User Password strategy if they need to have better control over user
-interaction.
-
-TODO: Add example
-
 ### Flash Map
 
 Flash support, allowing you to store information across requests and expire
