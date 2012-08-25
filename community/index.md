@@ -3,6 +3,8 @@ layout: default
 title: Scalatra | Community
 ---
 
+[Built with Scalatra](built-with.html)
+
 
 Contributing
 ============
