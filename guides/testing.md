@@ -1,3 +1,8 @@
+---
+layout: default
+title: Scalatra Guides | Testing
+---
+
 Testing
 =======
 
@@ -21,7 +26,7 @@ default.
 
 #### Example
 
-Extend ScalatraSuite with your preferred Suite implementation.  You get 
+Extend ScalatraSuite with your preferred Suite implementation.  You get
 ShouldMatchers and MustMatchers for free.
 
 {pygmentize:: scala}
@@ -58,7 +63,7 @@ Convenience traits are provided for many Suite implementations:
 
     "org.scalatra" %% "scalatra-specs2" % "2.1.0" % "test"
 
-#### Example 
+#### Example
 
 Specs2 supports two basic styles: Unit and Acceptance.  Both are supported
 by scalatra-test.
@@ -74,11 +79,11 @@ From the [Specs2 QuickStart][Specs2 Quickstart]:
 import org.scalatra.test.specs2._
 
 class HelloWorldMutableServletSpec extends MutableScalatraSpec {
-  addServlet(classOf[HelloWorldServlet], "/*") 
+  addServlet(classOf[HelloWorldServlet], "/*")
 
   "GET / on HelloWorldServlet" should {
     "return status 200" in {
-      get("/") { 
+      get("/") {
         status must_== 200
       }
     }
@@ -104,8 +109,8 @@ class HelloWorldServletSpec extends ScalatraSpec { def is =
 
   addServlet(classOf[HelloWorldServlet], "/*")
 
-  def getRoot200 = get("/") { 
-    status must_== 200 
+  def getRoot200 = get("/") {
+    status must_== 200
   }
 }
 {pygmentize}
@@ -153,8 +158,8 @@ Create an instance of `org.scalatra.test.ScalatraTests`.  Be sure to call
 
 ### Maven Repository
 
-To make usage of Scalatra as a dependency convenient, Maven hosting is now 
-available courtesy of 
+To make usage of Scalatra as a dependency convenient, Maven hosting is now
+available courtesy of
 [Sonatype](https://docs.sonatype.com/display/NX/OSS+Repository+Hosting).
 
 * [Releases](https://oss.sonatype.org/content/repositories/releases)
@@ -183,7 +188,7 @@ Example based on Specs2:
 {pygmentize:: scala}
 class FileUploadSpec extends MutableScalatraSpec {
   addServlet(classOf[FileUploadServlet], "/*")
-  
+
   "POST /files" should {
     "return status 200" in {
       // You can also pass headers after the files Map
@@ -192,7 +197,7 @@ class FileUploadSpec extends MutableScalatraSpec {
       }
     }
   }
-  
+
   "PUT /files/:id" should {
     "return status 200" in {
       put("/files/10", Map("private" -> "false"), Map("kitten" -> new File("kitten.png"))) {

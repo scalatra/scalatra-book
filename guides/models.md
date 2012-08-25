@@ -1,3 +1,8 @@
+---
+layout: default
+title: Scalatra Guides | Models
+---
+
 Models
 ======
 

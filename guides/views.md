@@ -1,8 +1,7 @@
 ---
 layout: default
-title: Scalatra Views
+title: Scalatra Guides | Views
 ---
-
 
 
 Views
@@ -17,7 +16,6 @@ Scalatra can render views in three main ways.
 ### Inline HTML
 
 The simplest method of rendering a view is by using inline HTML:
-
 {pygmentize:: scala}
 def get("/") {
   contentType="text/html"
@@ -32,10 +30,6 @@ def get("/") {
 Note the use of the curly braces on the `{uri("/")}` part of the inlined view.
 This tells Scalatra to render Scala code.
 
-<a id="foo" data-content="And here's some amazing content. It's very engaging. right?" rel="popover" class="btn btn-large btn-danger" href="#" data-original-title="A Title">Click to toggle popover</a>
-
-
-<script type="text/javascript">$('#foo').popover()</script>
 ### Scalate
 
 Scalatra can use the incredibly powerful templating engine,
