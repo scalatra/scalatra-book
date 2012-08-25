@@ -1,3 +1,8 @@
+---
+layout: default
+title: Scalatra | Your First Scalatra App
+---
+
 Hello World Application
 =======================
 
