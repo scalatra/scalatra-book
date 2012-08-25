@@ -1,11 +1,6 @@
 ---
 layout: default
-title: Scalatra Foo
+title: Scalatra | A tiny, Sinatra-like web framework for Scala
 ---
 
-Let's try some markdown.
-
-It's Millertime!
-----------------
-
-Rock.
+This is the index page.
