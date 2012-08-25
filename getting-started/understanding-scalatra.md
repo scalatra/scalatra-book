@@ -1,3 +1,8 @@
+---
+layout: default
+title: Scalatra | The Anatomy of a Scalatra Application
+---
+
 The Anatomy of a Scalatra App
 =============================
 
