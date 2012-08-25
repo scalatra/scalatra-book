@@ -9,3 +9,4 @@ It links to:
 
  * [Getting started](getting-started)
  * [Guides](guides)
+ * [Community](community)

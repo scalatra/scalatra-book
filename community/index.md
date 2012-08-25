@@ -1,17 +1,23 @@
+---
+layout: default
+title: Scalatra | Community
+---
+
+
 Contributing
 ============
 
 ### There are plenty of ways to [contribute to Scalatra][contributing].
 
-Join us on IRC [(#scalatra at irc.freenode.net)][freenode] if you need help 
+Join us on IRC [(#scalatra at irc.freenode.net)][freenode] if you need help
 with anything.
 
 Issues can be reported to [github][issues].
 
-### Contributing to this book 
+### Contributing to this book
 
-This book is [open source][book-contributing].  Pull requests welcome.  
-See [forking][forking] and [pull request][pull-requests] sections of Github's 
+This book is [open source][book-contributing].  Pull requests welcome.
+See [forking][forking] and [pull request][pull-requests] sections of Github's
 help documentation to get started.
 
 [contributing]: http://www.scalatra.org
@@ -21,7 +27,7 @@ help documentation to get started.
 [pull-requests]: http://help.github.com/pull-requests/
 [book-contributing]: http://github.com/scalatra/scalatra-book
 
-Need Help? 
+Need Help?
 ==========
 
 The Scalatra club is small, but super-friendly.  Join us on IRC at
