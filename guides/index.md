@@ -5,5 +5,5 @@ title: Scalatra Guides | Index
 
 The following guides are available:
 
-[Routes and Actions](15_routes.html)
+[Routes and Actions](routes-and-actions.html)
 
