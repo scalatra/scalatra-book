@@ -1,5 +1,10 @@
-Routes
-======
+---
+layout: default
+title: Scalatra Guides | Routes and Actions
+---
+
+Routes and Actions
+================
 
 In Scalatra, a route is an HTTP method paired with a URL matching pattern.
 
@@ -436,4 +441,4 @@ up using ScalatraServlet or ScalatraFilter.
 
 * _ScalatraServlet_: sends a 404 response
 * _ScalatraFilter_: passes the request to the servlet filter chain, which may
-  then throw a 404 or decide to do something different with it. 
+  then throw a 404 or decide to do something different with it.
